@@ -1,0 +1,6 @@
+[
+    name: 'account name'
+    apiKey: 'YOUR_API_KEY_HERE'
+    scripts:
+        'hackerNews': 'dist/index.js'
+]

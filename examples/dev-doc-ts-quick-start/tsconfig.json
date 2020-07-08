@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"moduleResolution": "node",
+		"target": "es5",
+		"module": "esNext",
+		"outDir": "dist",
+		"lib": ["dom", "es2015"],
+		"esModuleInterop": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"strictNullChecks": true,
+		"strictFunctionTypes": true,
+		"alwaysStrict": true,
+	},
+	"include": ["./src"]
+}
