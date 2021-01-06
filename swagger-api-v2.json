@@ -253,6 +253,10 @@
                                                                 "delinquent"
                                                             ],
                                                             "nullable": true
+                                                        },
+                                                        "planShouldCancelAt": {
+                                                            "type": "number",
+                                                            "nullable": true
                                                         }
                                                     },
                                                     "additionalProperties": false,
@@ -1119,6 +1123,10 @@
                                         },
                                         "displayName": {
                                             "type": "string"
+                                        },
+                                        "planShouldCancelAt": {
+                                            "type": "number",
+                                            "nullable": true
                                         }
                                     },
                                     "additionalProperties": false,
@@ -1278,6 +1286,10 @@
                                         },
                                         "dailyResourceNextResetAt": {
                                             "type": "number"
+                                        },
+                                        "planShouldCancelAt": {
+                                            "type": "number",
+                                            "nullable": true
                                         }
                                     },
                                     "additionalProperties": false,
@@ -3017,7 +3029,7 @@
                                                                                         },
                                                                                         "placeholder": {
                                                                                             "type": "string",
-                                                                                            "maxLength": 100
+                                                                                            "maxLength": 250
                                                                                         },
                                                                                         "helper": {
                                                                                             "type": "string",
@@ -3557,6 +3569,11 @@
                                                         },
                                                         "slackManualTimeError": {
                                                             "type": "boolean"
+                                                        },
+                                                        "webhook": {
+                                                            "description": "Your custom webhook URL. We will post insightful informations about your agent run at this address once it's done. You might be interested in our article on [how to use webhooks](https://hub.phantombuster.com/docs/using-webhooks)",
+                                                            "type": "string",
+                                                            "maxLength": 2000
                                                         }
                                                     },
                                                     "additionalProperties": false,
@@ -3946,6 +3963,11 @@
                                                             },
                                                             "slackManualTimeError": {
                                                                 "type": "boolean"
+                                                            },
+                                                            "webhook": {
+                                                                "description": "Your custom webhook URL. We will post insightful informations about your agent run at this address once it's done. You might be interested in our article on [how to use webhooks](https://hub.phantombuster.com/docs/using-webhooks)",
+                                                                "type": "string",
+                                                                "maxLength": 2000
                                                             }
                                                         },
                                                         "additionalProperties": false,
@@ -5758,7 +5780,7 @@
                                                                             },
                                                                             "placeholder": {
                                                                                 "type": "string",
-                                                                                "maxLength": 100
+                                                                                "maxLength": 250
                                                                             },
                                                                             "helper": {
                                                                                 "type": "string",
@@ -6378,7 +6400,7 @@
                                                                                 },
                                                                                 "placeholder": {
                                                                                     "type": "string",
-                                                                                    "maxLength": 100
+                                                                                    "maxLength": 250
                                                                                 },
                                                                                 "helper": {
                                                                                     "type": "string",
@@ -6918,6 +6940,11 @@
                                                 },
                                                 "slackManualTimeError": {
                                                     "type": "boolean"
+                                                },
+                                                "webhook": {
+                                                    "description": "Your custom webhook URL. We will post insightful informations about your agent run at this address once it's done. You might be interested in our article on [how to use webhooks](https://hub.phantombuster.com/docs/using-webhooks)",
+                                                    "type": "string",
+                                                    "maxLength": 2000
                                                 }
                                             },
                                             "additionalProperties": false,
@@ -7293,7 +7320,7 @@
                                                                                     },
                                                                                     "placeholder": {
                                                                                         "type": "string",
-                                                                                        "maxLength": 100
+                                                                                        "maxLength": 250
                                                                                     },
                                                                                     "helper": {
                                                                                         "type": "string",
@@ -8129,6 +8156,11 @@
                                             },
                                             "slackManualTimeError": {
                                                 "type": "boolean"
+                                            },
+                                            "webhook": {
+                                                "description": "Your custom webhook URL. We will post insightful informations about your agent run at this address once it's done. You might be interested in our article on [how to use webhooks](https://hub.phantombuster.com/docs/using-webhooks)",
+                                                "type": "string",
+                                                "maxLength": 2000
                                             }
                                         },
                                         "additionalProperties": false,
