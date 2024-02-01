@@ -443,6 +443,12 @@
                                         },
                                         "vatId": {
                                             "type": "string",
+                                            "maxLength": 100,
+                                            "nullable": true
+                                        },
+                                        "additionalInvoiceInformation": {
+                                            "type": "string",
+                                            "maxLength": 100,
                                             "nullable": true
                                         },
                                         "globalObject": {
@@ -1127,7 +1133,7 @@
                                                                 "setupLink": {
                                                                     "type": "string",
                                                                     "maxLength": 100,
-                                                                    "pattern": "^(phase|step|field):([\\w-])+$"
+                                                                    "pattern": "^(phase|step|field|advancedSettings):([\\w-])+$"
                                                                 }
                                                             }
                                                         }
@@ -1470,7 +1476,7 @@
                                                     "setupLink": {
                                                         "type": "string",
                                                         "maxLength": 100,
-                                                        "pattern": "^(phase|step|field):([\\w-])+$"
+                                                        "pattern": "^(phase|step|field|advancedSettings):([\\w-])+$"
                                                     }
                                                 }
                                             }
@@ -2088,7 +2094,7 @@
                                                     "setupLink": {
                                                         "type": "string",
                                                         "maxLength": 100,
-                                                        "pattern": "^(phase|step|field):([\\w-])+$"
+                                                        "pattern": "^(phase|step|field|advancedSettings):([\\w-])+$"
                                                     }
                                                 }
                                             }
@@ -3164,6 +3170,36 @@
                                                                     }
                                                                 },
                                                                 {
+                                                                    "type": "object",
+                                                                    "required": [
+                                                                        "name",
+                                                                        "associatedFieldName",
+                                                                        "optionIcons"
+                                                                    ],
+                                                                    "additionalProperties": true,
+                                                                    "title": "IDividedInputTypePlugin",
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "enum": [
+                                                                                "dividedInputType"
+                                                                            ]
+                                                                        },
+                                                                        "associatedFieldName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "optionIcons": {
+                                                                            "type": "array",
+                                                                            "minItems": 1,
+                                                                            "maxItems": 200,
+                                                                            "uniqueItems": true,
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 100
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
                                                                     "title": "ICustomPlugin",
                                                                     "type": "object",
                                                                     "properties": {
@@ -3178,7 +3214,8 @@
                                                                                     "setupMappedFieldsColumnLayoutDisplay",
                                                                                     "taggedTemplateInterpolation",
                                                                                     "leadDatabaseContribution",
-                                                                                    "acceptsLeadListAsInput"
+                                                                                    "acceptsLeadListAsInput",
+                                                                                    "dividedInputType"
                                                                                 ]
                                                                             }
                                                                         }
@@ -4656,6 +4693,36 @@
                                                             }
                                                         },
                                                         {
+                                                            "type": "object",
+                                                            "required": [
+                                                                "name",
+                                                                "associatedFieldName",
+                                                                "optionIcons"
+                                                            ],
+                                                            "additionalProperties": true,
+                                                            "title": "IDividedInputTypePlugin",
+                                                            "properties": {
+                                                                "name": {
+                                                                    "enum": [
+                                                                        "dividedInputType"
+                                                                    ]
+                                                                },
+                                                                "associatedFieldName": {
+                                                                    "type": "string"
+                                                                },
+                                                                "optionIcons": {
+                                                                    "type": "array",
+                                                                    "minItems": 1,
+                                                                    "maxItems": 200,
+                                                                    "uniqueItems": true,
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "maxLength": 100
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        {
                                                             "title": "ICustomPlugin",
                                                             "type": "object",
                                                             "properties": {
@@ -4670,7 +4737,8 @@
                                                                             "setupMappedFieldsColumnLayoutDisplay",
                                                                             "taggedTemplateInterpolation",
                                                                             "leadDatabaseContribution",
-                                                                            "acceptsLeadListAsInput"
+                                                                            "acceptsLeadListAsInput",
+                                                                            "dividedInputType"
                                                                         ]
                                                                     }
                                                                 }
@@ -5780,6 +5848,36 @@
                                                                 }
                                                             },
                                                             {
+                                                                "type": "object",
+                                                                "required": [
+                                                                    "name",
+                                                                    "associatedFieldName",
+                                                                    "optionIcons"
+                                                                ],
+                                                                "additionalProperties": true,
+                                                                "title": "IDividedInputTypePlugin",
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "enum": [
+                                                                            "dividedInputType"
+                                                                        ]
+                                                                    },
+                                                                    "associatedFieldName": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "optionIcons": {
+                                                                        "type": "array",
+                                                                        "minItems": 1,
+                                                                        "maxItems": 200,
+                                                                        "uniqueItems": true,
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
                                                                 "title": "ICustomPlugin",
                                                                 "type": "object",
                                                                 "properties": {
@@ -5794,7 +5892,8 @@
                                                                                 "setupMappedFieldsColumnLayoutDisplay",
                                                                                 "taggedTemplateInterpolation",
                                                                                 "leadDatabaseContribution",
-                                                                                "acceptsLeadListAsInput"
+                                                                                "acceptsLeadListAsInput",
+                                                                                "dividedInputType"
                                                                             ]
                                                                         }
                                                                     }
@@ -7280,6 +7379,36 @@
                                                                     }
                                                                 },
                                                                 {
+                                                                    "type": "object",
+                                                                    "required": [
+                                                                        "name",
+                                                                        "associatedFieldName",
+                                                                        "optionIcons"
+                                                                    ],
+                                                                    "additionalProperties": true,
+                                                                    "title": "IDividedInputTypePlugin",
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "enum": [
+                                                                                "dividedInputType"
+                                                                            ]
+                                                                        },
+                                                                        "associatedFieldName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "optionIcons": {
+                                                                            "type": "array",
+                                                                            "minItems": 1,
+                                                                            "maxItems": 200,
+                                                                            "uniqueItems": true,
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 100
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
                                                                     "title": "ICustomPlugin",
                                                                     "type": "object",
                                                                     "properties": {
@@ -7294,7 +7423,8 @@
                                                                                     "setupMappedFieldsColumnLayoutDisplay",
                                                                                     "taggedTemplateInterpolation",
                                                                                     "leadDatabaseContribution",
-                                                                                    "acceptsLeadListAsInput"
+                                                                                    "acceptsLeadListAsInput",
+                                                                                    "dividedInputType"
                                                                                 ]
                                                                             }
                                                                         }
@@ -8330,8 +8460,9 @@
             }
         },
         "/org-storage/leads/save-many": {
+            "x-beta": true,
             "post": {
-                "description": "Save many leads.\n",
+                "description": "Save many leads - Beta.\n",
                 "tags": [
                     "org-storage"
                 ],
@@ -8632,6 +8763,17 @@
                                                         }
                                                     },
                                                     "additionalProperties": true
+                                                },
+                                                {
+                                                    "title": "ILeadProcessError",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "error": {
+                                                            "description": "error property from the agent script",
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "additionalProperties": true
                                                 }
                                             ],
                                             "additionalProperties": true
@@ -8661,8 +8803,9 @@
             }
         },
         "/org-storage/leads/save": {
+            "x-beta": true,
             "post": {
-                "description": "Save one lead.\n",
+                "description": "Save one lead - Beta.\n",
                 "tags": [
                     "org-storage"
                 ],
@@ -8926,6 +9069,9 @@
                                                                         "type": "string"
                                                                     },
                                                                     "resultFile": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "errorMessage": {
                                                                         "type": "string"
                                                                     }
                                                                 }
@@ -9235,6 +9381,9 @@
                                                                     },
                                                                     "resultFile": {
                                                                         "type": "string"
+                                                                    },
+                                                                    "errorMessage": {
+                                                                        "type": "string"
                                                                     }
                                                                 }
                                                             },
@@ -9525,6 +9674,17 @@
                                             }
                                         },
                                         "additionalProperties": true
+                                    },
+                                    {
+                                        "title": "ILeadProcessError",
+                                        "type": "object",
+                                        "properties": {
+                                            "error": {
+                                                "description": "error property from the agent script",
+                                                "type": "string"
+                                            }
+                                        },
+                                        "additionalProperties": true
                                     }
                                 ],
                                 "additionalProperties": true
@@ -9607,7 +9767,7 @@
                 ]
             }
         },
-        "/org-storage/leads/by-list": {
+        "/org-storage/leads/by-list/{listId}": {
             "get": {
                 "description": "Get leads by their list id.\n",
                 "tags": [
@@ -9620,11 +9780,11 @@
                             "application/json": {
                                 "schema": {
                                     "title": "IOrgStorageLeadsByListResponse",
-                                    "anyOf": [
+                                    "oneOf": [
                                         {
                                             "type": "object",
                                             "properties": {
-                                                "results": {
+                                                "leads": {
                                                     "type": "array",
                                                     "items": {
                                                         "title": "ILeadProperties",
@@ -9881,6 +10041,9 @@
                                                                                             "type": "string"
                                                                                         },
                                                                                         "resultFile": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "errorMessage": {
                                                                                             "type": "string"
                                                                                         }
                                                                                     }
@@ -10190,6 +10353,9 @@
                                                                                         },
                                                                                         "resultFile": {
                                                                                             "type": "string"
+                                                                                        },
+                                                                                        "errorMessage": {
+                                                                                            "type": "string"
                                                                                         }
                                                                                     }
                                                                                 },
@@ -10252,7 +10418,7 @@
                                             "additionalProperties": false,
                                             "required": [
                                                 "totalCount",
-                                                "results"
+                                                "leads"
                                             ]
                                         },
                                         {
@@ -10512,6 +10678,9 @@
                                                                                     "type": "string"
                                                                                 },
                                                                                 "resultFile": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "errorMessage": {
                                                                                     "type": "string"
                                                                                 }
                                                                             }
@@ -10821,6 +10990,9 @@
                                                                                 },
                                                                                 "resultFile": {
                                                                                     "type": "string"
+                                                                                },
+                                                                                "errorMessage": {
+                                                                                    "type": "string"
                                                                                 }
                                                                             }
                                                                         },
@@ -10887,7 +11059,7 @@
                         "application/json": {
                             "schema": {
                                 "type": "object",
-                                "title": "IOrgStorageLeadByListPayload",
+                                "title": "IOrgStorageLeadsByListPayload",
                                 "properties": {
                                     "paginationOptions": {
                                         "description": "Options for pagination",
@@ -10937,7 +11109,7 @@
                         }
                     },
                     {
-                        "in": "query",
+                        "in": "path",
                         "required": true,
                         "name": "listId",
                         "description": "Id of the lead list.",
@@ -10948,9 +11120,10 @@
                 ]
             }
         },
-        "/org-storage/list/save": {
+        "/org-storage/lists/save": {
+            "x-beta": true,
             "post": {
-                "description": "Save a list.",
+                "description": "Save a list - Beta.",
                 "tags": [
                     "org-storage"
                 ],
@@ -10971,9 +11144,10 @@
                 ]
             }
         },
-        "/org-storage/list/delete": {
+        "/org-storage/lists/delete": {
+            "x-beta": true,
             "post": {
-                "description": "Delete a list.",
+                "description": "Delete a list - Beta.",
                 "tags": [
                     "org-storage"
                 ],
@@ -11035,9 +11209,10 @@
                 ]
             }
         },
-        "/org-storage/list/fetch-all": {
+        "/org-storage/lists/fetch-all": {
+            "x-beta": true,
             "get": {
-                "description": "Get all the lists.",
+                "description": "Get all the lists - Beta.",
                 "tags": [
                     "org-storage"
                 ],
@@ -11051,6 +11226,39 @@
                         "in": "header",
                         "name": "X-Phantombuster-Org",
                         "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/org-storage/lists/fetch": {
+            "x-beta": true,
+            "get": {
+                "description": "Get one list by ID - Beta.",
+                "tags": [
+                    "org-storage"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "id",
+                        "description": "Id of the lead list to fetch.",
+                        "required": true,
                         "schema": {
                             "type": "string"
                         }
