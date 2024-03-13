@@ -7662,7 +7662,7 @@
                     {
                         "in": "query",
                         "name": "outputTypes",
-                        "description": "If set, the agents will be filtered by the provided output types.",
+                        "description": "If set, the agents will be filtered by the provided output types. An output type represents a resource the agent is expected to produce (i.e. \"fullName\", \"job\", \"company\" etc...). You may find them in the response of the endpoint /agents/fetch with manifest",
                         "schema": {
                             "anyOf": [
                                 {
@@ -9768,8 +9768,8 @@
             }
         },
         "/org-storage/leads/by-list/{listId}": {
-            "get": {
-                "description": "Get leads by their list id.\n",
+            "post": {
+                "description": "Fetch leads by their list id.\n",
                 "tags": [
                     "org-storage"
                 ],
