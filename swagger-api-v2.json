@@ -573,6 +573,173 @@
                                             },
                                             "nullable": true
                                         },
+                                        "qualificationFlow": {
+                                            "type": "object",
+                                            "properties": {
+                                                "email": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "firstName": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "lastName": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "jobTitle": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "sessionCookie": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "prospectionCountries": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "nullable": true
+                                                },
+                                                "company": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "nullable": true
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "nullable": true
+                                                        },
+                                                        "website": {
+                                                            "type": "string",
+                                                            "nullable": true
+                                                        },
+                                                        "typeOfOrganisation": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "B2B",
+                                                                "B2C",
+                                                                "Hybrid"
+                                                            ],
+                                                            "nullable": true
+                                                        },
+                                                        "market": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "competitors": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "nullable": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true
+                                                        },
+                                                        "productServices": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "typeService": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "description": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "keyFeatures": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "nullable": true
+                                                                    },
+                                                                    "problemsSolvedForCustomers": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "nullable": true
+                                                                    },
+                                                                    "icps": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "country": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "website": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "industry": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "buyerPersonas": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "id": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "job": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "painPoints": {
+                                                                                                "type": "array",
+                                                                                                "items": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "goalsKPI": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
+                                                                                            }
+                                                                                        },
+                                                                                        "additionalProperties": false
+                                                                                    },
+                                                                                    "nullable": true
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false
+                                                                        },
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "nullable": true
+                                        },
                                         "createdAt": {
                                             "type": "number"
                                         },
@@ -744,6 +911,10 @@
                                                 ],
                                                 "additionalProperties": false
                                             }
+                                        },
+                                        "isV3": {
+                                            "type": "boolean",
+                                            "nullable": true
                                         }
                                     },
                                     "additionalProperties": false,
@@ -12020,7 +12191,7 @@
                                         {
                                             "type": "object",
                                             "title": "ILeadUpdateProperties",
-                                            "additionalProperties": false,
+                                            "additionalProperties": true,
                                             "properties": {
                                                 "isCreation": {
                                                     "type": "boolean",
@@ -12518,7 +12689,7 @@
                                         "ILeadUpdateProperties": {
                                             "type": "object",
                                             "title": "ILeadUpdateProperties",
-                                            "additionalProperties": false,
+                                            "additionalProperties": true,
                                             "properties": {
                                                 "isCreation": {
                                                     "type": "boolean",
@@ -13423,7 +13594,7 @@
                                                             {
                                                                 "type": "object",
                                                                 "title": "ILeadUpdateProperties",
-                                                                "additionalProperties": false,
+                                                                "additionalProperties": true,
                                                                 "properties": {
                                                                     "isCreation": {
                                                                         "type": "boolean",
@@ -13921,7 +14092,7 @@
                                                             "ILeadUpdateProperties": {
                                                                 "type": "object",
                                                                 "title": "ILeadUpdateProperties",
-                                                                "additionalProperties": false,
+                                                                "additionalProperties": true,
                                                                 "properties": {
                                                                     "isCreation": {
                                                                         "type": "boolean",
@@ -14402,7 +14573,7 @@
                                                     {
                                                         "type": "object",
                                                         "title": "ILeadUpdateProperties",
-                                                        "additionalProperties": false,
+                                                        "additionalProperties": true,
                                                         "properties": {
                                                             "isCreation": {
                                                                 "type": "boolean",
@@ -14900,7 +15071,7 @@
                                                     "ILeadUpdateProperties": {
                                                         "type": "object",
                                                         "title": "ILeadUpdateProperties",
-                                                        "additionalProperties": false,
+                                                        "additionalProperties": true,
                                                         "properties": {
                                                             "isCreation": {
                                                                 "type": "boolean",
@@ -15451,7 +15622,7 @@
         "/org-storage/lists/save": {
             "x-beta": true,
             "post": {
-                "description": "Save a list - Beta.",
+                "description": "Save a list - Beta.\nFor more information, see the [Creating and updating leads lists using filters](https://hub.phantombuster.com/docs/creating-and-updating-leads-lists-using-filters) page in the Developer Guides.\n",
                 "tags": [
                     "org-storage"
                 ],
@@ -15947,7 +16118,7 @@
                                                     {
                                                         "type": "object",
                                                         "title": "ILeadUpdateProperties",
-                                                        "additionalProperties": false,
+                                                        "additionalProperties": true,
                                                         "properties": {
                                                             "isCreation": {
                                                                 "type": "boolean",
@@ -16445,7 +16616,7 @@
                                                     "ILeadUpdateProperties": {
                                                         "type": "object",
                                                         "title": "ILeadUpdateProperties",
-                                                        "additionalProperties": false,
+                                                        "additionalProperties": true,
                                                         "properties": {
                                                             "isCreation": {
                                                                 "type": "boolean",
