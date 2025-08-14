@@ -903,6 +903,9 @@
                                                     },
                                                     "expire_at": {
                                                         "type": "number"
+                                                    },
+                                                    "magic_link": {
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "required": [
@@ -3218,6 +3221,215 @@
                                         },
                                         "isDeprecated": {
                                             "type": "boolean"
+                                        },
+                                        "argumentSchema": {
+                                            "title": "IScriptBranchManifestArgumentSchema",
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "enum": [
+                                                        "object"
+                                                    ]
+                                                },
+                                                "properties": {
+                                                    "type": "object",
+                                                    "additionalProperties": {
+                                                        "title": "ISetupArgument",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "type": {
+                                                                "enum": [
+                                                                    "string",
+                                                                    "boolean",
+                                                                    "number",
+                                                                    "object",
+                                                                    "array",
+                                                                    "integer"
+                                                                ]
+                                                            },
+                                                            "required": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "minLength": {
+                                                                "type": "number"
+                                                            },
+                                                            "maxLength": {
+                                                                "type": "number"
+                                                            },
+                                                            "minimum": {
+                                                                "type": "number"
+                                                            },
+                                                            "maximum": {
+                                                                "type": "number"
+                                                            },
+                                                            "enum": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
+                                                            }
+                                                        },
+                                                        "additionalProperties": true
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        "argumentForm": {
+                                            "type": "object",
+                                            "properties": {
+                                                "enabled": {
+                                                    "type": "boolean"
+                                                },
+                                                "steps": {
+                                                    "title": "ISetupStepList",
+                                                    "type": "array",
+                                                    "minItems": 1,
+                                                    "maxItems": 10,
+                                                    "items": {
+                                                        "title": "ISetupStep",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "slug": {
+                                                                "type": "string",
+                                                                "pattern": "^[\\w-]{1,50}$"
+                                                            },
+                                                            "title": {
+                                                                "type": "string",
+                                                                "maxLength": 100
+                                                            },
+                                                            "headerTitle": {
+                                                                "type": "string",
+                                                                "maxLength": 100
+                                                            },
+                                                            "fields": {
+                                                                "type": "object",
+                                                                "minProperties": 1,
+                                                                "maxProperties": 50,
+                                                                "additionalProperties": {
+                                                                    "title": "IArgumentFormAugmentation",
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "label": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        },
+                                                                        "labelLink": {
+                                                                            "type": "string",
+                                                                            "maxLength": 2000
+                                                                        },
+                                                                        "labelInfo": {
+                                                                            "type": "string",
+                                                                            "maxLength": 1000
+                                                                        },
+                                                                        "placeholder": {
+                                                                            "type": "string",
+                                                                            "maxLength": 250
+                                                                        },
+                                                                        "helper": {
+                                                                            "type": "string",
+                                                                            "maxLength": 1000
+                                                                        },
+                                                                        "helpers": {
+                                                                            "anyOf": [
+                                                                                {
+                                                                                    "type": "array",
+                                                                                    "maxItems": 50,
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 1000
+                                                                                    }
+                                                                                },
+                                                                                {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 1000
+                                                                                }
+                                                                            ]
+                                                                        },
+                                                                        "optionLabels": {
+                                                                            "type": "array",
+                                                                            "minItems": 1,
+                                                                            "maxItems": 200,
+                                                                            "uniqueItems": true,
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 100
+                                                                            }
+                                                                        },
+                                                                        "optionIcons": {
+                                                                            "type": "array",
+                                                                            "minItems": 1,
+                                                                            "maxItems": 200,
+                                                                            "uniqueItems": true,
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 100
+                                                                            }
+                                                                        },
+                                                                        "format": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "radioTiles",
+                                                                                "combobox",
+                                                                                "radio"
+                                                                            ]
+                                                                        },
+                                                                        "dataAttrFieldInfo": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "isMultiLine": {
+                                                                            "type": "boolean"
+                                                                        },
+                                                                        "rows": {
+                                                                            "type": "number"
+                                                                        },
+                                                                        "isPassword": {
+                                                                            "type": "boolean"
+                                                                        },
+                                                                        "deprecated": {
+                                                                            "type": "boolean"
+                                                                        },
+                                                                        "collapsibleSection": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        },
+                                                                        "isLabelHidden": {
+                                                                            "type": "boolean"
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false
+                                                                }
+                                                            },
+                                                            "helper": {
+                                                                "type": "string",
+                                                                "maxLength": 1000
+                                                            },
+                                                            "helpers": {
+                                                                "anyOf": [
+                                                                    {
+                                                                        "type": "array",
+                                                                        "maxItems": 50,
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 1000
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000
+                                                                    }
+                                                                ]
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "slug",
+                                                            "title",
+                                                            "fields"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    }
+                                                }
+                                            },
+                                            "additionalProperties": false
                                         }
                                     },
                                     "additionalProperties": false,
@@ -11477,7 +11689,8 @@
                                             "gpt-35-turbo",
                                             "gpt-4",
                                             "gpt-4o",
-                                            "gpt-4o-mini"
+                                            "gpt-4o-mini",
+                                            "gpt-4.1-mini"
                                         ]
                                     },
                                     "temperature": {
@@ -11605,7 +11818,8 @@
                                             "gpt-35-turbo",
                                             "gpt-4",
                                             "gpt-4o",
-                                            "gpt-4o-mini"
+                                            "gpt-4o-mini",
+                                            "gpt-4.1-mini"
                                         ]
                                     },
                                     "temperature": {
@@ -11947,6 +12161,10 @@
                                                             "type": "string",
                                                             "description": "lead company website"
                                                         },
+                                                        "linkedinCompanyId": {
+                                                            "type": "string",
+                                                            "description": "linkedin company id"
+                                                        },
                                                         "linkedinProfileId": {
                                                             "type": "string",
                                                             "description": "lead linkedin profile id"
@@ -11954,6 +12172,14 @@
                                                         "linkedinProfileUrn": {
                                                             "type": "string",
                                                             "description": "lead linkedin profile urn"
+                                                        },
+                                                        "linkedinProfileImageUrn": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile picture image urn"
+                                                        },
+                                                        "linkedinProfileImageUrl": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile picture image url"
                                                         },
                                                         "linkedinHeadline": {
                                                             "type": "string",
@@ -12322,6 +12548,10 @@
                                                     "type": "string",
                                                     "description": "lead company website"
                                                 },
+                                                "linkedinCompanyId": {
+                                                    "type": "string",
+                                                    "description": "linkedin company id"
+                                                },
                                                 "linkedinProfileId": {
                                                     "type": "string",
                                                     "description": "lead linkedin profile id"
@@ -12329,6 +12559,14 @@
                                                 "linkedinProfileUrn": {
                                                     "type": "string",
                                                     "description": "lead linkedin profile urn"
+                                                },
+                                                "linkedinProfileImageUrn": {
+                                                    "type": "string",
+                                                    "description": "lead linkedin profile picture image urn"
+                                                },
+                                                "linkedinProfileImageUrl": {
+                                                    "type": "string",
+                                                    "description": "lead linkedin profile picture image url"
                                                 },
                                                 "linkedinHeadline": {
                                                     "type": "string",
@@ -12807,6 +13045,10 @@
                                                     "type": "string",
                                                     "description": "lead company website"
                                                 },
+                                                "linkedinCompanyId": {
+                                                    "type": "string",
+                                                    "description": "linkedin company id"
+                                                },
                                                 "linkedinProfileId": {
                                                     "type": "string",
                                                     "description": "lead linkedin profile id"
@@ -12814,6 +13056,14 @@
                                                 "linkedinProfileUrn": {
                                                     "type": "string",
                                                     "description": "lead linkedin profile urn"
+                                                },
+                                                "linkedinProfileImageUrn": {
+                                                    "type": "string",
+                                                    "description": "lead linkedin profile picture image urn"
+                                                },
+                                                "linkedinProfileImageUrl": {
+                                                    "type": "string",
+                                                    "description": "lead linkedin profile picture image url"
                                                 },
                                                 "linkedinHeadline": {
                                                     "type": "string",
@@ -13289,6 +13539,10 @@
                                                 "type": "string",
                                                 "description": "lead company website"
                                             },
+                                            "linkedinCompanyId": {
+                                                "type": "string",
+                                                "description": "linkedin company id"
+                                            },
                                             "linkedinProfileId": {
                                                 "type": "string",
                                                 "description": "lead linkedin profile id"
@@ -13296,6 +13550,14 @@
                                             "linkedinProfileUrn": {
                                                 "type": "string",
                                                 "description": "lead linkedin profile urn"
+                                            },
+                                            "linkedinProfileImageUrn": {
+                                                "type": "string",
+                                                "description": "lead linkedin profile picture image urn"
+                                            },
+                                            "linkedinProfileImageUrl": {
+                                                "type": "string",
+                                                "description": "lead linkedin profile picture image url"
                                             },
                                             "linkedinHeadline": {
                                                 "type": "string",
@@ -13725,6 +13987,10 @@
                                                                         "type": "string",
                                                                         "description": "lead company website"
                                                                     },
+                                                                    "linkedinCompanyId": {
+                                                                        "type": "string",
+                                                                        "description": "linkedin company id"
+                                                                    },
                                                                     "linkedinProfileId": {
                                                                         "type": "string",
                                                                         "description": "lead linkedin profile id"
@@ -13732,6 +13998,14 @@
                                                                     "linkedinProfileUrn": {
                                                                         "type": "string",
                                                                         "description": "lead linkedin profile urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrn": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrl": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image url"
                                                                     },
                                                                     "linkedinHeadline": {
                                                                         "type": "string",
@@ -14210,6 +14484,10 @@
                                                                         "type": "string",
                                                                         "description": "lead company website"
                                                                     },
+                                                                    "linkedinCompanyId": {
+                                                                        "type": "string",
+                                                                        "description": "linkedin company id"
+                                                                    },
                                                                     "linkedinProfileId": {
                                                                         "type": "string",
                                                                         "description": "lead linkedin profile id"
@@ -14217,6 +14495,14 @@
                                                                     "linkedinProfileUrn": {
                                                                         "type": "string",
                                                                         "description": "lead linkedin profile urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrn": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrl": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image url"
                                                                     },
                                                                     "linkedinHeadline": {
                                                                         "type": "string",
@@ -14704,6 +14990,10 @@
                                                                 "type": "string",
                                                                 "description": "lead company website"
                                                             },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string",
+                                                                "description": "linkedin company id"
+                                                            },
                                                             "linkedinProfileId": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile id"
@@ -14711,6 +15001,14 @@
                                                             "linkedinProfileUrn": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile urn"
+                                                            },
+                                                            "linkedinProfileImageUrn": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image urn"
+                                                            },
+                                                            "linkedinProfileImageUrl": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image url"
                                                             },
                                                             "linkedinHeadline": {
                                                                 "type": "string",
@@ -15189,6 +15487,10 @@
                                                                 "type": "string",
                                                                 "description": "lead company website"
                                                             },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string",
+                                                                "description": "linkedin company id"
+                                                            },
                                                             "linkedinProfileId": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile id"
@@ -15196,6 +15498,14 @@
                                                             "linkedinProfileUrn": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile urn"
+                                                            },
+                                                            "linkedinProfileImageUrn": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image urn"
+                                                            },
+                                                            "linkedinProfileImageUrl": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image url"
                                                             },
                                                             "linkedinHeadline": {
                                                                 "type": "string",
@@ -16249,6 +16559,10 @@
                                                                 "type": "string",
                                                                 "description": "lead company website"
                                                             },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string",
+                                                                "description": "linkedin company id"
+                                                            },
                                                             "linkedinProfileId": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile id"
@@ -16256,6 +16570,14 @@
                                                             "linkedinProfileUrn": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile urn"
+                                                            },
+                                                            "linkedinProfileImageUrn": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image urn"
+                                                            },
+                                                            "linkedinProfileImageUrl": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image url"
                                                             },
                                                             "linkedinHeadline": {
                                                                 "type": "string",
@@ -16734,6 +17056,10 @@
                                                                 "type": "string",
                                                                 "description": "lead company website"
                                                             },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string",
+                                                                "description": "linkedin company id"
+                                                            },
                                                             "linkedinProfileId": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile id"
@@ -16741,6 +17067,14 @@
                                                             "linkedinProfileUrn": {
                                                                 "type": "string",
                                                                 "description": "lead linkedin profile urn"
+                                                            },
+                                                            "linkedinProfileImageUrn": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image urn"
+                                                            },
+                                                            "linkedinProfileImageUrl": {
+                                                                "type": "string",
+                                                                "description": "lead linkedin profile picture image url"
                                                             },
                                                             "linkedinHeadline": {
                                                                 "type": "string",
@@ -17097,6 +17431,28 @@
                     },
                     "500": {
                         "description": "Unexpected error while searching leadsObjects."
+                    }
+                }
+            }
+        },
+        "/identities/generate-token": {
+            "post": {
+                "description": "Generate identity token.",
+                "tags": [
+                    "identities"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Token successfully generated."
+                    },
+                    "400": {
+                        "description": "Token limit exceeded."
+                    },
+                    "412": {
+                        "description": "User email is not validated."
+                    },
+                    "500": {
+                        "description": "Unexpected error while generating the identity token."
                     }
                 }
             }
