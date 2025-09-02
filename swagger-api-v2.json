@@ -93,7 +93,7 @@
     "paths": {
         "/orgs/export-agent-usage": {
             "get": {
-                "description": "Gets a csv file containing agent usage info of the current user's organization.",
+                "description": "Gets a csv file containing agent usage info of the current user's organization. Test.",
                 "tags": [
                     "orgs"
                 ],
@@ -628,18 +628,11 @@
                                                             "nullable": true
                                                         },
                                                         "market": {
-                                                            "type": "object",
-                                                            "properties": {
-                                                                "competitors": {
-                                                                    "type": "array",
-                                                                    "items": {
-                                                                        "type": "string"
-                                                                    },
-                                                                    "nullable": true
-                                                                }
-                                                            },
-                                                            "additionalProperties": false,
-                                                            "nullable": true
+                                                            "nullable": true,
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
                                                         },
                                                         "productServices": {
                                                             "type": "array",
@@ -647,6 +640,10 @@
                                                                 "type": "object",
                                                                 "properties": {
                                                                     "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "name": {
                                                                         "type": "string",
                                                                         "nullable": true
                                                                     },
@@ -681,15 +678,18 @@
                                                                                     "type": "string",
                                                                                     "nullable": true
                                                                                 },
-                                                                                "country": {
+                                                                                "name": {
                                                                                     "type": "string",
                                                                                     "nullable": true
                                                                                 },
-                                                                                "website": {
-                                                                                    "type": "string",
+                                                                                "market": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string"
+                                                                                    },
                                                                                     "nullable": true
                                                                                 },
-                                                                                "industry": {
+                                                                                "size": {
                                                                                     "type": "string",
                                                                                     "nullable": true
                                                                                 },
@@ -702,8 +702,22 @@
                                                                                                 "type": "string",
                                                                                                 "nullable": true
                                                                                             },
-                                                                                            "job": {
+                                                                                            "name": {
                                                                                                 "type": "string",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "countries": {
+                                                                                                "type": "array",
+                                                                                                "items": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "jobs": {
+                                                                                                "type": "array",
+                                                                                                "items": {
+                                                                                                    "type": "string"
+                                                                                                },
                                                                                                 "nullable": true
                                                                                             },
                                                                                             "painPoints": {
@@ -714,12 +728,35 @@
                                                                                                 "nullable": true
                                                                                             },
                                                                                             "goalsKPI": {
+                                                                                                "type": "array",
+                                                                                                "items": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "sourcingLimit": {
+                                                                                                "type": "number",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "sourcingPhantomId": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "monitoringPhantomId": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
+                                                                                            },
+                                                                                            "pictureUrl": {
                                                                                                 "type": "string",
                                                                                                 "nullable": true
                                                                                             }
                                                                                         },
                                                                                         "additionalProperties": false
                                                                                     },
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "pictureUrl": {
+                                                                                    "type": "string",
                                                                                     "nullable": true
                                                                                 }
                                                                             },
@@ -12047,7 +12084,11 @@
                                                         },
                                                         "linkedinCompanyUrl": {
                                                             "type": "string",
-                                                            "description": "linkedin company url"
+                                                            "description": "linkedin company url (deprecated, use linkedinCompanySlug instead)"
+                                                        },
+                                                        "linkedinCompanySlug": {
+                                                            "type": "string",
+                                                            "description": "linkedin company slug"
                                                         },
                                                         "twitterProfileUrl": {
                                                             "type": "string",
@@ -12084,10 +12125,6 @@
                                                         "salesNavigatorProfileUrl": {
                                                             "type": "string",
                                                             "description": "sales navigator profile url"
-                                                        },
-                                                        "salesNavigatorCompanyUrl": {
-                                                            "type": "string",
-                                                            "description": "sales navigator company url"
                                                         }
                                                     },
                                                     "additionalProperties": true
@@ -13425,7 +13462,11 @@
                                             },
                                             "linkedinCompanyUrl": {
                                                 "type": "string",
-                                                "description": "linkedin company url"
+                                                "description": "linkedin company url (deprecated, use linkedinCompanySlug instead)"
+                                            },
+                                            "linkedinCompanySlug": {
+                                                "type": "string",
+                                                "description": "linkedin company slug"
                                             },
                                             "twitterProfileUrl": {
                                                 "type": "string",
@@ -13462,10 +13503,6 @@
                                             "salesNavigatorProfileUrl": {
                                                 "type": "string",
                                                 "description": "sales navigator profile url"
-                                            },
-                                            "salesNavigatorCompanyUrl": {
-                                                "type": "string",
-                                                "description": "sales navigator company url"
                                             }
                                         },
                                         "additionalProperties": true
