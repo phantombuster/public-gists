@@ -817,6 +817,9 @@
                                                 "dailyAiCredits": {
                                                     "type": "number"
                                                 },
+                                                "dailySerpCredits": {
+                                                    "type": "number"
+                                                },
                                                 "monthlyExecutionTime": {
                                                     "type": "number",
                                                     "minimum": 0
@@ -834,6 +837,10 @@
                                                     "minimum": 0
                                                 },
                                                 "monthlyAiCredits": {
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                },
+                                                "monthlySerpCredits": {
                                                     "type": "number",
                                                     "minimum": 0
                                                 },
@@ -1107,6 +1114,9 @@
                                                 "dailyAiCredits": {
                                                     "type": "number"
                                                 },
+                                                "dailySerpCredits": {
+                                                    "type": "number"
+                                                },
                                                 "monthlyExecutionTime": {
                                                     "type": "number",
                                                     "minimum": 0
@@ -1124,6 +1134,10 @@
                                                     "minimum": 0
                                                 },
                                                 "monthlyAiCredits": {
+                                                    "type": "number",
+                                                    "minimum": 0
+                                                },
+                                                "monthlySerpCredits": {
                                                     "type": "number",
                                                     "minimum": 0
                                                 },
