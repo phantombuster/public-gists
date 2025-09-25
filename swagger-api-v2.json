@@ -749,6 +749,10 @@
                                                                                             "pictureUrl": {
                                                                                                 "type": "string",
                                                                                                 "nullable": true
+                                                                                            },
+                                                                                            "leadListId": {
+                                                                                                "type": "string",
+                                                                                                "nullable": true
                                                                                             }
                                                                                         },
                                                                                         "additionalProperties": false
