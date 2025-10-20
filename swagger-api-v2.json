@@ -18558,6 +18558,232 @@
                 }
             }
         },
+        "/org-storage/companies-objects/save": {
+            "x-beta": true,
+            "post": {
+                "description": "Save one company object.\n",
+                "tags": [
+                    "org-storage"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company object successfully updated or created.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "linkedinCompanyId": {
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string"
+                                        },
+                                        "slug": {
+                                            "type": "string"
+                                        },
+                                        "properties": {
+                                            "type": "object",
+                                            "additionalProperties": true
+                                        }
+                                    },
+                                    "required": [
+                                        "id",
+                                        "linkedinCompanyId",
+                                        "type",
+                                        "slug",
+                                        "properties"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "description": "The internal id of the company object",
+                                        "type": "string"
+                                    },
+                                    "linkedinCompanyId": {
+                                        "description": "The external id of the company scraped",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "description": "The type of company object",
+                                        "maxLength": 500
+                                    },
+                                    "slug": {
+                                        "type": "string",
+                                        "description": "The slug of the company object",
+                                        "maxLength": 470
+                                    },
+                                    "properties": {
+                                        "type": "object",
+                                        "additionalProperties": true,
+                                        "description": "The properties of the object"
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                    "linkedinCompanyId",
+                                    "type",
+                                    "slug",
+                                    "properties"
+                                ]
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/org-storage/companies-objects/save-many": {
+            "x-beta": true,
+            "post": {
+                "description": "Save many company objects.\n",
+                "tags": [
+                    "org-storage"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Company objects successfully updated or created.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "oneOf": [
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "status": {
+                                                        "enum": [
+                                                            "success"
+                                                        ]
+                                                    },
+                                                    "result": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "slug": {
+                                                                "type": "string"
+                                                            },
+                                                            "properties": {
+                                                                "type": "object",
+                                                                "additionalProperties": true
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "id",
+                                                            "linkedinCompanyId",
+                                                            "type",
+                                                            "slug",
+                                                            "properties"
+                                                        ],
+                                                        "additionalProperties": false
+                                                    }
+                                                },
+                                                "required": [
+                                                    "status",
+                                                    "result"
+                                                ],
+                                                "additionalProperties": false
+                                            },
+                                            {
+                                                "type": "object",
+                                                "properties": {
+                                                    "status": {
+                                                        "enum": [
+                                                            "error"
+                                                        ]
+                                                    },
+                                                    "slug": {
+                                                        "type": "string"
+                                                    },
+                                                    "error": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "status",
+                                                    "slug",
+                                                    "error"
+                                                ],
+                                                "additionalProperties": false
+                                            }
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "array",
+                                "description": "companies objects to insert",
+                                "items": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "description": "The internal id of the company object",
+                                            "type": "string"
+                                        },
+                                        "linkedinCompanyId": {
+                                            "description": "The external id of the company scraped",
+                                            "type": "string"
+                                        },
+                                        "type": {
+                                            "type": "string",
+                                            "description": "The type of company object",
+                                            "maxLength": 500
+                                        },
+                                        "slug": {
+                                            "type": "string",
+                                            "description": "The slug of the company object",
+                                            "maxLength": 470
+                                        },
+                                        "properties": {
+                                            "type": "object",
+                                            "additionalProperties": true,
+                                            "description": "The properties of the object"
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "linkedinCompanyId",
+                                        "type",
+                                        "slug",
+                                        "properties"
+                                    ]
+                                },
+                                "minItems": 1,
+                                "maxItems": 20
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/identities/generate-token": {
             "post": {
                 "description": "Generate identity token.",
