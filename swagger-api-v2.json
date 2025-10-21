@@ -1057,6 +1057,9 @@
                                         "dailyAiCredit": {
                                             "type": "number"
                                         },
+                                        "dailySerpCredits": {
+                                            "type": "number"
+                                        },
                                         "monthlyExecutionTime": {
                                             "type": "number"
                                         },
@@ -1070,6 +1073,9 @@
                                             "type": "number"
                                         },
                                         "monthlyAiCredit": {
+                                            "type": "number"
+                                        },
+                                        "monthlySerpCredits": {
                                             "type": "number"
                                         },
                                         "s3Storage": {
@@ -1211,11 +1217,13 @@
                                         "dailyCaptcha",
                                         "dailyDiscoveredMail",
                                         "dailyAiCredit",
+                                        "dailySerpCredits",
                                         "monthlyExecutionTime",
                                         "monthlyMail",
                                         "monthlyCaptcha",
                                         "monthlyDiscoveredMail",
                                         "monthlyAiCredit",
+                                        "monthlySerpCredits",
                                         "s3Storage",
                                         "agentCount",
                                         "planName",
