@@ -7837,6 +7837,42 @@
                         "schema": {
                             "type": "string"
                         }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withAgentObject",
+                        "description": "Set to \"true\" if you want to include the agent_object in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withCode",
+                        "description": "Set to \"true\" if you want to include the agent's script code in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withSlaves",
+                        "description": "Set to \"true\" if you want to include the agent's slave agents in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withSubSlaves",
+                        "description": "Set to \"true\" if you want to include the agent's sub-slave agents in the response (requires withSlaves=true)",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
                     }
                 ]
             }
