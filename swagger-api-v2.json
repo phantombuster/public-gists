@@ -9444,8 +9444,9 @@
                     },
                     {
                         "in": "query",
-                        "name": "outputTypes",
-                        "description": "If set, the agents will be filtered by the provided output types. An output type represents a resource the agent is expected to produce (i.e. \"fullName\", \"job\", \"company\" etc...). You may find them in the response of the endpoint /agents/fetch with manifest",
+                        "name": "inputTypes",
+                        "description": "If set, the agents will be filtered by the provided input types. An input type represents a resource the agent is expected to consume (i.e. \"profileUrl\", \"companyUrl\" etc...). You may find them in the response of the endpoint /agents/fetch with manifest",
+                        "required": false,
                         "schema": {
                             "anyOf": [
                                 {
@@ -9460,6 +9461,67 @@
                                     "pattern": "^[a-zA-Z0-9-_]{1,100}$"
                                 }
                             ]
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "outputTypes",
+                        "description": "If set, the agents will be filtered by the provided output types. An output type represents a resource the agent is expected to produce (i.e. \"fullName\", \"job\", \"company\" etc...). You may find them in the response of the endpoint /agents/fetch with manifest",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string",
+                                        "pattern": "^[a-zA-Z0-9-_]{1,100}$"
+                                    }
+                                },
+                                {
+                                    "type": "string",
+                                    "pattern": "^[a-zA-Z0-9-_]{1,100}$"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "agentIds",
+                        "description": "If set, only the agents with the provided IDs will be returned. Can be a single ID or an array of IDs",
+                        "required": false,
+                        "schema": {
+                            "anyOf": [
+                                {
+                                    "type": "array",
+                                    "minItems": 0,
+                                    "maxItems": 100,
+                                    "uniqueItems": true,
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                {
+                                    "type": "string"
+                                }
+                            ]
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withAgentSlotsFactor",
+                        "description": "Set to \"true\" if you want to include the agent's reservedAgentSlotsFactor from the script branch configuration in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withArgument",
+                        "description": "Set to \"true\" if you want to include the agent's argument in the response",
+                        "required": false,
+                        "schema": {
+                            "type": "string"
                         }
                     }
                 ]
