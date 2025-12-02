@@ -11554,6 +11554,11 @@
                                         "description": "The date when the agent will be deleted.",
                                         "type": "number",
                                         "nullable": true
+                                    },
+                                    "idempotencyKey": {
+                                        "description": "Optional key for idempotent operations - only for creating an agent.",
+                                        "type": "string",
+                                        "nullable": true
                                     }
                                 },
                                 "additionalProperties": false
