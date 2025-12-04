@@ -767,6 +767,59 @@
                                                                             "additionalProperties": false
                                                                         },
                                                                         "nullable": true
+                                                                    },
+                                                                    "competitors": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "companyId": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "linkedInCompanyUrl": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "name": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "followerCount": {
+                                                                                    "type": "number",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "isMonitored": {
+                                                                                    "type": "boolean",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "logoUrl": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "monitoringPhantomId": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "sourcingPhantomId": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "websiteUrl": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "required": [
+                                                                                "id",
+                                                                                "companyId",
+                                                                                "linkedInCompanyUrl"
+                                                                            ]
+                                                                        },
+                                                                        "nullable": true
                                                                     }
                                                                 },
                                                                 "additionalProperties": false
