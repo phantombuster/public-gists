@@ -12569,6 +12569,13 @@
                                                                     "crmName"
                                                                 ]
                                                             }
+                                                        },
+                                                        "audienceOfLeads": {
+                                                            "type": "array",
+                                                            "description": "list of lead ids this lead is an audience of",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
                                                         }
                                                     }
                                                 },
@@ -12955,6 +12962,13 @@
                                                             "crmContactId",
                                                             "crmName"
                                                         ]
+                                                    }
+                                                },
+                                                "audienceOfLeads": {
+                                                    "type": "array",
+                                                    "description": "list of lead ids this lead is an audience of",
+                                                    "items": {
+                                                        "type": "string"
                                                     }
                                                 }
                                             }
@@ -13446,6 +13460,13 @@
                                                             "crmContactId",
                                                             "crmName"
                                                         ]
+                                                    }
+                                                },
+                                                "audienceOfLeads": {
+                                                    "type": "array",
+                                                    "description": "list of lead ids this lead is an audience of",
+                                                    "items": {
+                                                        "type": "string"
                                                     }
                                                 }
                                             }
@@ -13947,6 +13968,13 @@
                                                         "crmName"
                                                     ]
                                                 }
+                                            },
+                                            "audienceOfLeads": {
+                                                "type": "array",
+                                                "description": "list of lead ids this lead is an audience of",
+                                                "items": {
+                                                    "type": "string"
+                                                }
                                             }
                                         }
                                     },
@@ -14394,6 +14422,13 @@
                                                                                 "crmContactId",
                                                                                 "crmName"
                                                                             ]
+                                                                        }
+                                                                    },
+                                                                    "audienceOfLeads": {
+                                                                        "type": "array",
+                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                        "items": {
+                                                                            "type": "string"
                                                                         }
                                                                     }
                                                                 }
@@ -14885,6 +14920,13 @@
                                                                                 "crmContactId",
                                                                                 "crmName"
                                                                             ]
+                                                                        }
+                                                                    },
+                                                                    "audienceOfLeads": {
+                                                                        "type": "array",
+                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                        "items": {
+                                                                            "type": "string"
                                                                         }
                                                                     }
                                                                 }
@@ -15398,6 +15440,13 @@
                                                                         "crmName"
                                                                     ]
                                                                 }
+                                                            },
+                                                            "audienceOfLeads": {
+                                                                "type": "array",
+                                                                "description": "list of lead ids this lead is an audience of",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                }
                                                             }
                                                         }
                                                     },
@@ -15888,6 +15937,13 @@
                                                                         "crmContactId",
                                                                         "crmName"
                                                                     ]
+                                                                }
+                                                            },
+                                                            "audienceOfLeads": {
+                                                                "type": "array",
+                                                                "description": "list of lead ids this lead is an audience of",
+                                                                "items": {
+                                                                    "type": "string"
                                                                 }
                                                             }
                                                         }
@@ -16969,6 +17025,13 @@
                                                                                 "crmName"
                                                                             ]
                                                                         }
+                                                                    },
+                                                                    "audienceOfLeads": {
+                                                                        "type": "array",
+                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
                                                                     }
                                                                 }
                                                             },
@@ -17459,6 +17522,13 @@
                                                                                 "crmContactId",
                                                                                 "crmName"
                                                                             ]
+                                                                        }
+                                                                    },
+                                                                    "audienceOfLeads": {
+                                                                        "type": "array",
+                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                        "items": {
+                                                                            "type": "string"
                                                                         }
                                                                     }
                                                                 }
@@ -18006,6 +18076,13 @@
                                                                                         "crmName"
                                                                                     ]
                                                                                 }
+                                                                            },
+                                                                            "audienceOfLeads": {
+                                                                                "type": "array",
+                                                                                "description": "list of lead ids this lead is an audience of",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
                                                                             }
                                                                         }
                                                                     },
@@ -18496,6 +18573,13 @@
                                                                                         "crmContactId",
                                                                                         "crmName"
                                                                                     ]
+                                                                                }
+                                                                            },
+                                                                            "audienceOfLeads": {
+                                                                                "type": "array",
+                                                                                "description": "list of lead ids this lead is an audience of",
+                                                                                "items": {
+                                                                                    "type": "string"
                                                                                 }
                                                                             }
                                                                         }
