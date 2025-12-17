@@ -18836,6 +18836,11 @@
                                         "properties": {
                                             "type": "object",
                                             "additionalProperties": true
+                                        },
+                                        "orgId": {
+                                            "description": "The org id associated with the company object",
+                                            "type": "string",
+                                            "nullable": true
                                         }
                                     },
                                     "required": [
@@ -18879,6 +18884,10 @@
                                         "type": "object",
                                         "additionalProperties": true,
                                         "description": "The properties of the object"
+                                    },
+                                    "orgId": {
+                                        "description": "The org id associated with the company object",
+                                        "type": "string"
                                     }
                                 },
                                 "additionalProperties": false,
@@ -18936,6 +18945,11 @@
                                                             "properties": {
                                                                 "type": "object",
                                                                 "additionalProperties": true
+                                                            },
+                                                            "orgId": {
+                                                                "description": "The org id associated with the company object",
+                                                                "type": "string",
+                                                                "nullable": true
                                                             }
                                                         },
                                                         "required": [
@@ -19014,6 +19028,10 @@
                                             "type": "object",
                                             "additionalProperties": true,
                                             "description": "The properties of the object"
+                                        },
+                                        "orgId": {
+                                            "description": "The org id associated with the company object",
+                                            "type": "string"
                                         }
                                     },
                                     "additionalProperties": false,
