@@ -5436,6 +5436,9 @@
                                                 ],
                                                 "additionalProperties": false
                                             },
+                                            "tutorialArticleUrl": {
+                                                "type": "string"
+                                            },
                                             "plugins": {
                                                 "type": "array",
                                                 "items": {
@@ -6816,6 +6819,9 @@
                                                         "videoId"
                                                     ],
                                                     "additionalProperties": false
+                                                },
+                                                "tutorialArticleUrl": {
+                                                    "type": "string"
                                                 },
                                                 "plugins": {
                                                     "type": "array",
@@ -8648,6 +8654,9 @@
                                                         ],
                                                         "additionalProperties": false
                                                     },
+                                                    "tutorialArticleUrl": {
+                                                        "type": "string"
+                                                    },
                                                     "plugins": {
                                                         "type": "array",
                                                         "items": {
@@ -10304,6 +10313,9 @@
                                                             "videoId"
                                                         ],
                                                         "additionalProperties": false
+                                                    },
+                                                    "tutorialArticleUrl": {
+                                                        "type": "string"
                                                     },
                                                     "plugins": {
                                                         "type": "array",
