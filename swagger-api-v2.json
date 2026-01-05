@@ -66,6 +66,9 @@
             "name": "orgs"
         },
         {
+            "name": "crms"
+        },
+        {
             "name": "events"
         },
         {
@@ -545,7 +548,11 @@
                                             "items": {
                                                 "type": "object",
                                                 "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
                                                     "crmName": {
+                                                        "title": "ICrmName",
                                                         "type": "string",
                                                         "enum": [
                                                             "hubspot"
@@ -6045,6 +6052,27 @@
                                                 "items": {
                                                     "type": "string"
                                                 }
+                                            },
+                                            "recommenderMetadata": {
+                                                "type": "object",
+                                                "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
+                                                "properties": {
+                                                    "workers": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "uniqueItems": true
+                                                    },
+                                                    "disabled": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "description": {
+                                                        "type": "string",
+                                                        "maxLength": 1000
+                                                    }
+                                                },
+                                                "additionalProperties": false
                                             }
                                         },
                                         "additionalProperties": false,
@@ -7429,6 +7457,27 @@
                                                     "items": {
                                                         "type": "string"
                                                     }
+                                                },
+                                                "recommenderMetadata": {
+                                                    "type": "object",
+                                                    "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
+                                                    "properties": {
+                                                        "workers": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            },
+                                                            "uniqueItems": true
+                                                        },
+                                                        "disabled": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "description": {
+                                                            "type": "string",
+                                                            "maxLength": 1000
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
                                                 }
                                             },
                                             "additionalProperties": false,
@@ -9263,6 +9312,27 @@
                                                         "items": {
                                                             "type": "string"
                                                         }
+                                                    },
+                                                    "recommenderMetadata": {
+                                                        "type": "object",
+                                                        "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
+                                                        "properties": {
+                                                            "workers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "uniqueItems": true
+                                                            },
+                                                            "disabled": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "description": {
+                                                                "type": "string",
+                                                                "maxLength": 1000
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
                                                     }
                                                 },
                                                 "additionalProperties": false,
@@ -10923,6 +10993,27 @@
                                                         "items": {
                                                             "type": "string"
                                                         }
+                                                    },
+                                                    "recommenderMetadata": {
+                                                        "type": "object",
+                                                        "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
+                                                        "properties": {
+                                                            "workers": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "string"
+                                                                },
+                                                                "uniqueItems": true
+                                                            },
+                                                            "disabled": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "description": {
+                                                                "type": "string",
+                                                                "maxLength": 1000
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
                                                     }
                                                 },
                                                 "additionalProperties": false,
