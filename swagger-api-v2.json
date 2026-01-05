@@ -19062,6 +19062,119 @@
                 }
             }
         },
+        "/org-storage/companies-objects/search": {
+            "x-beta": true,
+            "post": {
+                "description": "Search companies objects.\n",
+                "tags": [
+                    "org-storage"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Companies objects found are returned.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "oneOf": [
+                                        {
+                                            "type": "array",
+                                            "items": {
+                                                "title": "ICompanyObjectProperties",
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string"
+                                                    },
+                                                    "orgId": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "linkedinCompanyId": {
+                                                        "type": "string"
+                                                    },
+                                                    "type": {
+                                                        "type": "string"
+                                                    },
+                                                    "slug": {
+                                                        "type": "string"
+                                                    },
+                                                    "properties": {
+                                                        "type": "object"
+                                                    }
+                                                },
+                                                "additionalProperties": false,
+                                                "required": [
+                                                    "id",
+                                                    "linkedinCompanyId",
+                                                    "type",
+                                                    "slug",
+                                                    "properties"
+                                                ]
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "companiesObjects": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "title": "ICompanyObjectProperties",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "orgId": {
+                                                                "type": "string",
+                                                                "nullable": true
+                                                            },
+                                                            "linkedinCompanyId": {
+                                                                "type": "string"
+                                                            },
+                                                            "type": {
+                                                                "type": "string"
+                                                            },
+                                                            "slug": {
+                                                                "type": "string"
+                                                            },
+                                                            "properties": {
+                                                                "type": "object"
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "linkedinCompanyId",
+                                                            "type",
+                                                            "slug",
+                                                            "properties"
+                                                        ]
+                                                    }
+                                                },
+                                                "totalCount": {
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "companiesObjects",
+                                                "totalCount"
+                                            ]
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid payload provided."
+                    },
+                    "500": {
+                        "description": "Unexpected error while searching companiesObjects."
+                    }
+                }
+            }
+        },
         "/identities/generate-token": {
             "post": {
                 "description": "Generate identity token.",
