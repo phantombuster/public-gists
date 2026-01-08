@@ -569,6 +569,16 @@
                                                     "contactUpdateOnly": {
                                                         "type": "boolean",
                                                         "default": false
+                                                    },
+                                                    "createdAt": {
+                                                        "type": "number"
+                                                    },
+                                                    "expireAt": {
+                                                        "type": "number",
+                                                        "nullable": true
+                                                    },
+                                                    "updatedAt": {
+                                                        "type": "number"
                                                     }
                                                 },
                                                 "additionalProperties": false,
@@ -3550,6 +3560,27 @@
                                                         ],
                                                         "additionalProperties": false
                                                     }
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "recommenderMetadata": {
+                                            "type": "object",
+                                            "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
+                                            "properties": {
+                                                "workers": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "uniqueItems": true
+                                                },
+                                                "disabled": {
+                                                    "type": "boolean"
+                                                },
+                                                "description": {
+                                                    "type": "string",
+                                                    "maxLength": 1000
                                                 }
                                             },
                                             "additionalProperties": false
