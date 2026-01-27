@@ -555,7 +555,8 @@
                                                         "title": "ICrmName",
                                                         "type": "string",
                                                         "enum": [
-                                                            "hubspot"
+                                                            "hubspot",
+                                                            "salesforce"
                                                         ]
                                                     },
                                                     "refreshToken": {
@@ -1420,9 +1421,11 @@
                                     "type": "object",
                                     "properties": {
                                         "crmName": {
+                                            "title": "ICrmName",
                                             "type": "string",
                                             "enum": [
-                                                "hubspot"
+                                                "hubspot",
+                                                "salesforce"
                                             ]
                                         },
                                         "crmAccountId": {
