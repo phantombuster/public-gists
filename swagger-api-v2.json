@@ -2444,6 +2444,177 @@
                 ]
             }
         },
+        "/agents/launch-sync": {
+            "post": {
+                "description": "Launches an agent and streams logs and execution status in real-time using NDJSON format. The stream includes heartbeat messages, log lines, execution summary, and error messages if any occur.",
+                "tags": [
+                    "agents"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Agent launched successfully. Response is a stream of NDJSON messages with types - heartbeat (periodic keep-alive), logs (container output), summary (final execution result with containerId, executionTime, and optional exitCode), or error (if something goes wrong).",
+                        "content": {
+                            "application/x-ndjson": {
+                                "schema": {
+                                    "type": "object",
+                                    "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "heartbeat"
+                                                    ]
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "logs"
+                                                    ]
+                                                },
+                                                "data": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "summary"
+                                                    ]
+                                                },
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "containerId": {
+                                                            "type": "string"
+                                                        },
+                                                        "executionTime": {
+                                                            "type": "number"
+                                                        },
+                                                        "exitCode": {
+                                                            "type": "number"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "error"
+                                                    ]
+                                                },
+                                                "data": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "A provided parameter is duplicated or the launch argument is too big, or agent not found."
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "description": "Id of the agent to launch.",
+                                        "type": "string"
+                                    },
+                                    "argument": {
+                                        "description": "Agent argument. Can either be a JSON string or a plain object. The argument can be retrieved with buster.argument in the agent’s script.",
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "arguments": {
+                                        "description": "Agent argument. Can either be a JSON string or a plain object. The argument can be retrieved with buster.argument in the agent’s script.",
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "bonusArgument": {
+                                        "description": "Agent bonus argument. Can either be a JSON string or a plain object. This bonus argument is single-use, it will only be used for the current launch. If present, it will be merged with the original argument, resulting in an effective argument that can be retrieved with buster.argument in the agent’s script.",
+                                        "anyOf": [
+                                            {
+                                                "type": "string"
+                                            },
+                                            {
+                                                "type": "object"
+                                            }
+                                        ]
+                                    },
+                                    "saveArgument": {
+                                        "type": "boolean",
+                                        "description": "If true, argument will be saved as the default launch options for the agent."
+                                    },
+                                    "saveArguments": {
+                                        "type": "boolean",
+                                        "description": "If true, argument will be saved as the default launch options for the agent."
+                                    },
+                                    "manualLaunch": {
+                                        "type": "boolean",
+                                        "description": "If set, the agent will be considered as \"launched manually\"."
+                                    },
+                                    "maxInstanceCount": {
+                                        "type": "number",
+                                        "description": "If set, the agent will only be launched if the number of already running instances is below the specified number.",
+                                        "minimum": 1
+                                    }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                    "id"
+                                ]
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
         "/agents/launch-soon": {
             "post": {
                 "description": "Schedules an agent to launch before a specific time.",
@@ -19396,72 +19567,6 @@
                                     "profile_id",
                                     "event_type",
                                     "event_data"
-                                ],
-                                "additionalProperties": false
-                            }
-                        }
-                    }
-                }
-            }
-        },
-        "/identities/events/search": {
-            "post": {
-                "description": "Search identity event.",
-                "tags": [
-                    "identities"
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Identity event successfully found."
-                    },
-                    "400": {
-                        "description": "Bad request when searching the identity event."
-                    },
-                    "500": {
-                        "description": "Unexpected error while searching the identity event."
-                    }
-                },
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "identity_type": {
-                                        "description": "identity type of the identity event to search",
-                                        "type": "string"
-                                    },
-                                    "start_date": {
-                                        "description": "start date of the date range of the identity event to search",
-                                        "type": "number"
-                                    },
-                                    "end_date": {
-                                        "description": "end date of the date range of the identity event to search",
-                                        "type": "number"
-                                    },
-                                    "profile_id": {
-                                        "description": "profile id of the identity event to search",
-                                        "type": "string",
-                                        "minLength": 1
-                                    },
-                                    "event_type": {
-                                        "description": "type of the identity event to search",
-                                        "type": "string",
-                                        "minLength": 1
-                                    },
-                                    "agent_id": {
-                                        "description": "agent id of the identity event to search",
-                                        "type": "string"
-                                    },
-                                    "script_slug": {
-                                        "description": "script slug of the identity event to search",
-                                        "type": "string"
-                                    }
-                                },
-                                "required": [
-                                    "identity_type",
-                                    "start_date",
-                                    "end_date"
                                 ],
                                 "additionalProperties": false
                             }
