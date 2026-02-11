@@ -744,6 +744,10 @@
                                                                 "additionalProperties": false
                                                             },
                                                             "nullable": true
+                                                        },
+                                                        "linkedInCompanyUrl": {
+                                                            "type": "string",
+                                                            "nullable": true
                                                         }
                                                     },
                                                     "additionalProperties": false,
