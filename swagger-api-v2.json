@@ -2205,6 +2205,41 @@
                 ]
             }
         },
+        "/containers/attach": {
+            "get": {
+                "description": "Attaches to a running container and streams its output in real-time.",
+                "tags": [
+                    "containers"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK - Returns a stream of container output"
+                    },
+                    "404": {
+                        "description": "No container exists with the provided id."
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "required": true,
+                        "name": "id",
+                        "description": "Id of the container to attach to.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
         "/branches/fetch-all": {
             "get": {
                 "description": "Gets the branches associated with the current organization's id.",
