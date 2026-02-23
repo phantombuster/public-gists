@@ -556,7 +556,8 @@
                                                         "type": "string",
                                                         "enum": [
                                                             "hubspot",
-                                                            "salesforce"
+                                                            "salesforce",
+                                                            "pipedrive"
                                                         ]
                                                     },
                                                     "refreshToken": {
@@ -1330,7 +1331,8 @@
                                             "type": "string",
                                             "enum": [
                                                 "hubspot",
-                                                "salesforce"
+                                                "salesforce",
+                                                "pipedrive"
                                             ]
                                         },
                                         "crmAccountId": {
