@@ -946,6 +946,11 @@
                                         "isV3": {
                                             "type": "boolean",
                                             "nullable": true
+                                        },
+                                        "customPromptOrg": {
+                                            "type": "string",
+                                            "maxLength": 10000,
+                                            "nullable": true
                                         }
                                     },
                                     "additionalProperties": false,
@@ -1001,6 +1006,14 @@
                         "in": "query",
                         "name": "withCrmIntegrations",
                         "description": "If set, the organization's CRM integrations will be returned in the response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withCustomPrompts",
+                        "description": "If set, the organization's custom prompt (customPromptOrg) will be returned in the response.",
                         "schema": {
                             "type": "string"
                         }
@@ -3697,6 +3710,9 @@
                                                 "disabled": {
                                                     "type": "boolean"
                                                 },
+                                                "standalone": {
+                                                    "type": "boolean"
+                                                },
                                                 "description": {
                                                     "type": "string",
                                                     "maxLength": 1000
@@ -6217,6 +6233,9 @@
                                                     "disabled": {
                                                         "type": "boolean"
                                                     },
+                                                    "standalone": {
+                                                        "type": "boolean"
+                                                    },
                                                     "description": {
                                                         "type": "string",
                                                         "maxLength": 1000
@@ -7620,6 +7639,9 @@
                                                             "uniqueItems": true
                                                         },
                                                         "disabled": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "standalone": {
                                                             "type": "boolean"
                                                         },
                                                         "description": {
@@ -9477,6 +9499,9 @@
                                                             "disabled": {
                                                                 "type": "boolean"
                                                             },
+                                                            "standalone": {
+                                                                "type": "boolean"
+                                                            },
                                                             "description": {
                                                                 "type": "string",
                                                                 "maxLength": 1000
@@ -11156,6 +11181,9 @@
                                                                 "uniqueItems": true
                                                             },
                                                             "disabled": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "standalone": {
                                                                 "type": "boolean"
                                                             },
                                                             "description": {
