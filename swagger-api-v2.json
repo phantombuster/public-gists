@@ -1797,6 +1797,26 @@
                                                                 }
                                                             }
                                                         }
+                                                    },
+                                                    "internalMetadata": {
+                                                        "type": "object",
+                                                        "maxProperties": 100,
+                                                        "additionalProperties": true,
+                                                        "nullable": true,
+                                                        "x-propertyNames": {
+                                                            "type": "string",
+                                                            "maxLength": 250
+                                                        }
+                                                    },
+                                                    "userCustomMetadata": {
+                                                        "type": "object",
+                                                        "maxProperties": 100,
+                                                        "additionalProperties": true,
+                                                        "nullable": true,
+                                                        "x-propertyNames": {
+                                                            "type": "string",
+                                                            "maxLength": 250
+                                                        }
                                                     }
                                                 },
                                                 "additionalProperties": false,
@@ -2152,6 +2172,26 @@
                                         },
                                         "olderContainerId": {
                                             "type": "string"
+                                        },
+                                        "internalMetadata": {
+                                            "type": "object",
+                                            "maxProperties": 100,
+                                            "additionalProperties": true,
+                                            "nullable": true,
+                                            "x-propertyNames": {
+                                                "type": "string",
+                                                "maxLength": 250
+                                            }
+                                        },
+                                        "userCustomMetadata": {
+                                            "type": "object",
+                                            "maxProperties": 100,
+                                            "additionalProperties": true,
+                                            "nullable": true,
+                                            "x-propertyNames": {
+                                                "type": "string",
+                                                "maxLength": 250
+                                            }
                                         }
                                     },
                                     "additionalProperties": false,
@@ -2479,6 +2519,28 @@
                                         "type": "number",
                                         "description": "If set, the agent will only be launched if the number of already running instances is below the specified number.",
                                         "minimum": 1
+                                    },
+                                    "internalMetadata": {
+                                        "description": "PhantomBuster-managed key-value pairs for internal container tagging.",
+                                        "type": "object",
+                                        "maxProperties": 100,
+                                        "additionalProperties": true,
+                                        "nullable": true,
+                                        "x-propertyNames": {
+                                            "type": "string",
+                                            "maxLength": 250
+                                        }
+                                    },
+                                    "userCustomMetadata": {
+                                        "description": "User-defined key-value pairs for container tagging.",
+                                        "type": "object",
+                                        "maxProperties": 100,
+                                        "additionalProperties": true,
+                                        "nullable": true,
+                                        "x-propertyNames": {
+                                            "type": "string",
+                                            "maxLength": 250
+                                        }
                                     }
                                 },
                                 "additionalProperties": false,
@@ -3536,6 +3598,9 @@
                                                                 "items": {
                                                                     "type": "string"
                                                                 }
+                                                            },
+                                                            "sensitive": {
+                                                                "type": "boolean"
                                                             }
                                                         },
                                                         "additionalProperties": true
@@ -5270,6 +5335,9 @@
                                                                     "items": {
                                                                         "type": "string"
                                                                     }
+                                                                },
+                                                                "sensitive": {
+                                                                    "type": "boolean"
                                                                 }
                                                             },
                                                             "additionalProperties": true
@@ -6678,6 +6746,9 @@
                                                                         "items": {
                                                                             "type": "string"
                                                                         }
+                                                                    },
+                                                                    "sensitive": {
+                                                                        "type": "boolean"
                                                                     }
                                                                 },
                                                                 "additionalProperties": true
@@ -8069,6 +8140,26 @@
                                         "expireAt": {
                                             "type": "number",
                                             "nullable": true
+                                        },
+                                        "internalMetadata": {
+                                            "type": "object",
+                                            "maxProperties": 100,
+                                            "additionalProperties": true,
+                                            "nullable": true,
+                                            "x-propertyNames": {
+                                                "type": "string",
+                                                "maxLength": 250
+                                            }
+                                        },
+                                        "userCustomMetadata": {
+                                            "type": "object",
+                                            "maxProperties": 100,
+                                            "additionalProperties": true,
+                                            "nullable": true,
+                                            "x-propertyNames": {
+                                                "type": "string",
+                                                "maxLength": 250
+                                            }
                                         }
                                     },
                                     "additionalProperties": false,
@@ -8536,6 +8627,9 @@
                                                                             "items": {
                                                                                 "type": "string"
                                                                             }
+                                                                        },
+                                                                        "sensitive": {
+                                                                            "type": "boolean"
                                                                         }
                                                                     },
                                                                     "additionalProperties": true
@@ -9730,6 +9824,26 @@
                                             "expireAt": {
                                                 "type": "number",
                                                 "nullable": true
+                                            },
+                                            "internalMetadata": {
+                                                "type": "object",
+                                                "maxProperties": 100,
+                                                "additionalProperties": true,
+                                                "nullable": true,
+                                                "x-propertyNames": {
+                                                    "type": "string",
+                                                    "maxLength": 250
+                                                }
+                                            },
+                                            "userCustomMetadata": {
+                                                "type": "object",
+                                                "maxProperties": 100,
+                                                "additionalProperties": true,
+                                                "nullable": true,
+                                                "x-propertyNames": {
+                                                    "type": "string",
+                                                    "maxLength": 250
+                                                }
                                             }
                                         },
                                         "additionalProperties": false,
@@ -10220,6 +10334,9 @@
                                                                             "items": {
                                                                                 "type": "string"
                                                                             }
+                                                                        },
+                                                                        "sensitive": {
+                                                                            "type": "boolean"
                                                                         }
                                                                     },
                                                                     "additionalProperties": true
@@ -11414,6 +11531,26 @@
                                             "expireAt": {
                                                 "type": "number",
                                                 "nullable": true
+                                            },
+                                            "internalMetadata": {
+                                                "type": "object",
+                                                "maxProperties": 100,
+                                                "additionalProperties": true,
+                                                "nullable": true,
+                                                "x-propertyNames": {
+                                                    "type": "string",
+                                                    "maxLength": 250
+                                                }
+                                            },
+                                            "userCustomMetadata": {
+                                                "type": "object",
+                                                "maxProperties": 100,
+                                                "additionalProperties": true,
+                                                "nullable": true,
+                                                "x-propertyNames": {
+                                                    "type": "string",
+                                                    "maxLength": 250
+                                                }
                                             }
                                         },
                                         "additionalProperties": false,
@@ -11897,6 +12034,28 @@
                                         "description": "Optional key for idempotent operations - only for creating an agent.",
                                         "type": "string",
                                         "nullable": true
+                                    },
+                                    "internalMetadata": {
+                                        "description": "Key-value pairs reserved for PhantomBuster internal use.",
+                                        "type": "object",
+                                        "maxProperties": 100,
+                                        "additionalProperties": true,
+                                        "nullable": true,
+                                        "x-propertyNames": {
+                                            "type": "string",
+                                            "maxLength": 250
+                                        }
+                                    },
+                                    "userCustomMetadata": {
+                                        "description": "User-defined key-value pairs for tagging and filtering agents.",
+                                        "type": "object",
+                                        "maxProperties": 100,
+                                        "additionalProperties": true,
+                                        "nullable": true,
+                                        "x-propertyNames": {
+                                            "type": "string",
+                                            "maxLength": 250
+                                        }
                                     }
                                 },
                                 "additionalProperties": false
