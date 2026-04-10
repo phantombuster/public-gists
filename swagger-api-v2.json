@@ -4495,6 +4495,60 @@
                                                                     }
                                                                 },
                                                                 {
+                                                                    "title": "ICrmInputMappingPlugin",
+                                                                    "type": "object",
+                                                                    "additionalProperties": true,
+                                                                    "required": [
+                                                                        "name",
+                                                                        "options"
+                                                                    ],
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "enum": [
+                                                                                "crmInputMappingPlugin"
+                                                                            ]
+                                                                        },
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "fieldName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "activationArgumentName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "requiredFields": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "fieldLabel": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "leadDatabaseFieldName": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "defaultCrmFieldId": {
+                                                                                                "type": "string"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "fieldLabel",
+                                                                                            "leadDatabaseFieldName"
+                                                                                        ],
+                                                                                        "additionalProperties": false
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "fieldName",
+                                                                                "requiredFields"
+                                                                            ],
+                                                                            "additionalProperties": false
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
                                                                     "title": "IUseMultiIdentitiesPlugin",
                                                                     "type": "object",
                                                                     "additionalProperties": true,
@@ -4532,7 +4586,8 @@
                                                                                     "dividedInputType",
                                                                                     "acceptsCRMListAsInput",
                                                                                     "crmOutputMappingPlugin",
-                                                                                    "useMultiIdentities"
+                                                                                    "useMultiIdentities",
+                                                                                    "crmInputMappingPlugin"
                                                                                 ]
                                                                             }
                                                                         }
@@ -6231,6 +6286,60 @@
                                                             }
                                                         },
                                                         {
+                                                            "title": "ICrmInputMappingPlugin",
+                                                            "type": "object",
+                                                            "additionalProperties": true,
+                                                            "required": [
+                                                                "name",
+                                                                "options"
+                                                            ],
+                                                            "properties": {
+                                                                "name": {
+                                                                    "enum": [
+                                                                        "crmInputMappingPlugin"
+                                                                    ]
+                                                                },
+                                                                "options": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "fieldName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "activationArgumentName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "requiredFields": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "fieldLabel": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "leadDatabaseFieldName": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "defaultCrmFieldId": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                },
+                                                                                "required": [
+                                                                                    "fieldLabel",
+                                                                                    "leadDatabaseFieldName"
+                                                                                ],
+                                                                                "additionalProperties": false
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "fieldName",
+                                                                        "requiredFields"
+                                                                    ],
+                                                                    "additionalProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        {
                                                             "title": "IUseMultiIdentitiesPlugin",
                                                             "type": "object",
                                                             "additionalProperties": true,
@@ -6268,7 +6377,8 @@
                                                                             "dividedInputType",
                                                                             "acceptsCRMListAsInput",
                                                                             "crmOutputMappingPlugin",
-                                                                            "useMultiIdentities"
+                                                                            "useMultiIdentities",
+                                                                            "crmInputMappingPlugin"
                                                                         ]
                                                                     }
                                                                 }
@@ -7642,6 +7752,60 @@
                                                                 }
                                                             },
                                                             {
+                                                                "title": "ICrmInputMappingPlugin",
+                                                                "type": "object",
+                                                                "additionalProperties": true,
+                                                                "required": [
+                                                                    "name",
+                                                                    "options"
+                                                                ],
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "enum": [
+                                                                            "crmInputMappingPlugin"
+                                                                        ]
+                                                                    },
+                                                                    "options": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "fieldName": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "activationArgumentName": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "requiredFields": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "properties": {
+                                                                                        "fieldLabel": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "leadDatabaseFieldName": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "defaultCrmFieldId": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "fieldLabel",
+                                                                                        "leadDatabaseFieldName"
+                                                                                    ],
+                                                                                    "additionalProperties": false
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "required": [
+                                                                            "fieldName",
+                                                                            "requiredFields"
+                                                                        ],
+                                                                        "additionalProperties": false
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
                                                                 "title": "IUseMultiIdentitiesPlugin",
                                                                 "type": "object",
                                                                 "additionalProperties": true,
@@ -7679,7 +7843,8 @@
                                                                                 "dividedInputType",
                                                                                 "acceptsCRMListAsInput",
                                                                                 "crmOutputMappingPlugin",
-                                                                                "useMultiIdentities"
+                                                                                "useMultiIdentities",
+                                                                                "crmInputMappingPlugin"
                                                                             ]
                                                                         }
                                                                     }
@@ -9523,6 +9688,60 @@
                                                                     }
                                                                 },
                                                                 {
+                                                                    "title": "ICrmInputMappingPlugin",
+                                                                    "type": "object",
+                                                                    "additionalProperties": true,
+                                                                    "required": [
+                                                                        "name",
+                                                                        "options"
+                                                                    ],
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "enum": [
+                                                                                "crmInputMappingPlugin"
+                                                                            ]
+                                                                        },
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "fieldName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "activationArgumentName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "requiredFields": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "fieldLabel": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "leadDatabaseFieldName": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "defaultCrmFieldId": {
+                                                                                                "type": "string"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "fieldLabel",
+                                                                                            "leadDatabaseFieldName"
+                                                                                        ],
+                                                                                        "additionalProperties": false
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "fieldName",
+                                                                                "requiredFields"
+                                                                            ],
+                                                                            "additionalProperties": false
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
                                                                     "title": "IUseMultiIdentitiesPlugin",
                                                                     "type": "object",
                                                                     "additionalProperties": true,
@@ -9560,7 +9779,8 @@
                                                                                     "dividedInputType",
                                                                                     "acceptsCRMListAsInput",
                                                                                     "crmOutputMappingPlugin",
-                                                                                    "useMultiIdentities"
+                                                                                    "useMultiIdentities",
+                                                                                    "crmInputMappingPlugin"
                                                                                 ]
                                                                             }
                                                                         }
@@ -11230,6 +11450,60 @@
                                                                     }
                                                                 },
                                                                 {
+                                                                    "title": "ICrmInputMappingPlugin",
+                                                                    "type": "object",
+                                                                    "additionalProperties": true,
+                                                                    "required": [
+                                                                        "name",
+                                                                        "options"
+                                                                    ],
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "enum": [
+                                                                                "crmInputMappingPlugin"
+                                                                            ]
+                                                                        },
+                                                                        "options": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "fieldName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "activationArgumentName": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "requiredFields": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "fieldLabel": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "leadDatabaseFieldName": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "defaultCrmFieldId": {
+                                                                                                "type": "string"
+                                                                                            }
+                                                                                        },
+                                                                                        "required": [
+                                                                                            "fieldLabel",
+                                                                                            "leadDatabaseFieldName"
+                                                                                        ],
+                                                                                        "additionalProperties": false
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "fieldName",
+                                                                                "requiredFields"
+                                                                            ],
+                                                                            "additionalProperties": false
+                                                                        }
+                                                                    }
+                                                                },
+                                                                {
                                                                     "title": "IUseMultiIdentitiesPlugin",
                                                                     "type": "object",
                                                                     "additionalProperties": true,
@@ -11267,7 +11541,8 @@
                                                                                     "dividedInputType",
                                                                                     "acceptsCRMListAsInput",
                                                                                     "crmOutputMappingPlugin",
-                                                                                    "useMultiIdentities"
+                                                                                    "useMultiIdentities",
+                                                                                    "crmInputMappingPlugin"
                                                                                 ]
                                                                             }
                                                                         }
