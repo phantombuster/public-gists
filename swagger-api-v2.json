@@ -20056,8 +20056,10 @@
                                         "type": "string"
                                     },
                                     "profile_id": {
-                                        "description": "profile id of the identity event",
-                                        "type": "string"
+                                        "description": "profile id of the identity event (non-empty, not whitespace-only)",
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "pattern": ".*\\S.*"
                                     },
                                     "event_type": {
                                         "description": "type of the identity event",
