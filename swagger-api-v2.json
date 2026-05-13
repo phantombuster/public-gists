@@ -5119,6 +5119,9 @@
                                             "isDeprecated": {
                                                 "type": "boolean"
                                             },
+                                            "personalUseOnly": {
+                                                "type": "boolean"
+                                            },
                                             "featuredRank": {
                                                 "type": "number"
                                             },
@@ -6583,6 +6586,9 @@
                                                     "type": "boolean"
                                                 },
                                                 "isDeprecated": {
+                                                    "type": "boolean"
+                                                },
+                                                "personalUseOnly": {
                                                     "type": "boolean"
                                                 },
                                                 "featuredRank": {
@@ -8521,6 +8527,9 @@
                                                     "isDeprecated": {
                                                         "type": "boolean"
                                                     },
+                                                    "personalUseOnly": {
+                                                        "type": "boolean"
+                                                    },
                                                     "featuredRank": {
                                                         "type": "number"
                                                     },
@@ -10281,6 +10290,9 @@
                                                         "type": "boolean"
                                                     },
                                                     "isDeprecated": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "personalUseOnly": {
                                                         "type": "boolean"
                                                     },
                                                     "featuredRank": {
