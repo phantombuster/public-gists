@@ -5113,6 +5113,67 @@
                                                 "type": "string",
                                                 "maxLength": 500
                                             },
+                                            "kind": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "lib",
+                                                    "runner"
+                                                ]
+                                            },
+                                            "documentation": {
+                                                "title": "IScriptBranchManifestDocumentation",
+                                                "type": "object",
+                                                "required": [
+                                                    "summary",
+                                                    "exports"
+                                                ],
+                                                "properties": {
+                                                    "summary": {
+                                                        "type": "string",
+                                                        "minLength": 1,
+                                                        "maxLength": 1000
+                                                    },
+                                                    "exports": {
+                                                        "type": "array",
+                                                        "maxItems": 200,
+                                                        "items": {
+                                                            "type": "object",
+                                                            "title": "IScriptBranchManifestSymbolEntry",
+                                                            "required": [
+                                                                "name",
+                                                                "kind",
+                                                                "signature"
+                                                            ],
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "minLength": 1,
+                                                                    "maxLength": 200
+                                                                },
+                                                                "kind": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "function",
+                                                                        "class",
+                                                                        "interface",
+                                                                        "typeAlias",
+                                                                        "enum",
+                                                                        "const",
+                                                                        "namespace"
+                                                                    ]
+                                                                },
+                                                                "signature": {
+                                                                    "type": "string",
+                                                                    "minLength": 1,
+                                                                    "maxLength": 8000
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        }
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            },
                                             "unlisted": {
                                                 "type": "boolean"
                                             },
@@ -6434,7 +6495,55 @@
                                             "slug",
                                             "description"
                                         ],
-                                        "nullable": true
+                                        "nullable": true,
+                                        "oneOf": [
+                                            {
+                                                "allOf": [
+                                                    {
+                                                        "properties": {
+                                                            "kind": {
+                                                                "enum": [
+                                                                    "lib"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "kind"
+                                                        ]
+                                                    },
+                                                    {
+                                                        "required": [
+                                                            "documentation"
+                                                        ]
+                                                    }
+                                                ]
+                                            },
+                                            {
+                                                "allOf": [
+                                                    {
+                                                        "not": {
+                                                            "properties": {
+                                                                "kind": {
+                                                                    "enum": [
+                                                                        "lib"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "kind"
+                                                            ]
+                                                        }
+                                                    },
+                                                    {
+                                                        "not": {
+                                                            "required": [
+                                                                "documentation"
+                                                            ]
+                                                        }
+                                                    }
+                                                ]
+                                            }
+                                        ]
                                     }
                                 },
                                 "additionalProperties": false
@@ -6581,6 +6690,67 @@
                                                 "description": {
                                                     "type": "string",
                                                     "maxLength": 500
+                                                },
+                                                "kind": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "lib",
+                                                        "runner"
+                                                    ]
+                                                },
+                                                "documentation": {
+                                                    "title": "IScriptBranchManifestDocumentation",
+                                                    "type": "object",
+                                                    "required": [
+                                                        "summary",
+                                                        "exports"
+                                                    ],
+                                                    "properties": {
+                                                        "summary": {
+                                                            "type": "string",
+                                                            "minLength": 1,
+                                                            "maxLength": 1000
+                                                        },
+                                                        "exports": {
+                                                            "type": "array",
+                                                            "maxItems": 200,
+                                                            "items": {
+                                                                "type": "object",
+                                                                "title": "IScriptBranchManifestSymbolEntry",
+                                                                "required": [
+                                                                    "name",
+                                                                    "kind",
+                                                                    "signature"
+                                                                ],
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 200
+                                                                    },
+                                                                    "kind": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "function",
+                                                                            "class",
+                                                                            "interface",
+                                                                            "typeAlias",
+                                                                            "enum",
+                                                                            "const",
+                                                                            "namespace"
+                                                                        ]
+                                                                    },
+                                                                    "signature": {
+                                                                        "type": "string",
+                                                                        "minLength": 1,
+                                                                        "maxLength": 8000
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
                                                 },
                                                 "unlisted": {
                                                     "type": "boolean"
@@ -7903,7 +8073,55 @@
                                                 "slug",
                                                 "description"
                                             ],
-                                            "nullable": true
+                                            "nullable": true,
+                                            "oneOf": [
+                                                {
+                                                    "allOf": [
+                                                        {
+                                                            "properties": {
+                                                                "kind": {
+                                                                    "enum": [
+                                                                        "lib"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            "required": [
+                                                                "kind"
+                                                            ]
+                                                        },
+                                                        {
+                                                            "required": [
+                                                                "documentation"
+                                                            ]
+                                                        }
+                                                    ]
+                                                },
+                                                {
+                                                    "allOf": [
+                                                        {
+                                                            "not": {
+                                                                "properties": {
+                                                                    "kind": {
+                                                                        "enum": [
+                                                                            "lib"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "kind"
+                                                                ]
+                                                            }
+                                                        },
+                                                        {
+                                                            "not": {
+                                                                "required": [
+                                                                    "documentation"
+                                                                ]
+                                                            }
+                                                        }
+                                                    ]
+                                                }
+                                            ]
                                         },
                                         "code": {
                                             "type": "string",
@@ -8521,6 +8739,67 @@
                                                         "type": "string",
                                                         "maxLength": 500
                                                     },
+                                                    "kind": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "lib",
+                                                            "runner"
+                                                        ]
+                                                    },
+                                                    "documentation": {
+                                                        "title": "IScriptBranchManifestDocumentation",
+                                                        "type": "object",
+                                                        "required": [
+                                                            "summary",
+                                                            "exports"
+                                                        ],
+                                                        "properties": {
+                                                            "summary": {
+                                                                "type": "string",
+                                                                "minLength": 1,
+                                                                "maxLength": 1000
+                                                            },
+                                                            "exports": {
+                                                                "type": "array",
+                                                                "maxItems": 200,
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "title": "IScriptBranchManifestSymbolEntry",
+                                                                    "required": [
+                                                                        "name",
+                                                                        "kind",
+                                                                        "signature"
+                                                                    ],
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "minLength": 1,
+                                                                            "maxLength": 200
+                                                                        },
+                                                                        "kind": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "function",
+                                                                                "class",
+                                                                                "interface",
+                                                                                "typeAlias",
+                                                                                "enum",
+                                                                                "const",
+                                                                                "namespace"
+                                                                            ]
+                                                                        },
+                                                                        "signature": {
+                                                                            "type": "string",
+                                                                            "minLength": 1,
+                                                                            "maxLength": 8000
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    },
                                                     "unlisted": {
                                                         "type": "boolean"
                                                     },
@@ -9842,7 +10121,55 @@
                                                     "slug",
                                                     "description"
                                                 ],
-                                                "nullable": true
+                                                "nullable": true,
+                                                "oneOf": [
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "kind": {
+                                                                        "enum": [
+                                                                            "lib"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "kind"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "required": [
+                                                                    "documentation"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "not": {
+                                                                    "properties": {
+                                                                        "kind": {
+                                                                            "enum": [
+                                                                                "lib"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "kind"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "not": {
+                                                                    "required": [
+                                                                        "documentation"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
                                             },
                                             "launchType": {
                                                 "type": "string",
@@ -10286,6 +10613,67 @@
                                                         "type": "string",
                                                         "maxLength": 500
                                                     },
+                                                    "kind": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "lib",
+                                                            "runner"
+                                                        ]
+                                                    },
+                                                    "documentation": {
+                                                        "title": "IScriptBranchManifestDocumentation",
+                                                        "type": "object",
+                                                        "required": [
+                                                            "summary",
+                                                            "exports"
+                                                        ],
+                                                        "properties": {
+                                                            "summary": {
+                                                                "type": "string",
+                                                                "minLength": 1,
+                                                                "maxLength": 1000
+                                                            },
+                                                            "exports": {
+                                                                "type": "array",
+                                                                "maxItems": 200,
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "title": "IScriptBranchManifestSymbolEntry",
+                                                                    "required": [
+                                                                        "name",
+                                                                        "kind",
+                                                                        "signature"
+                                                                    ],
+                                                                    "properties": {
+                                                                        "name": {
+                                                                            "type": "string",
+                                                                            "minLength": 1,
+                                                                            "maxLength": 200
+                                                                        },
+                                                                        "kind": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "function",
+                                                                                "class",
+                                                                                "interface",
+                                                                                "typeAlias",
+                                                                                "enum",
+                                                                                "const",
+                                                                                "namespace"
+                                                                            ]
+                                                                        },
+                                                                        "signature": {
+                                                                            "type": "string",
+                                                                            "minLength": 1,
+                                                                            "maxLength": 8000
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    },
                                                     "unlisted": {
                                                         "type": "boolean"
                                                     },
@@ -11607,7 +11995,55 @@
                                                     "slug",
                                                     "description"
                                                 ],
-                                                "nullable": true
+                                                "nullable": true,
+                                                "oneOf": [
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "properties": {
+                                                                    "kind": {
+                                                                        "enum": [
+                                                                            "lib"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "kind"
+                                                                ]
+                                                            },
+                                                            {
+                                                                "required": [
+                                                                    "documentation"
+                                                                ]
+                                                            }
+                                                        ]
+                                                    },
+                                                    {
+                                                        "allOf": [
+                                                            {
+                                                                "not": {
+                                                                    "properties": {
+                                                                        "kind": {
+                                                                            "enum": [
+                                                                                "lib"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    "required": [
+                                                                        "kind"
+                                                                    ]
+                                                                }
+                                                            },
+                                                            {
+                                                                "not": {
+                                                                    "required": [
+                                                                        "documentation"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        ]
+                                                    }
+                                                ]
                                             },
                                             "launchType": {
                                                 "type": "string",
