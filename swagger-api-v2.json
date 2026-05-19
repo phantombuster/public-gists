@@ -2565,18 +2565,40 @@
         },
         "/agents/launch-sync": {
             "post": {
-                "description": "Launches an agent and streams execution status in real-time using NDJSON format. The stream includes heartbeat messages, execution summary, and error messages if any occur. Optionally includes log lines when the includeLogs body parameter is set to true.",
+                "description": "Launches an agent and streams execution status in real-time using NDJSON format. The stream begins with a start message exposing the containerId (so clients can reconnect via /containers/attach on disconnect) and then includes heartbeat messages, execution summary, and error messages if any occur. Optionally includes log lines when the includeLogs body parameter is set to true.",
                 "tags": [
                     "agents"
                 ],
                 "responses": {
                     "200": {
-                        "description": "Agent launched successfully. Response is a stream of NDJSON messages with types - heartbeat (periodic keep-alive), logs (container output), summary (final execution result with containerId, executionTime, and optional exitCode), or error (if something goes wrong).",
+                        "description": "Agent launched successfully. Response is a stream of NDJSON messages with types - start (sent first, with containerId and agentId), heartbeat (periodic keep-alive), logs (container output), summary (final execution result with containerId, executionTime, and optional exitCode), or error (if something goes wrong).",
                         "content": {
                             "application/x-ndjson": {
                                 "schema": {
                                     "type": "object",
                                     "oneOf": [
+                                        {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "start"
+                                                    ]
+                                                },
+                                                "data": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "containerId": {
+                                                            "type": "string"
+                                                        },
+                                                        "agentId": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        },
                                         {
                                             "type": "object",
                                             "properties": {
