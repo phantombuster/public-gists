@@ -91,9 +91,6 @@
         },
         {
             "name": "location"
-        },
-        {
-            "name": "notifications"
         }
     ],
     "paths": {
