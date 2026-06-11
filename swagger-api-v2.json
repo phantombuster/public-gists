@@ -2538,6 +2538,12 @@
                                             "type": "string",
                                             "maxLength": 250
                                         }
+                                    },
+                                    "persistedVolumeKey": {
+                                        "description": "Key identifying the persisted volume to attach to the launched container.",
+                                        "type": "string",
+                                        "maxLength": 256,
+                                        "nullable": true
                                     }
                                 },
                                 "additionalProperties": false,
@@ -2735,6 +2741,12 @@
                                     "includeLogs": {
                                         "type": "boolean",
                                         "description": "If true, agent logs will be included in the stream. Defaults to false."
+                                    },
+                                    "persistedVolumeKey": {
+                                        "description": "Key identifying the persisted volume to attach to the launched container.",
+                                        "type": "string",
+                                        "maxLength": 256,
+                                        "nullable": true
                                     }
                                 },
                                 "additionalProperties": false,
@@ -8521,6 +8533,11 @@
                                             "additionalProperties": false,
                                             "nullable": true
                                         },
+                                        "persistedVolumeKey": {
+                                            "type": "string",
+                                            "maxLength": 256,
+                                            "nullable": true
+                                        },
                                         "leasedSquidProxy": {
                                             "type": "object",
                                             "additionalProperties": false,
@@ -12757,6 +12774,12 @@
                                             "refreshRate"
                                         ],
                                         "additionalProperties": false,
+                                        "nullable": true
+                                    },
+                                    "persistedVolumeKey": {
+                                        "description": "Key identifying the persisted volume to attach to the agent's containers.",
+                                        "type": "string",
+                                        "maxLength": 256,
                                         "nullable": true
                                     },
                                     "wasSetupValidWhenSubmittedByTheFrontend": {
@@ -20408,7 +20431,8 @@
                                     "type": {
                                         "type": "string",
                                         "enum": [
-                                            "linkedin"
+                                            "linkedin",
+                                            "google"
                                         ],
                                         "description": "type of the identity to save"
                                     },
