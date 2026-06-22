@@ -94,6 +94,595 @@
         }
     ],
     "paths": {
+        "/users/fetch-me": {
+            "get": {
+                "description": "Gets the current user's info. If a sessionId is not provided the endpoint will create a new session and return the newly created id.\n",
+                "tags": [
+                    "users"
+                ],
+                "security": [],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "sessionId": {
+                                            "type": "string",
+                                            "nullable": true
+                                        },
+                                        "zendeskToken": {
+                                            "type": "string"
+                                        },
+                                        "user": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "email": {
+                                                    "type": "string"
+                                                },
+                                                "firstName": {
+                                                    "type": "string"
+                                                },
+                                                "lastName": {
+                                                    "type": "string"
+                                                },
+                                                "phone": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "company": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "job": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "newsletter": {
+                                                    "type": "boolean"
+                                                },
+                                                "userTeam": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "userCompanySize": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "userGoal": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "userMainPlatform": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "userReferralSource": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "isEmailValidated": {
+                                                    "type": "boolean"
+                                                },
+                                                "userDeletionIn": {
+                                                    "type": "number",
+                                                    "nullable": true
+                                                },
+                                                "detailedOrg": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string",
+                                                            "pattern": "^(deleted_\\d{1,16}-)?[a-z][a-z0-9-_]{1,48}[a-z0-9_]$"
+                                                        },
+                                                        "displayName": {
+                                                            "type": "string"
+                                                        },
+                                                        "dailyExecutionTime": {
+                                                            "type": "number"
+                                                        },
+                                                        "dailyMail": {
+                                                            "type": "number"
+                                                        },
+                                                        "dailyCaptcha": {
+                                                            "type": "number"
+                                                        },
+                                                        "dailyDiscoveredMail": {
+                                                            "type": "number"
+                                                        },
+                                                        "dailyAiCredit": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlyExecutionTime": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlyMail": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlyCaptcha": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlyDiscoveredMail": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlyAiCredit": {
+                                                            "type": "number"
+                                                        },
+                                                        "monthlySerpCredit": {
+                                                            "type": "number",
+                                                            "nullable": true
+                                                        },
+                                                        "dailySerpCredit": {
+                                                            "type": "number",
+                                                            "nullable": true
+                                                        },
+                                                        "s3Storage": {
+                                                            "type": "number"
+                                                        },
+                                                        "s3Folder": {
+                                                            "type": "string"
+                                                        },
+                                                        "planName": {
+                                                            "type": "string"
+                                                        },
+                                                        "plan": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "name": {
+                                                                    "type": "string",
+                                                                    "maxLength": 100
+                                                                },
+                                                                "s3Storage": {
+                                                                    "type": "number"
+                                                                },
+                                                                "mongoStorage": {
+                                                                    "type": "number"
+                                                                },
+                                                                "parallelism": {
+                                                                    "type": "number"
+                                                                },
+                                                                "agents": {
+                                                                    "type": "number"
+                                                                },
+                                                                "scripts": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailyExecutionTime": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailyMails": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailyCaptchas": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailyDiscoveredMails": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailyAiCredits": {
+                                                                    "type": "number"
+                                                                },
+                                                                "dailySerpCredits": {
+                                                                    "type": "number"
+                                                                },
+                                                                "monthlyExecutionTime": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "monthlyMails": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "monthlyCaptchas": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "monthlyDiscoveredMails": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "monthlyAiCredits": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "monthlySerpCredits": {
+                                                                    "type": "number",
+                                                                    "minimum": 0
+                                                                },
+                                                                "isAvailable": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isUpgradable": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "duration": {
+                                                                    "type": "number"
+                                                                },
+                                                                "monthlyPrice": {
+                                                                    "type": "number"
+                                                                },
+                                                                "yearlyPrice": {
+                                                                    "type": "number"
+                                                                },
+                                                                "monthlyPrices": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": {
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "yearlyPrices": {
+                                                                    "type": "object",
+                                                                    "additionalProperties": {
+                                                                        "type": "number"
+                                                                    }
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "required": [
+                                                                "name",
+                                                                "s3Storage",
+                                                                "mongoStorage",
+                                                                "parallelism",
+                                                                "agents",
+                                                                "scripts",
+                                                                "dailyExecutionTime",
+                                                                "dailyMails",
+                                                                "dailyCaptchas",
+                                                                "dailyDiscoveredMails",
+                                                                "dailyAiCredits",
+                                                                "isAvailable",
+                                                                "isUpgradable",
+                                                                "duration",
+                                                                "monthlyPrice",
+                                                                "yearlyPrice"
+                                                            ]
+                                                        },
+                                                        "planStartedAt": {
+                                                            "type": "number"
+                                                        },
+                                                        "timezone": {
+                                                            "type": "string"
+                                                        },
+                                                        "nbRunningContainer": {
+                                                            "type": "number"
+                                                        },
+                                                        "delinquentStatus": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "gracePeriod",
+                                                                "delinquent"
+                                                            ],
+                                                            "nullable": true
+                                                        },
+                                                        "hasUntestedCard": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "planShouldCancelAt": {
+                                                            "type": "number",
+                                                            "nullable": true
+                                                        },
+                                                        "experiments": {
+                                                            "type": "object",
+                                                            "additionalProperties": {
+                                                                "type": "boolean"
+                                                            }
+                                                        },
+                                                        "userCount": {
+                                                            "type": "number"
+                                                        },
+                                                        "role": {
+                                                            "title": "Role",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "owner",
+                                                                "admin",
+                                                                "member"
+                                                            ]
+                                                        },
+                                                        "notifyUsage": {
+                                                            "type": "boolean"
+                                                        },
+                                                        "isV3": {
+                                                            "type": "boolean",
+                                                            "nullable": true
+                                                        },
+                                                        "customPromptOrg": {
+                                                            "type": "string",
+                                                            "maxLength": 10000,
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "required": [
+                                                        "id",
+                                                        "name",
+                                                        "dailyExecutionTime",
+                                                        "dailyMail",
+                                                        "dailyCaptcha",
+                                                        "dailyDiscoveredMail",
+                                                        "dailyAiCredit",
+                                                        "monthlyExecutionTime",
+                                                        "monthlyMail",
+                                                        "monthlyCaptcha",
+                                                        "monthlyDiscoveredMail",
+                                                        "monthlyAiCredit",
+                                                        "s3Storage",
+                                                        "planName",
+                                                        "plan",
+                                                        "planStartedAt",
+                                                        "timezone",
+                                                        "nbRunningContainer",
+                                                        "hasUntestedCard"
+                                                    ]
+                                                },
+                                                "orgs": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string"
+                                                            },
+                                                            "name": {
+                                                                "type": "string",
+                                                                "pattern": "^(deleted_\\d{1,16}-)?[a-z][a-z0-9-_]{1,48}[a-z0-9_]$"
+                                                            },
+                                                            "displayName": {
+                                                                "type": "string"
+                                                            },
+                                                            "planName": {
+                                                                "type": "string"
+                                                            },
+                                                            "role": {
+                                                                "title": "Role",
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "owner",
+                                                                    "admin",
+                                                                    "member"
+                                                                ]
+                                                            },
+                                                            "notifyUsage": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "isV3": {
+                                                                "type": "boolean",
+                                                                "nullable": true
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "name",
+                                                            "planName"
+                                                        ]
+                                                    }
+                                                },
+                                                "adminRights": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "admin",
+                                                        "super admin",
+                                                        "monitoring"
+                                                    ],
+                                                    "nullable": true
+                                                },
+                                                "isLoggedAs": {
+                                                    "type": "boolean"
+                                                },
+                                                "createdAt": {
+                                                    "type": "number"
+                                                },
+                                                "enabledExperiments": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "hubspotWidget",
+                                                            "stepSetup",
+                                                            "myPhantoms",
+                                                            "navbar",
+                                                            "seeBetaPhantoms",
+                                                            "showCompatiblePhantomsLink",
+                                                            "advancedChat"
+                                                        ]
+                                                    },
+                                                    "nullable": true
+                                                },
+                                                "developerMode": {
+                                                    "type": "boolean"
+                                                },
+                                                "customPromptUser": {
+                                                    "type": "string",
+                                                    "maxLength": 10000,
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "required": [
+                                                "id",
+                                                "email",
+                                                "firstName",
+                                                "lastName",
+                                                "newsletter",
+                                                "isEmailValidated",
+                                                "detailedOrg",
+                                                "orgs",
+                                                "createdAt"
+                                            ]
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "sessionId"
+                                    ]
+                                }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "detailedOrgId",
+                        "description": "If set, the corresponding detailedOrg will be returned.",
+                        "schema": {
+                            "description": "If set, the corresponding detailedOrg will be returned.",
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withCustomPrompts",
+                        "description": "If true, includes customPromptUser and customPromptOrg in the response.",
+                        "schema": {
+                            "description": "If true, includes customPromptOrg (and other custom prompt fields) in the response.",
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/users/update-me": {
+            "post": {
+                "description": "Updates the current user's info.",
+                "tags": [
+                    "users"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User updated successfully."
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "firstName": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "New user first name."
+                                    },
+                                    "lastName": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "New user last name."
+                                    },
+                                    "phone": {
+                                        "description": "New phone number.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "company": {
+                                        "description": "New company name.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "job": {
+                                        "description": "New job name.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "newsletter": {
+                                        "description": "If set, you agree to subscribe to the newsletter.",
+                                        "type": "boolean"
+                                    },
+                                    "enabledExperiments": {
+                                        "description": "Experiments you wish to enable on your account.",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string",
+                                            "enum": [
+                                                "hubspotWidget",
+                                                "stepSetup",
+                                                "myPhantoms",
+                                                "navbar",
+                                                "seeBetaPhantoms",
+                                                "showCompatiblePhantomsLink",
+                                                "advancedChat"
+                                            ]
+                                        },
+                                        "nullable": true
+                                    },
+                                    "developerMode": {
+                                        "description": "If set, developer-specific features will be enabled.",
+                                        "type": "boolean"
+                                    },
+                                    "userTeam": {
+                                        "description": "New user team.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "userCompanySize": {
+                                        "description": "New user company size.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "userGoal": {
+                                        "description": "New user goal.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "userMainPlatform": {
+                                        "description": "New user main platform.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "userReferralSource": {
+                                        "description": "How the user heard about PhantomBuster.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "customPromptUser": {
+                                        "description": "Custom AI prompt at user level.",
+                                        "type": "string",
+                                        "maxLength": 10000,
+                                        "nullable": true
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
         "/orgs/export-agent-usage": {
             "get": {
                 "description": "Gets a csv file containing agent usage info of the current user's organization.",
@@ -1222,6 +1811,244 @@
                                         "monthlyResourceNextResetAt"
                                     ]
                                 }
+                            }
+                        }
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "X-Phantombuster-Org",
+                        "description": "ID of the org that is perfoming the operation (not necessary when using a third party key)",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
+        },
+        "/orgs/save": {
+            "post": {
+                "description": "Updates the current organization's info. Only web or MCP sessions are allowed to call this endpoint. Omit the `X-Phantombuster-Org` header to call this endpoint.\n",
+                "tags": [
+                    "orgs"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Organization updated successfully.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                        "id"
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Invalid VAT ID or invalid billing address provided."
+                    },
+                    "403": {
+                        "description": "Endpoint was called with a non-web or MCP session."
+                    },
+                    "412": {
+                        "description": "Invalid VAT ID."
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "New organization name."
+                                    },
+                                    "displayName": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "New organization display name."
+                                    },
+                                    "timezone": {
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "description": "New organization timezone. Changing your timezone will affect your agent's automatic scheduling."
+                                    },
+                                    "company": {
+                                        "description": "New company name.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "billingAddress": {
+                                        "description": "New billing address.",
+                                        "title": "IAddress",
+                                        "type": "object",
+                                        "properties": {
+                                            "street": {
+                                                "type": "string",
+                                                "maxLength": 1000
+                                            },
+                                            "city": {
+                                                "type": "string",
+                                                "maxLength": 100
+                                            },
+                                            "zip": {
+                                                "type": "string",
+                                                "maxLength": 100
+                                            },
+                                            "countryCode": {
+                                                "type": "string",
+                                                "maxLength": 100
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "street",
+                                            "city",
+                                            "zip",
+                                            "countryCode"
+                                        ],
+                                        "nullable": true
+                                    },
+                                    "billingMail": {
+                                        "description": "New billing email address.",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "billingFirstName": {
+                                        "description": "New billing first name.",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "billingLastName": {
+                                        "description": "New billing last name.",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "vatId": {
+                                        "description": "New organization's VAT id.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "globalObject": {
+                                        "description": "New organization's global object.",
+                                        "type": "string",
+                                        "nullable": true
+                                    },
+                                    "proxies": {
+                                        "description": "New organization's proxy pools.",
+                                        "anyOf": [
+                                            {
+                                                "title": "IProxyPoolList",
+                                                "type": "object",
+                                                "x-patternProperties": {
+                                                    "^\\d+$": {
+                                                        "title": "IProxyPool",
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string",
+                                                                "maxLength": 100
+                                                            },
+                                                            "test": {
+                                                                "type": "boolean"
+                                                            },
+                                                            "proxies": {
+                                                                "type": "array",
+                                                                "maxItems": 1000,
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "type": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "http"
+                                                                            ]
+                                                                        },
+                                                                        "address": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        },
+                                                                        "username": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "password": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "lastTestDate": {
+                                                                            "type": "number",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "lastTestResult": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "lastTestDescription": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "required": [
+                                                                        "type",
+                                                                        "address"
+                                                                    ]
+                                                                }
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "name",
+                                                            "proxies"
+                                                        ]
+                                                    }
+                                                },
+                                                "additionalProperties": true
+                                            }
+                                        ],
+                                        "nullable": true
+                                    },
+                                    "additionalInvoiceInformation": {
+                                        "description": "New additional invoice information.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "crmIntegrationOptions": {
+                                        "description": "New organization's CRM integration options.",
+                                        "type": "object",
+                                        "properties": {
+                                            "contactUpdateOnly": {
+                                                "description": "Only update contacts in CRM.",
+                                                "type": "boolean"
+                                            }
+                                        },
+                                        "additionalProperties": false
+                                    },
+                                    "customPromptOrg": {
+                                        "description": "Custom AI prompt at workspace level.",
+                                        "type": "string",
+                                        "maxLength": 10000,
+                                        "nullable": true
+                                    }
+                                },
+                                "additionalProperties": false
                             }
                         }
                     }
@@ -20374,6 +21201,141 @@
                 }
             }
         },
+        "/identities/search": {
+            "post": {
+                "description": "Search identities.",
+                "tags": [
+                    "identities"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Identity successfully searched."
+                    },
+                    "400": {
+                        "description": "Bad request."
+                    },
+                    "500": {
+                        "description": "Unexpected error while searching for identities."
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "description": "id of the identity to search",
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "sessionCookie": {
+                                        "description": "session cookie to search",
+                                        "type": "string"
+                                    },
+                                    "profileId": {
+                                        "description": "profile id to search",
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "type": {
+                                        "description": "type of identity to search. Defaults to linkedin when omitted",
+                                        "type": "string",
+                                        "enum": [
+                                            "linkedin",
+                                            "google"
+                                        ]
+                                    }
+                                },
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/identities/save": {
+            "post": {
+                "description": "Save identity.",
+                "tags": [
+                    "identities"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Identity successfully saved or updated."
+                    },
+                    "500": {
+                        "description": "Unexpected error while saving the identity."
+                    }
+                },
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "id": {
+                                        "description": "id of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "userId": {
+                                        "description": "user id of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string",
+                                        "enum": [
+                                            "linkedin",
+                                            "google"
+                                        ],
+                                        "description": "type of the identity to save"
+                                    },
+                                    "firstName": {
+                                        "description": "first name of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "lastName": {
+                                        "description": "last name of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "profileUrl": {
+                                        "description": "profile url of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "profileId": {
+                                        "type": "string",
+                                        "description": "profile id of the identity to save",
+                                        "maxLength": 475,
+                                        "minLength": 1
+                                    },
+                                    "profilePictureUrl": {
+                                        "description": "profile picture url of the identity to save",
+                                        "type": "string"
+                                    },
+                                    "subscriptionTitles": {
+                                        "description": "subscription titles of the identity to save",
+                                        "type": "array",
+                                        "items": {
+                                            "type": "string"
+                                        },
+                                        "nullable": true
+                                    },
+                                    "headline": {
+                                        "description": "headline of the identity to save",
+                                        "type": "string"
+                                    }
+                                },
+                                "required": [
+                                    "type",
+                                    "profileId"
+                                ],
+                                "additionalProperties": false
+                            }
+                        }
+                    }
+                }
+            }
+        },
         "/identities/generate-token": {
             "post": {
                 "description": "Generate identity token.",
@@ -20745,6 +21707,180 @@
                         }
                     }
                 ]
+            }
+        },
+        "/icps/fetch-all": {
+            "get": {
+                "description": "Fetch all ICPs for an org.",
+                "tags": [
+                    "icps"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "ICPs successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "orgId": {
+                                                "type": "string"
+                                            },
+                                            "productServiceId": {
+                                                "type": "string"
+                                            },
+                                            "jd": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "market": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "size": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "id",
+                                            "orgId",
+                                            "productServiceId",
+                                            "jd"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Only web, API-key, intelligence-tool and MCP sessions are allowed to fetch ICPs. Agent sessions are not allowed.\n"
+                    }
+                }
+            }
+        },
+        "/buyers-personas/fetch-all": {
+            "get": {
+                "description": "Fetch all buyer personas for an org.",
+                "tags": [
+                    "buyersPersonas"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Buyer personas successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "orgId": {
+                                                "type": "string"
+                                            },
+                                            "icpId": {
+                                                "type": "string"
+                                            },
+                                            "leadsListId": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "sourcingAgentId": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "monitoringAgentId": {
+                                                "type": "string",
+                                                "nullable": true
+                                            },
+                                            "jd": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "countries": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "jobs": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "painPoints": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "goalsKPI": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string"
+                                                        },
+                                                        "nullable": true
+                                                    },
+                                                    "sourcingLimit": {
+                                                        "type": "number",
+                                                        "nullable": true
+                                                    },
+                                                    "pictureUrl": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    },
+                                                    "jobTitleKeyword": {
+                                                        "type": "string",
+                                                        "nullable": true
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        },
+                                        "additionalProperties": false,
+                                        "required": [
+                                            "id",
+                                            "orgId",
+                                            "icpId",
+                                            "jd"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Only web, API-key, intelligence-tool sessions are allowed to fetch ICPs. Agent and MCP sessions are not allowed.\n"
+                    }
+                }
             }
         }
     }
