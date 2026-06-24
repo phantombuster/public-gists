@@ -166,6 +166,10 @@
                                                     "type": "string",
                                                     "nullable": true
                                                 },
+                                                "userOutboundSalesTeamSize": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
                                                 "isEmailValidated": {
                                                     "type": "boolean"
                                                 },
@@ -655,6 +659,12 @@
                                     },
                                     "userReferralSource": {
                                         "description": "How the user heard about PhantomBuster.",
+                                        "type": "string",
+                                        "maxLength": 100,
+                                        "nullable": true
+                                    },
+                                    "userOutboundSalesTeamSize": {
+                                        "description": "How many people are involved in the user's outbound sales",
                                         "type": "string",
                                         "maxLength": 100,
                                         "nullable": true
