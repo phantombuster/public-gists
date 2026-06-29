@@ -15703,6 +15703,388 @@
                                                 }
                                             },
                                             "additionalProperties": true
+                                        },
+                                        "ILeadChatSelectionProperties": {
+                                            "title": "ILeadChatSelectionProperties",
+                                            "description": "Hydrated lead in front_selection_context, as decoded from AgentCore memory retrieving (LangGraph checkpoint writes). Same fields as org storage search leads, but editionsHistory is omitted before agent invocation.",
+                                            "allOf": [
+                                                {
+                                                    "type": "object",
+                                                    "title": "ILeadUpdateProperties",
+                                                    "additionalProperties": true,
+                                                    "properties": {
+                                                        "isCreation": {
+                                                            "type": "boolean",
+                                                            "description": "Indicates if the lead is created or inserted"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "ILeadMetaProperties",
+                                                    "additionalProperties": true,
+                                                    "required": [
+                                                        "id"
+                                                    ],
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "IUniqueLeadProperties",
+                                                    "additionalProperties": true,
+                                                    "required": [
+                                                        "linkedinProfileSlug"
+                                                    ],
+                                                    "properties": {
+                                                        "linkedinProfileSlug": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "IInferrableLeadProperties",
+                                                    "additionalProperties": true,
+                                                    "properties": {
+                                                        "linkedinCompanySlug": {
+                                                            "type": "string"
+                                                        },
+                                                        "twitterProfileHandle": {
+                                                            "type": "string"
+                                                        },
+                                                        "linkedinPreviousCompanySlug": {
+                                                            "type": "string"
+                                                        },
+                                                        "linkedinSchoolCompanySlug": {
+                                                            "type": "string"
+                                                        },
+                                                        "linkedinPreviousSchoolCompanySlug": {
+                                                            "type": "string"
+                                                        },
+                                                        "salesNavigatorProfileId": {
+                                                            "type": "string"
+                                                        },
+                                                        "salesNavigatorCompanyId": {
+                                                            "type": "string"
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "IEditableLeadProperties",
+                                                    "additionalProperties": true,
+                                                    "properties": {
+                                                        "firstName": {
+                                                            "type": "string",
+                                                            "description": "lead firstName"
+                                                        },
+                                                        "lastName": {
+                                                            "type": "string",
+                                                            "description": "lead lastName"
+                                                        },
+                                                        "location": {
+                                                            "type": "string",
+                                                            "description": "lead location"
+                                                        },
+                                                        "civility": {
+                                                            "type": "string",
+                                                            "description": "lead civility"
+                                                        },
+                                                        "linkedinOpenProfile": {
+                                                            "description": "lead linkedin profile is open",
+                                                            "type": "boolean"
+                                                        },
+                                                        "linkedinIsHiringBadge": {
+                                                            "type": "boolean",
+                                                            "description": "lead linkedin is hiring badge"
+                                                        },
+                                                        "linkedinIsOpenToWorkBadge": {
+                                                            "type": "boolean",
+                                                            "description": "lead linkedin is open to work badge"
+                                                        },
+                                                        "professionalEmails": {
+                                                            "type": "array",
+                                                            "description": "lead professional emails",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "personalEmails": {
+                                                            "type": "array",
+                                                            "description": "lead personal emails",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "phoneNumbers": {
+                                                            "type": "array",
+                                                            "description": "lead phone numbers",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "websites": {
+                                                            "type": "array",
+                                                            "description": "lead websites",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "companyName": {
+                                                            "type": "string",
+                                                            "description": "lead company"
+                                                        },
+                                                        "companyWebsite": {
+                                                            "type": "string",
+                                                            "description": "lead company website"
+                                                        },
+                                                        "linkedinCompanyId": {
+                                                            "type": "string",
+                                                            "description": "linkedin company id"
+                                                        },
+                                                        "linkedinProfileId": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile id"
+                                                        },
+                                                        "linkedinProfileUrn": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile urn"
+                                                        },
+                                                        "linkedinProfileImageUrn": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile picture image urn"
+                                                        },
+                                                        "linkedinProfileImageUrl": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile picture image url"
+                                                        },
+                                                        "linkedinHeadline": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin profile headline"
+                                                        },
+                                                        "linkedinJobTitle": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin job title"
+                                                        },
+                                                        "linkedinJobDateRange": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin job date range"
+                                                        },
+                                                        "linkedinJobLocation": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin job location"
+                                                        },
+                                                        "companyIndustry": {
+                                                            "type": "string",
+                                                            "description": "industry of the lead's company"
+                                                        },
+                                                        "linkedinFollowersCount": {
+                                                            "type": "number",
+                                                            "description": "lead linkedin followers count"
+                                                        },
+                                                        "linkedinDescription": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin description"
+                                                        },
+                                                        "linkedinJobDescription": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin job description"
+                                                        },
+                                                        "linkedinPreviousJobDescription": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin previous job description"
+                                                        },
+                                                        "linkedinSkillsLabel": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin skills label"
+                                                        },
+                                                        "previousCompanyName": {
+                                                            "type": "string",
+                                                            "description": "lead previous company name"
+                                                        },
+                                                        "linkedinPreviousJobTitle": {
+                                                            "type": "string",
+                                                            "description": "lead previous job title"
+                                                        },
+                                                        "linkedinPreviousJobDateRange": {
+                                                            "type": "string",
+                                                            "description": "lead previous job date range"
+                                                        },
+                                                        "linkedinPreviousJobLocation": {
+                                                            "type": "string",
+                                                            "description": "lead previous job location"
+                                                        },
+                                                        "linkedinSchoolName": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin school name"
+                                                        },
+                                                        "linkedinPreviousSchoolName": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin previous school name"
+                                                        },
+                                                        "linkedinSchoolDegree": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin school degree"
+                                                        },
+                                                        "linkedinPreviousSchoolDegree": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin previous school degree"
+                                                        },
+                                                        "linkedinSchoolDateRange": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin school date range"
+                                                        },
+                                                        "linkedinPreviousSchoolDateRange": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin previous school date range"
+                                                        },
+                                                        "linkedinSchoolDescription": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin school description"
+                                                        },
+                                                        "linkedinPreviousSchoolDescription": {
+                                                            "type": "string",
+                                                            "description": "lead linkedin previous school description"
+                                                        },
+                                                        "linkedinAccountRelativeProperties": {
+                                                            "type": "array",
+                                                            "title": "ILeadLinkedInAccountRelativeProperties",
+                                                            "description": "Collection of Lead LinkedIn properties grouped by scraping LinkedIn user",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "sourceUserId": {
+                                                                        "description": "Source LinkedIn profile id (user who scraped)",
+                                                                        "type": "string"
+                                                                    },
+                                                                    "connectionDegree": {
+                                                                        "description": "Lead LinkedIn connection degree",
+                                                                        "type": "integer",
+                                                                        "minimum": -1,
+                                                                        "maximum": 3
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "sourceUserId"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "crmAccountRelativeProperties": {
+                                                            "type": "array",
+                                                            "title": "ILeadCrmAccountRelativeProperties",
+                                                            "description": "Collection of CRM related properties grouped by CRM name (contains only one item per CRM)",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "crmContactId": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "crmAccountId": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "crmName": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "hubspot",
+                                                                            "pipedrive",
+                                                                            "salesforce"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "additionalProperties": {
+                                                                    "type": [
+                                                                        "string",
+                                                                        "boolean",
+                                                                        "number"
+                                                                    ]
+                                                                },
+                                                                "required": [
+                                                                    "crmAccountId",
+                                                                    "crmContactId",
+                                                                    "crmName"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "audienceOfLeads": {
+                                                            "type": "array",
+                                                            "description": "list of lead ids this lead is an audience of",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "ILeadMetadataProperties",
+                                                    "additionalProperties": true,
+                                                    "properties": {
+                                                        "metadata": {
+                                                            "type": "object",
+                                                            "description": "metadata for the lead",
+                                                            "additionalProperties": true
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "ILeadAiGeneratedProperties",
+                                                    "properties": {
+                                                        "aiGeneratedProperties": {
+                                                            "type": "object",
+                                                            "description": "AI generated properties",
+                                                            "additionalProperties": {
+                                                                "type": "string"
+                                                            }
+                                                        }
+                                                    },
+                                                    "additionalProperties": true
+                                                },
+                                                {
+                                                    "type": "object",
+                                                    "title": "ICompanyProperties",
+                                                    "properties": {
+                                                        "company": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string"
+                                                                },
+                                                                "companyId": {
+                                                                    "type": "string"
+                                                                },
+                                                                "companySlug": {
+                                                                    "type": "string"
+                                                                },
+                                                                "properties": {
+                                                                    "type": "object"
+                                                                },
+                                                                "createdAt": {
+                                                                    "type": "number"
+                                                                },
+                                                                "updatedAt": {
+                                                                    "type": "number"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "required": [
+                                                                "id",
+                                                                "companyId",
+                                                                "companySlug",
+                                                                "properties",
+                                                                "createdAt",
+                                                                "updatedAt"
+                                                            ]
+                                                        }
+                                                    },
+                                                    "additionalProperties": true
+                                                }
+                                            ],
+                                            "additionalProperties": true
                                         }
                                     }
                                 }
@@ -17163,6 +17545,388 @@
                                                                     }
                                                                 },
                                                                 "additionalProperties": true
+                                                            },
+                                                            "ILeadChatSelectionProperties": {
+                                                                "title": "ILeadChatSelectionProperties",
+                                                                "description": "Hydrated lead in front_selection_context, as decoded from AgentCore memory retrieving (LangGraph checkpoint writes). Same fields as org storage search leads, but editionsHistory is omitted before agent invocation.",
+                                                                "allOf": [
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadUpdateProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "isCreation": {
+                                                                                "type": "boolean",
+                                                                                "description": "Indicates if the lead is created or inserted"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadMetaProperties",
+                                                                        "additionalProperties": true,
+                                                                        "required": [
+                                                                            "id"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IUniqueLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "required": [
+                                                                            "linkedinProfileSlug"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "linkedinProfileSlug": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IInferrableLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "linkedinCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "twitterProfileHandle": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinPreviousCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinSchoolCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinPreviousSchoolCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "salesNavigatorProfileId": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "salesNavigatorCompanyId": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IEditableLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "firstName": {
+                                                                                "type": "string",
+                                                                                "description": "lead firstName"
+                                                                            },
+                                                                            "lastName": {
+                                                                                "type": "string",
+                                                                                "description": "lead lastName"
+                                                                            },
+                                                                            "location": {
+                                                                                "type": "string",
+                                                                                "description": "lead location"
+                                                                            },
+                                                                            "civility": {
+                                                                                "type": "string",
+                                                                                "description": "lead civility"
+                                                                            },
+                                                                            "linkedinOpenProfile": {
+                                                                                "description": "lead linkedin profile is open",
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "linkedinIsHiringBadge": {
+                                                                                "type": "boolean",
+                                                                                "description": "lead linkedin is hiring badge"
+                                                                            },
+                                                                            "linkedinIsOpenToWorkBadge": {
+                                                                                "type": "boolean",
+                                                                                "description": "lead linkedin is open to work badge"
+                                                                            },
+                                                                            "professionalEmails": {
+                                                                                "type": "array",
+                                                                                "description": "lead professional emails",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "personalEmails": {
+                                                                                "type": "array",
+                                                                                "description": "lead personal emails",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "phoneNumbers": {
+                                                                                "type": "array",
+                                                                                "description": "lead phone numbers",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "websites": {
+                                                                                "type": "array",
+                                                                                "description": "lead websites",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "companyName": {
+                                                                                "type": "string",
+                                                                                "description": "lead company"
+                                                                            },
+                                                                            "companyWebsite": {
+                                                                                "type": "string",
+                                                                                "description": "lead company website"
+                                                                            },
+                                                                            "linkedinCompanyId": {
+                                                                                "type": "string",
+                                                                                "description": "linkedin company id"
+                                                                            },
+                                                                            "linkedinProfileId": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile id"
+                                                                            },
+                                                                            "linkedinProfileUrn": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile urn"
+                                                                            },
+                                                                            "linkedinProfileImageUrn": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile picture image urn"
+                                                                            },
+                                                                            "linkedinProfileImageUrl": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile picture image url"
+                                                                            },
+                                                                            "linkedinHeadline": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile headline"
+                                                                            },
+                                                                            "linkedinJobTitle": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job title"
+                                                                            },
+                                                                            "linkedinJobDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job date range"
+                                                                            },
+                                                                            "linkedinJobLocation": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job location"
+                                                                            },
+                                                                            "companyIndustry": {
+                                                                                "type": "string",
+                                                                                "description": "industry of the lead's company"
+                                                                            },
+                                                                            "linkedinFollowersCount": {
+                                                                                "type": "number",
+                                                                                "description": "lead linkedin followers count"
+                                                                            },
+                                                                            "linkedinDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin description"
+                                                                            },
+                                                                            "linkedinJobDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job description"
+                                                                            },
+                                                                            "linkedinPreviousJobDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous job description"
+                                                                            },
+                                                                            "linkedinSkillsLabel": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin skills label"
+                                                                            },
+                                                                            "previousCompanyName": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous company name"
+                                                                            },
+                                                                            "linkedinPreviousJobTitle": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job title"
+                                                                            },
+                                                                            "linkedinPreviousJobDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job date range"
+                                                                            },
+                                                                            "linkedinPreviousJobLocation": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job location"
+                                                                            },
+                                                                            "linkedinSchoolName": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school name"
+                                                                            },
+                                                                            "linkedinPreviousSchoolName": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school name"
+                                                                            },
+                                                                            "linkedinSchoolDegree": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school degree"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDegree": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school degree"
+                                                                            },
+                                                                            "linkedinSchoolDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school date range"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school date range"
+                                                                            },
+                                                                            "linkedinSchoolDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school description"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school description"
+                                                                            },
+                                                                            "linkedinAccountRelativeProperties": {
+                                                                                "type": "array",
+                                                                                "title": "ILeadLinkedInAccountRelativeProperties",
+                                                                                "description": "Collection of Lead LinkedIn properties grouped by scraping LinkedIn user",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "properties": {
+                                                                                        "sourceUserId": {
+                                                                                            "description": "Source LinkedIn profile id (user who scraped)",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "connectionDegree": {
+                                                                                            "description": "Lead LinkedIn connection degree",
+                                                                                            "type": "integer",
+                                                                                            "minimum": -1,
+                                                                                            "maximum": 3
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "sourceUserId"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "crmAccountRelativeProperties": {
+                                                                                "type": "array",
+                                                                                "title": "ILeadCrmAccountRelativeProperties",
+                                                                                "description": "Collection of CRM related properties grouped by CRM name (contains only one item per CRM)",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "properties": {
+                                                                                        "crmContactId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "crmAccountId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "crmName": {
+                                                                                            "type": "string",
+                                                                                            "enum": [
+                                                                                                "hubspot",
+                                                                                                "pipedrive",
+                                                                                                "salesforce"
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "additionalProperties": {
+                                                                                        "type": [
+                                                                                            "string",
+                                                                                            "boolean",
+                                                                                            "number"
+                                                                                        ]
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "crmAccountId",
+                                                                                        "crmContactId",
+                                                                                        "crmName"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "audienceOfLeads": {
+                                                                                "type": "array",
+                                                                                "description": "list of lead ids this lead is an audience of",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadMetadataProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "metadata": {
+                                                                                "type": "object",
+                                                                                "description": "metadata for the lead",
+                                                                                "additionalProperties": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadAiGeneratedProperties",
+                                                                        "properties": {
+                                                                            "aiGeneratedProperties": {
+                                                                                "type": "object",
+                                                                                "description": "AI generated properties",
+                                                                                "additionalProperties": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": true
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ICompanyProperties",
+                                                                        "properties": {
+                                                                            "company": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "companyId": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "companySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "properties": {
+                                                                                        "type": "object"
+                                                                                    },
+                                                                                    "createdAt": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "updatedAt": {
+                                                                                        "type": "number"
+                                                                                    }
+                                                                                },
+                                                                                "additionalProperties": false,
+                                                                                "required": [
+                                                                                    "id",
+                                                                                    "companyId",
+                                                                                    "companySlug",
+                                                                                    "properties",
+                                                                                    "createdAt",
+                                                                                    "updatedAt"
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": true
+                                                                    }
+                                                                ],
+                                                                "additionalProperties": true
                                                             }
                                                         }
                                                     }
@@ -18179,6 +18943,388 @@
                                                                 ]
                                                             }
                                                         },
+                                                        "additionalProperties": true
+                                                    },
+                                                    "ILeadChatSelectionProperties": {
+                                                        "title": "ILeadChatSelectionProperties",
+                                                        "description": "Hydrated lead in front_selection_context, as decoded from AgentCore memory retrieving (LangGraph checkpoint writes). Same fields as org storage search leads, but editionsHistory is omitted before agent invocation.",
+                                                        "allOf": [
+                                                            {
+                                                                "type": "object",
+                                                                "title": "ILeadUpdateProperties",
+                                                                "additionalProperties": true,
+                                                                "properties": {
+                                                                    "isCreation": {
+                                                                        "type": "boolean",
+                                                                        "description": "Indicates if the lead is created or inserted"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "ILeadMetaProperties",
+                                                                "additionalProperties": true,
+                                                                "required": [
+                                                                    "id"
+                                                                ],
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "IUniqueLeadProperties",
+                                                                "additionalProperties": true,
+                                                                "required": [
+                                                                    "linkedinProfileSlug"
+                                                                ],
+                                                                "properties": {
+                                                                    "linkedinProfileSlug": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "IInferrableLeadProperties",
+                                                                "additionalProperties": true,
+                                                                "properties": {
+                                                                    "linkedinCompanySlug": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "twitterProfileHandle": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "linkedinPreviousCompanySlug": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "linkedinSchoolCompanySlug": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "linkedinPreviousSchoolCompanySlug": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "salesNavigatorProfileId": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "salesNavigatorCompanyId": {
+                                                                        "type": "string"
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "IEditableLeadProperties",
+                                                                "additionalProperties": true,
+                                                                "properties": {
+                                                                    "firstName": {
+                                                                        "type": "string",
+                                                                        "description": "lead firstName"
+                                                                    },
+                                                                    "lastName": {
+                                                                        "type": "string",
+                                                                        "description": "lead lastName"
+                                                                    },
+                                                                    "location": {
+                                                                        "type": "string",
+                                                                        "description": "lead location"
+                                                                    },
+                                                                    "civility": {
+                                                                        "type": "string",
+                                                                        "description": "lead civility"
+                                                                    },
+                                                                    "linkedinOpenProfile": {
+                                                                        "description": "lead linkedin profile is open",
+                                                                        "type": "boolean"
+                                                                    },
+                                                                    "linkedinIsHiringBadge": {
+                                                                        "type": "boolean",
+                                                                        "description": "lead linkedin is hiring badge"
+                                                                    },
+                                                                    "linkedinIsOpenToWorkBadge": {
+                                                                        "type": "boolean",
+                                                                        "description": "lead linkedin is open to work badge"
+                                                                    },
+                                                                    "professionalEmails": {
+                                                                        "type": "array",
+                                                                        "description": "lead professional emails",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "personalEmails": {
+                                                                        "type": "array",
+                                                                        "description": "lead personal emails",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "phoneNumbers": {
+                                                                        "type": "array",
+                                                                        "description": "lead phone numbers",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "websites": {
+                                                                        "type": "array",
+                                                                        "description": "lead websites",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "companyName": {
+                                                                        "type": "string",
+                                                                        "description": "lead company"
+                                                                    },
+                                                                    "companyWebsite": {
+                                                                        "type": "string",
+                                                                        "description": "lead company website"
+                                                                    },
+                                                                    "linkedinCompanyId": {
+                                                                        "type": "string",
+                                                                        "description": "linkedin company id"
+                                                                    },
+                                                                    "linkedinProfileId": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile id"
+                                                                    },
+                                                                    "linkedinProfileUrn": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrn": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image urn"
+                                                                    },
+                                                                    "linkedinProfileImageUrl": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile picture image url"
+                                                                    },
+                                                                    "linkedinHeadline": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin profile headline"
+                                                                    },
+                                                                    "linkedinJobTitle": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin job title"
+                                                                    },
+                                                                    "linkedinJobDateRange": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin job date range"
+                                                                    },
+                                                                    "linkedinJobLocation": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin job location"
+                                                                    },
+                                                                    "companyIndustry": {
+                                                                        "type": "string",
+                                                                        "description": "industry of the lead's company"
+                                                                    },
+                                                                    "linkedinFollowersCount": {
+                                                                        "type": "number",
+                                                                        "description": "lead linkedin followers count"
+                                                                    },
+                                                                    "linkedinDescription": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin description"
+                                                                    },
+                                                                    "linkedinJobDescription": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin job description"
+                                                                    },
+                                                                    "linkedinPreviousJobDescription": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin previous job description"
+                                                                    },
+                                                                    "linkedinSkillsLabel": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin skills label"
+                                                                    },
+                                                                    "previousCompanyName": {
+                                                                        "type": "string",
+                                                                        "description": "lead previous company name"
+                                                                    },
+                                                                    "linkedinPreviousJobTitle": {
+                                                                        "type": "string",
+                                                                        "description": "lead previous job title"
+                                                                    },
+                                                                    "linkedinPreviousJobDateRange": {
+                                                                        "type": "string",
+                                                                        "description": "lead previous job date range"
+                                                                    },
+                                                                    "linkedinPreviousJobLocation": {
+                                                                        "type": "string",
+                                                                        "description": "lead previous job location"
+                                                                    },
+                                                                    "linkedinSchoolName": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin school name"
+                                                                    },
+                                                                    "linkedinPreviousSchoolName": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin previous school name"
+                                                                    },
+                                                                    "linkedinSchoolDegree": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin school degree"
+                                                                    },
+                                                                    "linkedinPreviousSchoolDegree": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin previous school degree"
+                                                                    },
+                                                                    "linkedinSchoolDateRange": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin school date range"
+                                                                    },
+                                                                    "linkedinPreviousSchoolDateRange": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin previous school date range"
+                                                                    },
+                                                                    "linkedinSchoolDescription": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin school description"
+                                                                    },
+                                                                    "linkedinPreviousSchoolDescription": {
+                                                                        "type": "string",
+                                                                        "description": "lead linkedin previous school description"
+                                                                    },
+                                                                    "linkedinAccountRelativeProperties": {
+                                                                        "type": "array",
+                                                                        "title": "ILeadLinkedInAccountRelativeProperties",
+                                                                        "description": "Collection of Lead LinkedIn properties grouped by scraping LinkedIn user",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "sourceUserId": {
+                                                                                    "description": "Source LinkedIn profile id (user who scraped)",
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "connectionDegree": {
+                                                                                    "description": "Lead LinkedIn connection degree",
+                                                                                    "type": "integer",
+                                                                                    "minimum": -1,
+                                                                                    "maximum": 3
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "sourceUserId"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    "crmAccountRelativeProperties": {
+                                                                        "type": "array",
+                                                                        "title": "ILeadCrmAccountRelativeProperties",
+                                                                        "description": "Collection of CRM related properties grouped by CRM name (contains only one item per CRM)",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "crmContactId": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "crmAccountId": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "crmName": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "hubspot",
+                                                                                        "pipedrive",
+                                                                                        "salesforce"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": {
+                                                                                "type": [
+                                                                                    "string",
+                                                                                    "boolean",
+                                                                                    "number"
+                                                                                ]
+                                                                            },
+                                                                            "required": [
+                                                                                "crmAccountId",
+                                                                                "crmContactId",
+                                                                                "crmName"
+                                                                            ]
+                                                                        }
+                                                                    },
+                                                                    "audienceOfLeads": {
+                                                                        "type": "array",
+                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                        "items": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "ILeadMetadataProperties",
+                                                                "additionalProperties": true,
+                                                                "properties": {
+                                                                    "metadata": {
+                                                                        "type": "object",
+                                                                        "description": "metadata for the lead",
+                                                                        "additionalProperties": true
+                                                                    }
+                                                                }
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "ILeadAiGeneratedProperties",
+                                                                "properties": {
+                                                                    "aiGeneratedProperties": {
+                                                                        "type": "object",
+                                                                        "description": "AI generated properties",
+                                                                        "additionalProperties": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "additionalProperties": true
+                                                            },
+                                                            {
+                                                                "type": "object",
+                                                                "title": "ICompanyProperties",
+                                                                "properties": {
+                                                                    "company": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "companyId": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "companySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "properties": {
+                                                                                "type": "object"
+                                                                            },
+                                                                            "createdAt": {
+                                                                                "type": "number"
+                                                                            },
+                                                                            "updatedAt": {
+                                                                                "type": "number"
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false,
+                                                                        "required": [
+                                                                            "id",
+                                                                            "companyId",
+                                                                            "companySlug",
+                                                                            "properties",
+                                                                            "createdAt",
+                                                                            "updatedAt"
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "additionalProperties": true
+                                                            }
+                                                        ],
                                                         "additionalProperties": true
                                                     }
                                                 }
@@ -19765,6 +20911,388 @@
                                                                     }
                                                                 },
                                                                 "additionalProperties": true
+                                                            },
+                                                            "ILeadChatSelectionProperties": {
+                                                                "title": "ILeadChatSelectionProperties",
+                                                                "description": "Hydrated lead in front_selection_context, as decoded from AgentCore memory retrieving (LangGraph checkpoint writes). Same fields as org storage search leads, but editionsHistory is omitted before agent invocation.",
+                                                                "allOf": [
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadUpdateProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "isCreation": {
+                                                                                "type": "boolean",
+                                                                                "description": "Indicates if the lead is created or inserted"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadMetaProperties",
+                                                                        "additionalProperties": true,
+                                                                        "required": [
+                                                                            "id"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IUniqueLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "required": [
+                                                                            "linkedinProfileSlug"
+                                                                        ],
+                                                                        "properties": {
+                                                                            "linkedinProfileSlug": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IInferrableLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "linkedinCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "twitterProfileHandle": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinPreviousCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinSchoolCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "linkedinPreviousSchoolCompanySlug": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "salesNavigatorProfileId": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "salesNavigatorCompanyId": {
+                                                                                "type": "string"
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "IEditableLeadProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "firstName": {
+                                                                                "type": "string",
+                                                                                "description": "lead firstName"
+                                                                            },
+                                                                            "lastName": {
+                                                                                "type": "string",
+                                                                                "description": "lead lastName"
+                                                                            },
+                                                                            "location": {
+                                                                                "type": "string",
+                                                                                "description": "lead location"
+                                                                            },
+                                                                            "civility": {
+                                                                                "type": "string",
+                                                                                "description": "lead civility"
+                                                                            },
+                                                                            "linkedinOpenProfile": {
+                                                                                "description": "lead linkedin profile is open",
+                                                                                "type": "boolean"
+                                                                            },
+                                                                            "linkedinIsHiringBadge": {
+                                                                                "type": "boolean",
+                                                                                "description": "lead linkedin is hiring badge"
+                                                                            },
+                                                                            "linkedinIsOpenToWorkBadge": {
+                                                                                "type": "boolean",
+                                                                                "description": "lead linkedin is open to work badge"
+                                                                            },
+                                                                            "professionalEmails": {
+                                                                                "type": "array",
+                                                                                "description": "lead professional emails",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "personalEmails": {
+                                                                                "type": "array",
+                                                                                "description": "lead personal emails",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "phoneNumbers": {
+                                                                                "type": "array",
+                                                                                "description": "lead phone numbers",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "websites": {
+                                                                                "type": "array",
+                                                                                "description": "lead websites",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            },
+                                                                            "companyName": {
+                                                                                "type": "string",
+                                                                                "description": "lead company"
+                                                                            },
+                                                                            "companyWebsite": {
+                                                                                "type": "string",
+                                                                                "description": "lead company website"
+                                                                            },
+                                                                            "linkedinCompanyId": {
+                                                                                "type": "string",
+                                                                                "description": "linkedin company id"
+                                                                            },
+                                                                            "linkedinProfileId": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile id"
+                                                                            },
+                                                                            "linkedinProfileUrn": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile urn"
+                                                                            },
+                                                                            "linkedinProfileImageUrn": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile picture image urn"
+                                                                            },
+                                                                            "linkedinProfileImageUrl": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile picture image url"
+                                                                            },
+                                                                            "linkedinHeadline": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin profile headline"
+                                                                            },
+                                                                            "linkedinJobTitle": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job title"
+                                                                            },
+                                                                            "linkedinJobDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job date range"
+                                                                            },
+                                                                            "linkedinJobLocation": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job location"
+                                                                            },
+                                                                            "companyIndustry": {
+                                                                                "type": "string",
+                                                                                "description": "industry of the lead's company"
+                                                                            },
+                                                                            "linkedinFollowersCount": {
+                                                                                "type": "number",
+                                                                                "description": "lead linkedin followers count"
+                                                                            },
+                                                                            "linkedinDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin description"
+                                                                            },
+                                                                            "linkedinJobDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin job description"
+                                                                            },
+                                                                            "linkedinPreviousJobDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous job description"
+                                                                            },
+                                                                            "linkedinSkillsLabel": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin skills label"
+                                                                            },
+                                                                            "previousCompanyName": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous company name"
+                                                                            },
+                                                                            "linkedinPreviousJobTitle": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job title"
+                                                                            },
+                                                                            "linkedinPreviousJobDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job date range"
+                                                                            },
+                                                                            "linkedinPreviousJobLocation": {
+                                                                                "type": "string",
+                                                                                "description": "lead previous job location"
+                                                                            },
+                                                                            "linkedinSchoolName": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school name"
+                                                                            },
+                                                                            "linkedinPreviousSchoolName": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school name"
+                                                                            },
+                                                                            "linkedinSchoolDegree": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school degree"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDegree": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school degree"
+                                                                            },
+                                                                            "linkedinSchoolDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school date range"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDateRange": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school date range"
+                                                                            },
+                                                                            "linkedinSchoolDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin school description"
+                                                                            },
+                                                                            "linkedinPreviousSchoolDescription": {
+                                                                                "type": "string",
+                                                                                "description": "lead linkedin previous school description"
+                                                                            },
+                                                                            "linkedinAccountRelativeProperties": {
+                                                                                "type": "array",
+                                                                                "title": "ILeadLinkedInAccountRelativeProperties",
+                                                                                "description": "Collection of Lead LinkedIn properties grouped by scraping LinkedIn user",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "properties": {
+                                                                                        "sourceUserId": {
+                                                                                            "description": "Source LinkedIn profile id (user who scraped)",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "connectionDegree": {
+                                                                                            "description": "Lead LinkedIn connection degree",
+                                                                                            "type": "integer",
+                                                                                            "minimum": -1,
+                                                                                            "maximum": 3
+                                                                                        }
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "sourceUserId"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "crmAccountRelativeProperties": {
+                                                                                "type": "array",
+                                                                                "title": "ILeadCrmAccountRelativeProperties",
+                                                                                "description": "Collection of CRM related properties grouped by CRM name (contains only one item per CRM)",
+                                                                                "items": {
+                                                                                    "type": "object",
+                                                                                    "properties": {
+                                                                                        "crmContactId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "crmAccountId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "crmName": {
+                                                                                            "type": "string",
+                                                                                            "enum": [
+                                                                                                "hubspot",
+                                                                                                "pipedrive",
+                                                                                                "salesforce"
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "additionalProperties": {
+                                                                                        "type": [
+                                                                                            "string",
+                                                                                            "boolean",
+                                                                                            "number"
+                                                                                        ]
+                                                                                    },
+                                                                                    "required": [
+                                                                                        "crmAccountId",
+                                                                                        "crmContactId",
+                                                                                        "crmName"
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "audienceOfLeads": {
+                                                                                "type": "array",
+                                                                                "description": "list of lead ids this lead is an audience of",
+                                                                                "items": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadMetadataProperties",
+                                                                        "additionalProperties": true,
+                                                                        "properties": {
+                                                                            "metadata": {
+                                                                                "type": "object",
+                                                                                "description": "metadata for the lead",
+                                                                                "additionalProperties": true
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ILeadAiGeneratedProperties",
+                                                                        "properties": {
+                                                                            "aiGeneratedProperties": {
+                                                                                "type": "object",
+                                                                                "description": "AI generated properties",
+                                                                                "additionalProperties": {
+                                                                                    "type": "string"
+                                                                                }
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": true
+                                                                    },
+                                                                    {
+                                                                        "type": "object",
+                                                                        "title": "ICompanyProperties",
+                                                                        "properties": {
+                                                                            "company": {
+                                                                                "type": "object",
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "companyId": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "companySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "properties": {
+                                                                                        "type": "object"
+                                                                                    },
+                                                                                    "createdAt": {
+                                                                                        "type": "number"
+                                                                                    },
+                                                                                    "updatedAt": {
+                                                                                        "type": "number"
+                                                                                    }
+                                                                                },
+                                                                                "additionalProperties": false,
+                                                                                "required": [
+                                                                                    "id",
+                                                                                    "companyId",
+                                                                                    "companySlug",
+                                                                                    "properties",
+                                                                                    "createdAt",
+                                                                                    "updatedAt"
+                                                                                ]
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": true
+                                                                    }
+                                                                ],
+                                                                "additionalProperties": true
                                                             }
                                                         }
                                                     }
@@ -20815,6 +22343,388 @@
                                                                                 ]
                                                                             }
                                                                         },
+                                                                        "additionalProperties": true
+                                                                    },
+                                                                    "ILeadChatSelectionProperties": {
+                                                                        "title": "ILeadChatSelectionProperties",
+                                                                        "description": "Hydrated lead in front_selection_context, as decoded from AgentCore memory retrieving (LangGraph checkpoint writes). Same fields as org storage search leads, but editionsHistory is omitted before agent invocation.",
+                                                                        "allOf": [
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "ILeadUpdateProperties",
+                                                                                "additionalProperties": true,
+                                                                                "properties": {
+                                                                                    "isCreation": {
+                                                                                        "type": "boolean",
+                                                                                        "description": "Indicates if the lead is created or inserted"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "ILeadMetaProperties",
+                                                                                "additionalProperties": true,
+                                                                                "required": [
+                                                                                    "id"
+                                                                                ],
+                                                                                "properties": {
+                                                                                    "id": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "IUniqueLeadProperties",
+                                                                                "additionalProperties": true,
+                                                                                "required": [
+                                                                                    "linkedinProfileSlug"
+                                                                                ],
+                                                                                "properties": {
+                                                                                    "linkedinProfileSlug": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "IInferrableLeadProperties",
+                                                                                "additionalProperties": true,
+                                                                                "properties": {
+                                                                                    "linkedinCompanySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "twitterProfileHandle": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "linkedinPreviousCompanySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "linkedinSchoolCompanySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "linkedinPreviousSchoolCompanySlug": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "salesNavigatorProfileId": {
+                                                                                        "type": "string"
+                                                                                    },
+                                                                                    "salesNavigatorCompanyId": {
+                                                                                        "type": "string"
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "IEditableLeadProperties",
+                                                                                "additionalProperties": true,
+                                                                                "properties": {
+                                                                                    "firstName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead firstName"
+                                                                                    },
+                                                                                    "lastName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead lastName"
+                                                                                    },
+                                                                                    "location": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead location"
+                                                                                    },
+                                                                                    "civility": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead civility"
+                                                                                    },
+                                                                                    "linkedinOpenProfile": {
+                                                                                        "description": "lead linkedin profile is open",
+                                                                                        "type": "boolean"
+                                                                                    },
+                                                                                    "linkedinIsHiringBadge": {
+                                                                                        "type": "boolean",
+                                                                                        "description": "lead linkedin is hiring badge"
+                                                                                    },
+                                                                                    "linkedinIsOpenToWorkBadge": {
+                                                                                        "type": "boolean",
+                                                                                        "description": "lead linkedin is open to work badge"
+                                                                                    },
+                                                                                    "professionalEmails": {
+                                                                                        "type": "array",
+                                                                                        "description": "lead professional emails",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "personalEmails": {
+                                                                                        "type": "array",
+                                                                                        "description": "lead personal emails",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "phoneNumbers": {
+                                                                                        "type": "array",
+                                                                                        "description": "lead phone numbers",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "websites": {
+                                                                                        "type": "array",
+                                                                                        "description": "lead websites",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    },
+                                                                                    "companyName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead company"
+                                                                                    },
+                                                                                    "companyWebsite": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead company website"
+                                                                                    },
+                                                                                    "linkedinCompanyId": {
+                                                                                        "type": "string",
+                                                                                        "description": "linkedin company id"
+                                                                                    },
+                                                                                    "linkedinProfileId": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin profile id"
+                                                                                    },
+                                                                                    "linkedinProfileUrn": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin profile urn"
+                                                                                    },
+                                                                                    "linkedinProfileImageUrn": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin profile picture image urn"
+                                                                                    },
+                                                                                    "linkedinProfileImageUrl": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin profile picture image url"
+                                                                                    },
+                                                                                    "linkedinHeadline": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin profile headline"
+                                                                                    },
+                                                                                    "linkedinJobTitle": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin job title"
+                                                                                    },
+                                                                                    "linkedinJobDateRange": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin job date range"
+                                                                                    },
+                                                                                    "linkedinJobLocation": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin job location"
+                                                                                    },
+                                                                                    "companyIndustry": {
+                                                                                        "type": "string",
+                                                                                        "description": "industry of the lead's company"
+                                                                                    },
+                                                                                    "linkedinFollowersCount": {
+                                                                                        "type": "number",
+                                                                                        "description": "lead linkedin followers count"
+                                                                                    },
+                                                                                    "linkedinDescription": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin description"
+                                                                                    },
+                                                                                    "linkedinJobDescription": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin job description"
+                                                                                    },
+                                                                                    "linkedinPreviousJobDescription": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin previous job description"
+                                                                                    },
+                                                                                    "linkedinSkillsLabel": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin skills label"
+                                                                                    },
+                                                                                    "previousCompanyName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead previous company name"
+                                                                                    },
+                                                                                    "linkedinPreviousJobTitle": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead previous job title"
+                                                                                    },
+                                                                                    "linkedinPreviousJobDateRange": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead previous job date range"
+                                                                                    },
+                                                                                    "linkedinPreviousJobLocation": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead previous job location"
+                                                                                    },
+                                                                                    "linkedinSchoolName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin school name"
+                                                                                    },
+                                                                                    "linkedinPreviousSchoolName": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin previous school name"
+                                                                                    },
+                                                                                    "linkedinSchoolDegree": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin school degree"
+                                                                                    },
+                                                                                    "linkedinPreviousSchoolDegree": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin previous school degree"
+                                                                                    },
+                                                                                    "linkedinSchoolDateRange": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin school date range"
+                                                                                    },
+                                                                                    "linkedinPreviousSchoolDateRange": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin previous school date range"
+                                                                                    },
+                                                                                    "linkedinSchoolDescription": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin school description"
+                                                                                    },
+                                                                                    "linkedinPreviousSchoolDescription": {
+                                                                                        "type": "string",
+                                                                                        "description": "lead linkedin previous school description"
+                                                                                    },
+                                                                                    "linkedinAccountRelativeProperties": {
+                                                                                        "type": "array",
+                                                                                        "title": "ILeadLinkedInAccountRelativeProperties",
+                                                                                        "description": "Collection of Lead LinkedIn properties grouped by scraping LinkedIn user",
+                                                                                        "items": {
+                                                                                            "type": "object",
+                                                                                            "properties": {
+                                                                                                "sourceUserId": {
+                                                                                                    "description": "Source LinkedIn profile id (user who scraped)",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "connectionDegree": {
+                                                                                                    "description": "Lead LinkedIn connection degree",
+                                                                                                    "type": "integer",
+                                                                                                    "minimum": -1,
+                                                                                                    "maximum": 3
+                                                                                                }
+                                                                                            },
+                                                                                            "required": [
+                                                                                                "sourceUserId"
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "crmAccountRelativeProperties": {
+                                                                                        "type": "array",
+                                                                                        "title": "ILeadCrmAccountRelativeProperties",
+                                                                                        "description": "Collection of CRM related properties grouped by CRM name (contains only one item per CRM)",
+                                                                                        "items": {
+                                                                                            "type": "object",
+                                                                                            "properties": {
+                                                                                                "crmContactId": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "crmAccountId": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "crmName": {
+                                                                                                    "type": "string",
+                                                                                                    "enum": [
+                                                                                                        "hubspot",
+                                                                                                        "pipedrive",
+                                                                                                        "salesforce"
+                                                                                                    ]
+                                                                                                }
+                                                                                            },
+                                                                                            "additionalProperties": {
+                                                                                                "type": [
+                                                                                                    "string",
+                                                                                                    "boolean",
+                                                                                                    "number"
+                                                                                                ]
+                                                                                            },
+                                                                                            "required": [
+                                                                                                "crmAccountId",
+                                                                                                "crmContactId",
+                                                                                                "crmName"
+                                                                                            ]
+                                                                                        }
+                                                                                    },
+                                                                                    "audienceOfLeads": {
+                                                                                        "type": "array",
+                                                                                        "description": "list of lead ids this lead is an audience of",
+                                                                                        "items": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "ILeadMetadataProperties",
+                                                                                "additionalProperties": true,
+                                                                                "properties": {
+                                                                                    "metadata": {
+                                                                                        "type": "object",
+                                                                                        "description": "metadata for the lead",
+                                                                                        "additionalProperties": true
+                                                                                    }
+                                                                                }
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "ILeadAiGeneratedProperties",
+                                                                                "properties": {
+                                                                                    "aiGeneratedProperties": {
+                                                                                        "type": "object",
+                                                                                        "description": "AI generated properties",
+                                                                                        "additionalProperties": {
+                                                                                            "type": "string"
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "additionalProperties": true
+                                                                            },
+                                                                            {
+                                                                                "type": "object",
+                                                                                "title": "ICompanyProperties",
+                                                                                "properties": {
+                                                                                    "company": {
+                                                                                        "type": "object",
+                                                                                        "properties": {
+                                                                                            "id": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "companyId": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "companySlug": {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            "properties": {
+                                                                                                "type": "object"
+                                                                                            },
+                                                                                            "createdAt": {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            "updatedAt": {
+                                                                                                "type": "number"
+                                                                                            }
+                                                                                        },
+                                                                                        "additionalProperties": false,
+                                                                                        "required": [
+                                                                                            "id",
+                                                                                            "companyId",
+                                                                                            "companySlug",
+                                                                                            "properties",
+                                                                                            "createdAt",
+                                                                                            "updatedAt"
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                "additionalProperties": true
+                                                                            }
+                                                                        ],
                                                                         "additionalProperties": true
                                                                     }
                                                                 }
