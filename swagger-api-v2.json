@@ -13854,6 +13854,10 @@
                                                 "type": "string",
                                                 "maxLength": 500,
                                                 "description": "reCAPTCHA v3 page action."
+                                            },
+                                            "enterprise": {
+                                                "type": "boolean",
+                                                "description": "Solve the challenge as reCAPTCHA Enterprise. Only honored for reCAPTCHA v2 requests."
                                             }
                                         },
                                         "additionalProperties": false,
@@ -13882,6 +13886,10 @@
                                                     "v2"
                                                 ],
                                                 "description": "reCAPTCHA version."
+                                            },
+                                            "enterprise": {
+                                                "type": "boolean",
+                                                "description": "Solve the challenge as reCAPTCHA Enterprise instead of standard reCAPTCHA v2."
                                             }
                                         },
                                         "additionalProperties": false,
