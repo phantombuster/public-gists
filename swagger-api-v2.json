@@ -6048,6 +6048,9 @@
                                             "isDeprecated": {
                                                 "type": "boolean"
                                             },
+                                            "isBaasCompatible": {
+                                                "type": "boolean"
+                                            },
                                             "personalUseOnly": {
                                                 "type": "boolean"
                                             },
@@ -7624,6 +7627,9 @@
                                                     "type": "boolean"
                                                 },
                                                 "isDeprecated": {
+                                                    "type": "boolean"
+                                                },
+                                                "isBaasCompatible": {
                                                     "type": "boolean"
                                                 },
                                                 "personalUseOnly": {
@@ -9679,6 +9685,9 @@
                                                     "isDeprecated": {
                                                         "type": "boolean"
                                                     },
+                                                    "isBaasCompatible": {
+                                                        "type": "boolean"
+                                                    },
                                                     "personalUseOnly": {
                                                         "type": "boolean"
                                                     },
@@ -11551,6 +11560,9 @@
                                                         "type": "boolean"
                                                     },
                                                     "isDeprecated": {
+                                                        "type": "boolean"
+                                                    },
+                                                    "isBaasCompatible": {
                                                         "type": "boolean"
                                                     },
                                                     "personalUseOnly": {
