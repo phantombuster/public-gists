@@ -4644,9 +4644,6 @@
                                                     },
                                                     "uniqueItems": true
                                                 },
-                                                "disabled": {
-                                                    "type": "boolean"
-                                                },
                                                 "standalone": {
                                                     "type": "boolean"
                                                 },
@@ -4656,6 +4653,15 @@
                                                 }
                                             },
                                             "additionalProperties": false
+                                        },
+                                        "visibleInChat": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                    "tealde"
+                                                ]
+                                            }
                                         }
                                     },
                                     "additionalProperties": false,
@@ -7347,9 +7353,6 @@
                                                         },
                                                         "uniqueItems": true
                                                     },
-                                                    "disabled": {
-                                                        "type": "boolean"
-                                                    },
                                                     "standalone": {
                                                         "type": "boolean"
                                                     },
@@ -7359,6 +7362,15 @@
                                                     }
                                                 },
                                                 "additionalProperties": false
+                                            },
+                                            "visibleInChat": {
+                                                "type": "array",
+                                                "items": {
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "tealde"
+                                                    ]
+                                                }
                                             }
                                         },
                                         "additionalProperties": false,
@@ -8928,9 +8940,6 @@
                                                             },
                                                             "uniqueItems": true
                                                         },
-                                                        "disabled": {
-                                                            "type": "boolean"
-                                                        },
                                                         "standalone": {
                                                             "type": "boolean"
                                                         },
@@ -8940,6 +8949,15 @@
                                                         }
                                                     },
                                                     "additionalProperties": false
+                                                },
+                                                "visibleInChat": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "tealde"
+                                                        ]
+                                                    }
                                                 }
                                             },
                                             "additionalProperties": false,
@@ -10984,9 +11002,6 @@
                                                                 },
                                                                 "uniqueItems": true
                                                             },
-                                                            "disabled": {
-                                                                "type": "boolean"
-                                                            },
                                                             "standalone": {
                                                                 "type": "boolean"
                                                             },
@@ -10996,6 +11011,15 @@
                                                             }
                                                         },
                                                         "additionalProperties": false
+                                                    },
+                                                    "visibleInChat": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "tealde"
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "additionalProperties": false,
@@ -12861,9 +12885,6 @@
                                                                 },
                                                                 "uniqueItems": true
                                                             },
-                                                            "disabled": {
-                                                                "type": "boolean"
-                                                            },
                                                             "standalone": {
                                                                 "type": "boolean"
                                                             },
@@ -12873,6 +12894,15 @@
                                                             }
                                                         },
                                                         "additionalProperties": false
+                                                    },
+                                                    "visibleInChat": {
+                                                        "type": "array",
+                                                        "items": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "tealde"
+                                                            ]
+                                                        }
                                                     }
                                                 },
                                                 "additionalProperties": false,
