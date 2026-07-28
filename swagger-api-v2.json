@@ -146,6 +146,9 @@
                                                 "newsletter": {
                                                     "type": "boolean"
                                                 },
+                                                "hasPixelTrackingConsent": {
+                                                    "type": "boolean"
+                                                },
                                                 "userTeam": {
                                                     "type": "string",
                                                     "nullable": true
@@ -610,6 +613,10 @@
                                     },
                                     "newsletter": {
                                         "description": "If set, you agree to subscribe to the newsletter.",
+                                        "type": "boolean"
+                                    },
+                                    "hasPixelTrackingConsent": {
+                                        "description": "If true, the user consents to tracking pixels measuring email opens for personalization purposes.",
                                         "type": "boolean"
                                     },
                                     "enabledExperiments": {
