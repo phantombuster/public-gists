@@ -4640,6 +4640,10 @@
                                             },
                                             "additionalProperties": false
                                         },
+                                        "defaultArgument": {
+                                            "type": "object",
+                                            "additionalProperties": true
+                                        },
                                         "recommenderMetadata": {
                                             "type": "object",
                                             "description": "Configuration for the AI recommender (campaign_agent) system to provide better phantoms suggestions",
