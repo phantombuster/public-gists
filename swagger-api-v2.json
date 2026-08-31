@@ -23866,6 +23866,392 @@
                     }
                 }
             }
+        },
+        "/scoring/fetch/{id}": {
+            "get": {
+                "description": "Fetch a single scoring definition by id.",
+                "tags": [
+                    "scoring"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Scoring definition successfully fetched.",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "title": "IScoringFetchResponse",
+                                    "allOf": [
+                                        {
+                                            "title": "IScoringDefinition",
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "name": {
+                                                    "type": "string",
+                                                    "maxLength": 100
+                                                },
+                                                "leadScorerAgentId": {
+                                                    "type": "string"
+                                                },
+                                                "configuration": {
+                                                    "type": "object",
+                                                    "description": "Scoring rules and signals evaluated by the LeadScorer agent, mirroring phantom-store's ScoringConfigurationSchema.",
+                                                    "properties": {
+                                                        "scoringRules": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "title": "IScoringRuleSet",
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "leadProperty": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "rules": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "title": "IScoringRule",
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "operator": {
+                                                                                    "title": "ScoringOperator",
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "isSet",
+                                                                                        "contains",
+                                                                                        "equals",
+                                                                                        "greaterThan",
+                                                                                        "lowerThan",
+                                                                                        "between",
+                                                                                        "greaterOrEquals",
+                                                                                        "lowerOrEquals",
+                                                                                        "betweenOrEquals",
+                                                                                        "beforeDateTime",
+                                                                                        "afterDateTime",
+                                                                                        "betweenDateTime",
+                                                                                        "beforeOrEqualsDateTime",
+                                                                                        "afterOrEqualsDateTime",
+                                                                                        "betweenOrEqualsDateTime"
+                                                                                    ]
+                                                                                },
+                                                                                "values": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "title": "ScoringRuleValue",
+                                                                                        "anyOf": [
+                                                                                            {
+                                                                                                "type": "string"
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "number"
+                                                                                            },
+                                                                                            {
+                                                                                                "type": "boolean"
+                                                                                            }
+                                                                                        ]
+                                                                                    }
+                                                                                },
+                                                                                "score": {
+                                                                                    "type": "number"
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "required": [
+                                                                                "operator",
+                                                                                "values",
+                                                                                "score"
+                                                                            ]
+                                                                        },
+                                                                        "maxItems": 20
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "required": [
+                                                                    "leadProperty",
+                                                                    "rules"
+                                                                ]
+                                                            },
+                                                            "maxItems": 50
+                                                        },
+                                                        "scoringSignals": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "title": "IScoringSignal",
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "name": {
+                                                                        "title": "ScoringSignalName",
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "hasPostedLast30Days",
+                                                                            "hasCommentedLast30Days",
+                                                                            "hasReactedLast30Days"
+                                                                        ]
+                                                                    },
+                                                                    "score": {
+                                                                        "type": "number"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "required": [
+                                                                    "name",
+                                                                    "score"
+                                                                ]
+                                                            },
+                                                            "maxItems": 20
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "scoringRules",
+                                                        "scoringSignals"
+                                                    ],
+                                                    "x-$defs": {
+                                                        "operator": {
+                                                            "title": "ScoringOperator",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "isSet",
+                                                                "contains",
+                                                                "equals",
+                                                                "greaterThan",
+                                                                "lowerThan",
+                                                                "between",
+                                                                "greaterOrEquals",
+                                                                "lowerOrEquals",
+                                                                "betweenOrEquals",
+                                                                "beforeDateTime",
+                                                                "afterDateTime",
+                                                                "betweenDateTime",
+                                                                "beforeOrEqualsDateTime",
+                                                                "afterOrEqualsDateTime",
+                                                                "betweenOrEqualsDateTime"
+                                                            ]
+                                                        },
+                                                        "ruleValue": {
+                                                            "title": "ScoringRuleValue",
+                                                            "anyOf": [
+                                                                {
+                                                                    "type": "string"
+                                                                },
+                                                                {
+                                                                    "type": "number"
+                                                                },
+                                                                {
+                                                                    "type": "boolean"
+                                                                }
+                                                            ]
+                                                        },
+                                                        "rule": {
+                                                            "title": "IScoringRule",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "operator": {
+                                                                    "title": "ScoringOperator",
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "isSet",
+                                                                        "contains",
+                                                                        "equals",
+                                                                        "greaterThan",
+                                                                        "lowerThan",
+                                                                        "between",
+                                                                        "greaterOrEquals",
+                                                                        "lowerOrEquals",
+                                                                        "betweenOrEquals",
+                                                                        "beforeDateTime",
+                                                                        "afterDateTime",
+                                                                        "betweenDateTime",
+                                                                        "beforeOrEqualsDateTime",
+                                                                        "afterOrEqualsDateTime",
+                                                                        "betweenOrEqualsDateTime"
+                                                                    ]
+                                                                },
+                                                                "values": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "title": "ScoringRuleValue",
+                                                                        "anyOf": [
+                                                                            {
+                                                                                "type": "string"
+                                                                            },
+                                                                            {
+                                                                                "type": "number"
+                                                                            },
+                                                                            {
+                                                                                "type": "boolean"
+                                                                            }
+                                                                        ]
+                                                                    }
+                                                                },
+                                                                "score": {
+                                                                    "type": "number"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "required": [
+                                                                "operator",
+                                                                "values",
+                                                                "score"
+                                                            ]
+                                                        },
+                                                        "ruleSet": {
+                                                            "title": "IScoringRuleSet",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "leadProperty": {
+                                                                    "type": "string"
+                                                                },
+                                                                "rules": {
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "title": "IScoringRule",
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "operator": {
+                                                                                "title": "ScoringOperator",
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "isSet",
+                                                                                    "contains",
+                                                                                    "equals",
+                                                                                    "greaterThan",
+                                                                                    "lowerThan",
+                                                                                    "between",
+                                                                                    "greaterOrEquals",
+                                                                                    "lowerOrEquals",
+                                                                                    "betweenOrEquals",
+                                                                                    "beforeDateTime",
+                                                                                    "afterDateTime",
+                                                                                    "betweenDateTime",
+                                                                                    "beforeOrEqualsDateTime",
+                                                                                    "afterOrEqualsDateTime",
+                                                                                    "betweenOrEqualsDateTime"
+                                                                                ]
+                                                                            },
+                                                                            "values": {
+                                                                                "type": "array",
+                                                                                "items": {
+                                                                                    "title": "ScoringRuleValue",
+                                                                                    "anyOf": [
+                                                                                        {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "number"
+                                                                                        },
+                                                                                        {
+                                                                                            "type": "boolean"
+                                                                                        }
+                                                                                    ]
+                                                                                }
+                                                                            },
+                                                                            "score": {
+                                                                                "type": "number"
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false,
+                                                                        "required": [
+                                                                            "operator",
+                                                                            "values",
+                                                                            "score"
+                                                                        ]
+                                                                    },
+                                                                    "maxItems": 20
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "required": [
+                                                                "leadProperty",
+                                                                "rules"
+                                                            ]
+                                                        },
+                                                        "signalName": {
+                                                            "title": "ScoringSignalName",
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "hasPostedLast30Days",
+                                                                "hasCommentedLast30Days",
+                                                                "hasReactedLast30Days"
+                                                            ]
+                                                        },
+                                                        "scoringSignal": {
+                                                            "title": "IScoringSignal",
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "name": {
+                                                                    "title": "ScoringSignalName",
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "hasPostedLast30Days",
+                                                                        "hasCommentedLast30Days",
+                                                                        "hasReactedLast30Days"
+                                                                    ]
+                                                                },
+                                                                "score": {
+                                                                    "type": "number"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "required": [
+                                                                "name",
+                                                                "score"
+                                                            ]
+                                                        }
+                                                    }
+                                                },
+                                                "scriptOrgSlug": {
+                                                    "type": "string",
+                                                    "pattern": "^(deleted_\\d{1,16}-)?[a-z][a-z0-9-_]{1,48}[a-z0-9_]$"
+                                                },
+                                                "scriptBranchSlug": {
+                                                    "type": "string",
+                                                    "pattern": "^[\\w-]{1,50}$"
+                                                },
+                                                "scriptEnvironment": {
+                                                    "title": "ScriptBranchEnvironment",
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "staging",
+                                                        "release"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "id",
+                                                "name",
+                                                "leadScorerAgentId",
+                                                "configuration",
+                                                "scriptOrgSlug",
+                                                "scriptBranchSlug",
+                                                "scriptEnvironment"
+                                            ],
+                                            "additionalProperties": false
+                                        }
+                                    ]
+                                }
+                            }
+                        }
+                    },
+                    "403": {
+                        "description": "Only web, API-key, and intelligence-tool sessions are allowed to fetch any scoring\ndefinition. An agent session may only fetch the one scoring definition it was created for.\n"
+                    },
+                    "404": {
+                        "description": "Scoring definition not found."
+                    }
+                },
+                "parameters": [
+                    {
+                        "in": "path",
+                        "required": true,
+                        "name": "id",
+                        "description": "Id of the scoring definition to fetch.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ]
+            }
         }
     }
 }
