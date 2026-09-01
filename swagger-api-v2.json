@@ -330,6 +330,20 @@
                                                                     "additionalProperties": {
                                                                         "type": "number"
                                                                     }
+                                                                },
+                                                                "products": {
+                                                                    "description": "Products this plan belongs to. Absent means [\"pb2\"].",
+                                                                    "type": "array",
+                                                                    "items": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "pb2",
+                                                                            "pb3"
+                                                                        ]
+                                                                    },
+                                                                    "minItems": 1,
+                                                                    "uniqueItems": true,
+                                                                    "nullable": true
                                                                 }
                                                             },
                                                             "additionalProperties": false,
@@ -1457,6 +1471,20 @@
                                                     "additionalProperties": {
                                                         "type": "number"
                                                     }
+                                                },
+                                                "products": {
+                                                    "description": "Products this plan belongs to. Absent means [\"pb2\"].",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "pb2",
+                                                            "pb3"
+                                                        ]
+                                                    },
+                                                    "minItems": 1,
+                                                    "uniqueItems": true,
+                                                    "nullable": true
                                                 }
                                             },
                                             "additionalProperties": false,
@@ -1773,6 +1801,20 @@
                                                     "additionalProperties": {
                                                         "type": "number"
                                                     }
+                                                },
+                                                "products": {
+                                                    "description": "Products this plan belongs to. Absent means [\"pb2\"].",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string",
+                                                        "enum": [
+                                                            "pb2",
+                                                            "pb3"
+                                                        ]
+                                                    },
+                                                    "minItems": 1,
+                                                    "uniqueItems": true,
+                                                    "nullable": true
                                                 }
                                             },
                                             "additionalProperties": false,
