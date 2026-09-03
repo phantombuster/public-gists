@@ -1215,6 +1215,10 @@
                                         "qualificationFlow": {
                                             "type": "object",
                                             "properties": {
+                                                "isCompleted": {
+                                                    "type": "boolean",
+                                                    "x-$comment": "Not `boolean | null`. Sibling qualificationFlow strings use null to clear a value; this flag resets with false. deepUpsert treats null and boolean as different types, so writing null over an existing true 400s."
+                                                },
                                                 "email": {
                                                     "type": "string",
                                                     "nullable": true
