@@ -6651,7 +6651,8 @@
                                                             "none",
                                                             "http",
                                                             "pool",
-                                                            "squid lease"
+                                                            "squid lease",
+                                                            "residential"
                                                         ]
                                                     }
                                                 }
@@ -8238,7 +8239,8 @@
                                                                 "none",
                                                                 "http",
                                                                 "pool",
-                                                                "squid lease"
+                                                                "squid lease",
+                                                                "residential"
                                                             ]
                                                         }
                                                     }
@@ -9280,7 +9282,8 @@
                                                 "none",
                                                 "http",
                                                 "pool",
-                                                "squid lease"
+                                                "squid lease",
+                                                "residential"
                                             ]
                                         },
                                         "proxyAddress": {
@@ -9453,12 +9456,45 @@
                                             "additionalProperties": false,
                                             "nullable": true
                                         },
+                                        "residentialProxyIdentifier": {
+                                            "type": "object",
+                                            "properties": {
+                                                "location": {
+                                                    "type": "string",
+                                                    "minLength": 1,
+                                                    "maxLength": 100
+                                                }
+                                            },
+                                            "required": [
+                                                "location"
+                                            ],
+                                            "additionalProperties": false,
+                                            "nullable": true
+                                        },
                                         "persistedVolumeKey": {
                                             "type": "string",
                                             "maxLength": 256,
                                             "nullable": true
                                         },
                                         "leasedSquidProxy": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "proxyAddress": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "proxyUsername": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "proxyPassword": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                }
+                                            }
+                                        },
+                                        "residentialProxy": {
                                             "type": "object",
                                             "additionalProperties": false,
                                             "properties": {
@@ -10300,7 +10336,8 @@
                                                                     "none",
                                                                     "http",
                                                                     "pool",
-                                                                    "squid lease"
+                                                                    "squid lease",
+                                                                    "residential"
                                                                 ]
                                                             }
                                                         }
@@ -11335,6 +11372,21 @@
                                                 "required": [
                                                     "groupSlug",
                                                     "refreshRate"
+                                                ],
+                                                "additionalProperties": false,
+                                                "nullable": true
+                                            },
+                                            "residentialProxyIdentifier": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "location": {
+                                                        "type": "string",
+                                                        "minLength": 1,
+                                                        "maxLength": 100
+                                                    }
+                                                },
+                                                "required": [
+                                                    "location"
                                                 ],
                                                 "additionalProperties": false,
                                                 "nullable": true
@@ -12183,7 +12235,8 @@
                                                                     "none",
                                                                     "http",
                                                                     "pool",
-                                                                    "squid lease"
+                                                                    "squid lease",
+                                                                    "residential"
                                                                 ]
                                                             }
                                                         }
@@ -13222,6 +13275,21 @@
                                                 "additionalProperties": false,
                                                 "nullable": true
                                             },
+                                            "residentialProxyIdentifier": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "location": {
+                                                        "type": "string",
+                                                        "minLength": 1,
+                                                        "maxLength": 100
+                                                    }
+                                                },
+                                                "required": [
+                                                    "location"
+                                                ],
+                                                "additionalProperties": false,
+                                                "nullable": true
+                                            },
                                             "wasSetupValidWhenSubmittedByTheFrontend": {
                                                 "type": "boolean"
                                             },
@@ -13585,7 +13653,8 @@
                                             "none",
                                             "http",
                                             "pool",
-                                            "squid lease"
+                                            "squid lease",
+                                            "residential"
                                         ]
                                     },
                                     "proxyAddress": {
@@ -13714,6 +13783,22 @@
                                         "additionalProperties": false,
                                         "nullable": true
                                     },
+                                    "residentialProxyIdentifier": {
+                                        "description": "Sets the agent's residential proxy configuration.",
+                                        "type": "object",
+                                        "properties": {
+                                            "location": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 100
+                                            }
+                                        },
+                                        "required": [
+                                            "location"
+                                        ],
+                                        "additionalProperties": false,
+                                        "nullable": true
+                                    },
                                     "persistedVolumeKey": {
                                         "description": "Key identifying the persisted volume to attach to the agent's containers.",
                                         "type": "string",
@@ -13730,8 +13815,9 @@
                                         "description": "If true, the updated settings will be propagated to the workers regardless of the session type."
                                     },
                                     "expireAt": {
-                                        "description": "The date when the agent will be deleted.",
+                                        "description": "The date when the agent will be deleted, as a Unix timestamp in milliseconds. The minimum rejects a value sent in seconds, which would otherwise read as a past date and have the agent deleted within hours.",
                                         "type": "number",
+                                        "minimum": 1000000000000,
                                         "nullable": true
                                     },
                                     "idempotencyKey": {
