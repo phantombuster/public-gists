@@ -13818,7 +13818,7 @@
                                         "description": "If true, the updated settings will be propagated to the workers regardless of the session type."
                                     },
                                     "expireAt": {
-                                        "description": "The date when the agent will be deleted, as a Unix timestamp in milliseconds. The minimum rejects a value sent in seconds, which would otherwise read as a past date and have the agent deleted within hours.",
+                                        "description": "The date after which the agent is automatically deleted, as a Unix timestamp in milliseconds. The client owns this date: it is stored as sent and never moved by the platform, and an agent without `expireAt` is never deleted automatically. Deleting an expired agent also removes its workflow workers and its stored files. Only agents with no schedule (`launchType` set to `manually`) and no master agent are deleted: switching a schedule on suspends the expiry without changing the date, and switching it off makes the agent eligible again. The field is accepted for an organization whose `isV3` flag is set, and for Phantombuster's `linkedin-sign-in` helper phantom in any organization; elsewhere it is ignored and the save still succeeds. Sending `null` does not clear an existing date, since null values are stripped from payloads: a date can be set or replaced, not removed. The minimum rejects a value sent in seconds, which would otherwise read as a past date and have the agent deleted shortly after.",
                                         "type": "number",
                                         "minimum": 1000000000000,
                                         "nullable": true
