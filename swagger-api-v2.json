@@ -24244,6 +24244,15 @@
                                             "isRunning": {
                                                 "type": "boolean"
                                             },
+                                            "lastRunStatus": {
+                                                "title": "ContainerEndStatus",
+                                                "type": "string",
+                                                "enum": [
+                                                    "success",
+                                                    "error"
+                                                ],
+                                                "nullable": true
+                                            },
                                             "scriptOrgSlug": {
                                                 "type": "string",
                                                 "pattern": "^(deleted_\\d{1,16}-)?[a-z][a-z0-9-_]{1,48}[a-z0-9_]$"
@@ -24271,6 +24280,7 @@
                                             "runCount",
                                             "scoredAt",
                                             "isRunning",
+                                            "lastRunStatus",
                                             "scriptOrgSlug",
                                             "scriptBranchSlug",
                                             "scriptEnvironment"
@@ -24639,6 +24649,15 @@
                                                 "isRunning": {
                                                     "type": "boolean"
                                                 },
+                                                "lastRunStatus": {
+                                                    "title": "ContainerEndStatus",
+                                                    "type": "string",
+                                                    "enum": [
+                                                        "success",
+                                                        "error"
+                                                    ],
+                                                    "nullable": true
+                                                },
                                                 "scriptOrgSlug": {
                                                     "type": "string",
                                                     "pattern": "^(deleted_\\d{1,16}-)?[a-z][a-z0-9-_]{1,48}[a-z0-9_]$"
@@ -24666,6 +24685,7 @@
                                                 "runCount",
                                                 "scoredAt",
                                                 "isRunning",
+                                                "lastRunStatus",
                                                 "scriptOrgSlug",
                                                 "scriptBranchSlug",
                                                 "scriptEnvironment"
