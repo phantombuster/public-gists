@@ -1595,6 +1595,78 @@
                                             "type": "string",
                                             "maxLength": 10000,
                                             "nullable": true
+                                        },
+                                        "topUps": {
+                                            "type": "object",
+                                            "description": "An org's valid resource top-ups, grouped by resource, soonest-expiring first — the order they are drawn down in. A resource with no top-ups is absent rather than empty.",
+                                            "properties": {
+                                                "emailCredits": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "description": "One resource pool an org bought, as it stands now.",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "description": "Id of the purchase this pool came from (org_resource_top_ups.id). A purchase holds at most one pool per resource, so it identifies the pool within the resource it is listed under."
+                                                            },
+                                                            "amount": {
+                                                                "type": "number",
+                                                                "description": "Units this purchase granted."
+                                                            },
+                                                            "remaining": {
+                                                                "type": "number",
+                                                                "description": "Units still available. Zero until the pool expires, so a customer keeps seeing a top-up they bought and spent."
+                                                            },
+                                                            "expiresAt": {
+                                                                "type": "number",
+                                                                "description": "When the whole purchase expires (ms)."
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "amount",
+                                                            "remaining",
+                                                            "expiresAt"
+                                                        ]
+                                                    }
+                                                },
+                                                "aiCredits": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "description": "One resource pool an org bought, as it stands now.",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "description": "Id of the purchase this pool came from (org_resource_top_ups.id). A purchase holds at most one pool per resource, so it identifies the pool within the resource it is listed under."
+                                                            },
+                                                            "amount": {
+                                                                "type": "number",
+                                                                "description": "Units this purchase granted."
+                                                            },
+                                                            "remaining": {
+                                                                "type": "number",
+                                                                "description": "Units still available. Zero until the pool expires, so a customer keeps seeing a top-up they bought and spent."
+                                                            },
+                                                            "expiresAt": {
+                                                                "type": "number",
+                                                                "description": "When the whole purchase expires (ms)."
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "amount",
+                                                            "remaining",
+                                                            "expiresAt"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "additionalProperties": false,
+                                            "nullable": true
                                         }
                                     },
                                     "additionalProperties": false,
@@ -1658,6 +1730,14 @@
                         "in": "query",
                         "name": "withCustomPrompts",
                         "description": "If set, the organization's custom prompt (customPromptOrg) will be returned in the response.",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "in": "query",
+                        "name": "withTopUps",
+                        "description": "If set, a per-resource summary of the organization's active resource top-ups (topUps) will be returned in the response.",
                         "schema": {
                             "type": "string"
                         }
@@ -1858,6 +1938,78 @@
                                         },
                                         "planShouldCancelAt": {
                                             "type": "number",
+                                            "nullable": true
+                                        },
+                                        "topUps": {
+                                            "type": "object",
+                                            "description": "An org's valid resource top-ups, grouped by resource, soonest-expiring first — the order they are drawn down in. A resource with no top-ups is absent rather than empty.",
+                                            "properties": {
+                                                "emailCredits": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "description": "One resource pool an org bought, as it stands now.",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "description": "Id of the purchase this pool came from (org_resource_top_ups.id). A purchase holds at most one pool per resource, so it identifies the pool within the resource it is listed under."
+                                                            },
+                                                            "amount": {
+                                                                "type": "number",
+                                                                "description": "Units this purchase granted."
+                                                            },
+                                                            "remaining": {
+                                                                "type": "number",
+                                                                "description": "Units still available. Zero until the pool expires, so a customer keeps seeing a top-up they bought and spent."
+                                                            },
+                                                            "expiresAt": {
+                                                                "type": "number",
+                                                                "description": "When the whole purchase expires (ms)."
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "amount",
+                                                            "remaining",
+                                                            "expiresAt"
+                                                        ]
+                                                    }
+                                                },
+                                                "aiCredits": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "description": "One resource pool an org bought, as it stands now.",
+                                                        "properties": {
+                                                            "id": {
+                                                                "type": "string",
+                                                                "description": "Id of the purchase this pool came from (org_resource_top_ups.id). A purchase holds at most one pool per resource, so it identifies the pool within the resource it is listed under."
+                                                            },
+                                                            "amount": {
+                                                                "type": "number",
+                                                                "description": "Units this purchase granted."
+                                                            },
+                                                            "remaining": {
+                                                                "type": "number",
+                                                                "description": "Units still available. Zero until the pool expires, so a customer keeps seeing a top-up they bought and spent."
+                                                            },
+                                                            "expiresAt": {
+                                                                "type": "number",
+                                                                "description": "When the whole purchase expires (ms)."
+                                                            }
+                                                        },
+                                                        "additionalProperties": false,
+                                                        "required": [
+                                                            "id",
+                                                            "amount",
+                                                            "remaining",
+                                                            "expiresAt"
+                                                        ]
+                                                    }
+                                                }
+                                            },
+                                            "additionalProperties": false,
                                             "nullable": true
                                         }
                                     },
