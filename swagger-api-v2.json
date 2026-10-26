@@ -13510,6 +13510,24 @@
                                     "properties": {
                                         "id": {
                                             "type": "string"
+                                        },
+                                        "residentialProxy": {
+                                            "type": "object",
+                                            "additionalProperties": false,
+                                            "properties": {
+                                                "proxyAddress": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "proxyUsername": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "proxyPassword": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                }
+                                            }
                                         }
                                     },
                                     "additionalProperties": false,
@@ -13956,6 +13974,23 @@
                                         },
                                         "required": [
                                             "location"
+                                        ],
+                                        "additionalProperties": false,
+                                        "nullable": true
+                                    },
+                                    "residentialProxyFailure": {
+                                        "description": "Reserved for a running phantom saving its own agent through \"agents/save\". Reports that the residential proxy it was served is dead, so another one is allocated and returned in that endpoint's response.",
+                                        "type": "object",
+                                        "properties": {
+                                            "proxyAddress": {
+                                                "type": "string",
+                                                "minLength": 1,
+                                                "maxLength": 2000,
+                                                "x-$comment": "A phantom echoes back the address it was served, and the address alone decides whether the report applies. The strict pattern above is deliberately not reused: an address form we did not anticipate must leave the report unmatched, never reject the whole save it rides on."
+                                            }
+                                        },
+                                        "required": [
+                                            "proxyAddress"
                                         ],
                                         "additionalProperties": false,
                                         "nullable": true
