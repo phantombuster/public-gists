@@ -23523,6 +23523,25 @@
                                     "headline": {
                                         "description": "headline of the identity to save",
                                         "type": "string"
+                                    },
+                                    "pulse": {
+                                        "description": "Pulse consent and daily maximum of LinkedIn reads, saved only by the identity owner's own web session",
+                                        "title": "IdentityPulse",
+                                        "type": "object",
+                                        "properties": {
+                                            "enabled": {
+                                                "type": "boolean"
+                                            },
+                                            "maxLinkedinReadsPerDay": {
+                                                "type": "integer",
+                                                "minimum": 0,
+                                                "maximum": 1000
+                                            }
+                                        },
+                                        "required": [
+                                            "enabled"
+                                        ],
+                                        "additionalProperties": false
                                     }
                                 },
                                 "required": [
