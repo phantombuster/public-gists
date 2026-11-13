@@ -14952,6 +14952,19 @@
                                                     "additionalProperties": true
                                                 },
                                                 {
+                                                    "title": "ILeadSourceCommand",
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "sourceCommandId": {
+                                                            "description": "The BaaS command that found this lead, recorded on the manual edition entry",
+                                                            "type": "string",
+                                                            "maxLength": 64,
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "additionalProperties": true
+                                                },
+                                                {
                                                     "title": "ILeadProcessError",
                                                     "type": "object",
                                                     "properties": {
@@ -15399,6 +15412,14 @@
                                                                                 "type": "number"
                                                                             },
                                                                             "userId": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "aiThreadId": {
+                                                                                "description": "The AI chat thread that made the edit",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "sourceCommandId": {
+                                                                                "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                 "type": "string"
                                                                             },
                                                                             "editedProperties": {
@@ -15909,6 +15930,14 @@
                                                                                 "type": "number"
                                                                             },
                                                                             "userId": {
+                                                                                "type": "string"
+                                                                            },
+                                                                            "aiThreadId": {
+                                                                                "description": "The AI chat thread that made the edit",
+                                                                                "type": "string"
+                                                                            },
+                                                                            "sourceCommandId": {
+                                                                                "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                 "type": "string"
                                                                             },
                                                                             "editedProperties": {
@@ -16764,6 +16793,19 @@
                                         "additionalProperties": true
                                     },
                                     {
+                                        "title": "ILeadSourceCommand",
+                                        "type": "object",
+                                        "properties": {
+                                            "sourceCommandId": {
+                                                "description": "The BaaS command that found this lead, recorded on the manual edition entry",
+                                                "type": "string",
+                                                "maxLength": 64,
+                                                "nullable": true
+                                            }
+                                        },
+                                        "additionalProperties": true
+                                    },
+                                    {
                                         "title": "ILeadProcessError",
                                         "type": "object",
                                         "properties": {
@@ -17269,6 +17311,14 @@
                                                                                             "type": "number"
                                                                                         },
                                                                                         "userId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "aiThreadId": {
+                                                                                            "description": "The AI chat thread that made the edit",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "sourceCommandId": {
+                                                                                            "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                             "type": "string"
                                                                                         },
                                                                                         "editedProperties": {
@@ -17779,6 +17829,14 @@
                                                                                             "type": "number"
                                                                                         },
                                                                                         "userId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "aiThreadId": {
+                                                                                            "description": "The AI chat thread that made the edit",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "sourceCommandId": {
+                                                                                            "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                             "type": "string"
                                                                                         },
                                                                                         "editedProperties": {
@@ -18670,6 +18728,14 @@
                                                                                 "userId": {
                                                                                     "type": "string"
                                                                                 },
+                                                                                "aiThreadId": {
+                                                                                    "description": "The AI chat thread that made the edit",
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "sourceCommandId": {
+                                                                                    "description": "The BaaS command that found the lead, joins the baas command finished event",
+                                                                                    "type": "string"
+                                                                                },
                                                                                 "editedProperties": {
                                                                                     "type": "array",
                                                                                     "items": {
@@ -19178,6 +19244,14 @@
                                                                                     "type": "number"
                                                                                 },
                                                                                 "userId": {
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "aiThreadId": {
+                                                                                    "description": "The AI chat thread that made the edit",
+                                                                                    "type": "string"
+                                                                                },
+                                                                                "sourceCommandId": {
+                                                                                    "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                     "type": "string"
                                                                                 },
                                                                                 "editedProperties": {
@@ -20637,6 +20711,14 @@
                                                                                         "userId": {
                                                                                             "type": "string"
                                                                                         },
+                                                                                        "aiThreadId": {
+                                                                                            "description": "The AI chat thread that made the edit",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "sourceCommandId": {
+                                                                                            "description": "The BaaS command that found the lead, joins the baas command finished event",
+                                                                                            "type": "string"
+                                                                                        },
                                                                                         "editedProperties": {
                                                                                             "type": "array",
                                                                                             "items": {
@@ -21145,6 +21227,14 @@
                                                                                             "type": "number"
                                                                                         },
                                                                                         "userId": {
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "aiThreadId": {
+                                                                                            "description": "The AI chat thread that made the edit",
+                                                                                            "type": "string"
+                                                                                        },
+                                                                                        "sourceCommandId": {
+                                                                                            "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                             "type": "string"
                                                                                         },
                                                                                         "editedProperties": {
@@ -22070,6 +22160,14 @@
                                                                                                 "userId": {
                                                                                                     "type": "string"
                                                                                                 },
+                                                                                                "aiThreadId": {
+                                                                                                    "description": "The AI chat thread that made the edit",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "sourceCommandId": {
+                                                                                                    "description": "The BaaS command that found the lead, joins the baas command finished event",
+                                                                                                    "type": "string"
+                                                                                                },
                                                                                                 "editedProperties": {
                                                                                                     "type": "array",
                                                                                                     "items": {
@@ -22578,6 +22676,14 @@
                                                                                                     "type": "number"
                                                                                                 },
                                                                                                 "userId": {
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "aiThreadId": {
+                                                                                                    "description": "The AI chat thread that made the edit",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "sourceCommandId": {
+                                                                                                    "description": "The BaaS command that found the lead, joins the baas command finished event",
                                                                                                     "type": "string"
                                                                                                 },
                                                                                                 "editedProperties": {
