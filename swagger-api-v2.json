@@ -84,6 +84,9 @@
             "name": "org-storage"
         },
         {
+            "name": "signals-activities"
+        },
+        {
             "name": "identities"
         },
         {
