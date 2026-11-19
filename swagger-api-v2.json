@@ -1243,6 +1243,13 @@
                                                     "type": "string",
                                                     "nullable": true
                                                 },
+                                                "preferredName": {
+                                                    "type": "string",
+                                                    "maxLength": 100,
+                                                    "nullable": true,
+                                                    "x-$comment": "What the user asked Tealde to call them, which can differ from the first name of the signup form.",
+                                                    "x-sensitive": true
+                                                },
                                                 "jobTitle": {
                                                     "type": "string",
                                                     "nullable": true
@@ -1389,6 +1396,1449 @@
                                                     },
                                                     "additionalProperties": false,
                                                     "nullable": true
+                                                },
+                                                "onboardingFullPage": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "id": {
+                                                            "type": "string",
+                                                            "nullable": true
+                                                        },
+                                                        "status": {
+                                                            "type": "string",
+                                                            "enum": [
+                                                                "running",
+                                                                "ready",
+                                                                "failed"
+                                                            ],
+                                                            "nullable": true
+                                                        },
+                                                        "userId": {
+                                                            "type": "string",
+                                                            "nullable": true,
+                                                            "x-$comment": "The user the onboarding full page researches, set by pb2-back when it starts the research; only their LinkedIn account runs its pass."
+                                                        },
+                                                        "runId": {
+                                                            "type": "string",
+                                                            "maxLength": 100,
+                                                            "nullable": true,
+                                                            "x-$comment": "The AgentCore runtime session of the run that owns this, set by pb2-back when it starts the run; the agent sends it back with its writes, and a write of an older run is refused."
+                                                        },
+                                                        "startedAt": {
+                                                            "type": "integer",
+                                                            "minimum": 1000000000000,
+                                                            "maximum": 4102444800000,
+                                                            "nullable": true
+                                                        },
+                                                        "finishedAt": {
+                                                            "type": "integer",
+                                                            "minimum": 1000000000000,
+                                                            "maximum": 4102444800000,
+                                                            "nullable": true
+                                                        },
+                                                        "steps": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                },
+                                                                "company": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "profile": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "icps": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "personas": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "team": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "competitors": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "marketNews": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "voices": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                },
+                                                                "leads": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "status": {
+                                                                            "type": "string",
+                                                                            "enum": [
+                                                                                "running",
+                                                                                "done",
+                                                                                "failed"
+                                                                            ],
+                                                                            "nullable": true
+                                                                        },
+                                                                        "at": {
+                                                                            "type": "integer",
+                                                                            "minimum": 1000000000000,
+                                                                            "maximum": 4102444800000,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "error": {
+                                                                            "type": "string",
+                                                                            "maxLength": 500,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "searches": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 200,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 20,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                        },
+                                                                        "pages": {
+                                                                            "type": "array",
+                                                                            "items": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "x-sensitive": true
+                                                                            },
+                                                                            "maxItems": 40,
+                                                                            "nullable": true,
+                                                                            "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true
+                                                        },
+                                                        "signupName": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "firstName": {
+                                                                    "type": "string",
+                                                                    "maxLength": 100,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "lastName": {
+                                                                    "type": "string",
+                                                                    "maxLength": 100,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true,
+                                                            "x-$comment": "Who the research is about when an employee replayed it from an email: the name guessed from that email. Absent at signup, where it is the account's name."
+                                                        },
+                                                        "signupDomain": {
+                                                            "type": "string",
+                                                            "maxLength": 100,
+                                                            "nullable": true,
+                                                            "x-$comment": "The company the research is about when an employee replayed it from an email: that email's domain. Absent at signup, where it is the account's."
+                                                        },
+                                                        "linkedinPass": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "queued",
+                                                                        "running",
+                                                                        "ready",
+                                                                        "failed"
+                                                                    ],
+                                                                    "nullable": true
+                                                                },
+                                                                "identityId": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                },
+                                                                "runId": {
+                                                                    "type": "string",
+                                                                    "maxLength": 100,
+                                                                    "nullable": true,
+                                                                    "x-$comment": "The AgentCore runtime session of the run that owns this, set by pb2-back when it starts the run; the agent sends it back with its writes, and a write of an older run is refused."
+                                                                },
+                                                                "startedAt": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1000000000000,
+                                                                    "maximum": 4102444800000,
+                                                                    "nullable": true
+                                                                },
+                                                                "finishedAt": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1000000000000,
+                                                                    "maximum": 4102444800000,
+                                                                    "nullable": true
+                                                                },
+                                                                "steps": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "profile": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "running",
+                                                                                        "done",
+                                                                                        "failed"
+                                                                                    ],
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "at": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1000000000000,
+                                                                                    "maximum": 4102444800000,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "error": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 500,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "searches": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 200,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 20,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                                },
+                                                                                "pages": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 500,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 40,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "team": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "running",
+                                                                                        "done",
+                                                                                        "failed"
+                                                                                    ],
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "at": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1000000000000,
+                                                                                    "maximum": 4102444800000,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "error": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 500,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "searches": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 200,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 20,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                                },
+                                                                                "pages": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 500,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 40,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "leads": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "running",
+                                                                                        "done",
+                                                                                        "failed"
+                                                                                    ],
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "at": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1000000000000,
+                                                                                    "maximum": 4102444800000,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "error": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 500,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "searches": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 200,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 20,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web searches the step ran, in order. Each write sends the whole list so far: arrays of primitives merge without duplicates."
+                                                                                },
+                                                                                "pages": {
+                                                                                    "type": "array",
+                                                                                    "items": {
+                                                                                        "type": "string",
+                                                                                        "maxLength": 500,
+                                                                                        "x-sensitive": true
+                                                                                    },
+                                                                                    "maxItems": 40,
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The web pages the step opened or cited, in order, written like searches."
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "nullable": true
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true,
+                                                            "x-$comment": "Started by pb2-back once the user connects LinkedIn in their first week, queued while the first run is still running; the onboarding-full-page agent then writes its steps and outcome."
+                                                        },
+                                                        "agents": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                },
+                                                                "status": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "running",
+                                                                        "ready",
+                                                                        "failed"
+                                                                    ],
+                                                                    "nullable": true
+                                                                },
+                                                                "runId": {
+                                                                    "type": "string",
+                                                                    "maxLength": 100,
+                                                                    "nullable": true,
+                                                                    "x-$comment": "The AgentCore runtime session of the run that owns this, set by pb2-back when it starts the run; the agent sends it back with its writes, and a write of an older run is refused."
+                                                                },
+                                                                "startedAt": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1000000000000,
+                                                                    "maximum": 4102444800000,
+                                                                    "nullable": true
+                                                                },
+                                                                "finishedAt": {
+                                                                    "type": "integer",
+                                                                    "minimum": 1000000000000,
+                                                                    "maximum": 4102444800000,
+                                                                    "nullable": true
+                                                                },
+                                                                "rivals": {
+                                                                    "type": "object",
+                                                                    "maxProperties": 13,
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": {
+                                                                        "type": "object",
+                                                                        "properties": {
+                                                                            "id": {
+                                                                                "type": "string",
+                                                                                "nullable": true
+                                                                            },
+                                                                            "status": {
+                                                                                "type": "string",
+                                                                                "enum": [
+                                                                                    "running",
+                                                                                    "done",
+                                                                                    "failed"
+                                                                                ],
+                                                                                "nullable": true
+                                                                            },
+                                                                            "at": {
+                                                                                "type": "integer",
+                                                                                "minimum": 1000000000000,
+                                                                                "maximum": 4102444800000,
+                                                                                "nullable": true
+                                                                            },
+                                                                            "error": {
+                                                                                "type": "string",
+                                                                                "maxLength": 500,
+                                                                                "nullable": true
+                                                                            },
+                                                                            "agentId": {
+                                                                                "type": "string",
+                                                                                "nullable": true,
+                                                                                "x-$comment": "The scheduled agent created for this competitor or this job, once it is set up."
+                                                                            }
+                                                                        },
+                                                                        "additionalProperties": false
+                                                                    },
+                                                                    "nullable": true,
+                                                                    "x-$comment": "Keyed by the id of the onboarding-full-page competitor. The `id` key is the container's own, set by deepUpsert on creation.",
+                                                                    "x-propertyNames": {
+                                                                        "type": "string",
+                                                                        "maxLength": 100
+                                                                    }
+                                                                },
+                                                                "tasks": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "id": {
+                                                                            "type": "string",
+                                                                            "nullable": true
+                                                                        },
+                                                                        "news": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "running",
+                                                                                        "done",
+                                                                                        "failed"
+                                                                                    ],
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "at": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1000000000000,
+                                                                                    "maximum": 4102444800000,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "error": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 500,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "agentId": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The scheduled agent created for this competitor or this job, once it is set up."
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "nullable": true
+                                                                        },
+                                                                        "leads": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "id": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "status": {
+                                                                                    "type": "string",
+                                                                                    "enum": [
+                                                                                        "running",
+                                                                                        "done",
+                                                                                        "failed"
+                                                                                    ],
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "at": {
+                                                                                    "type": "integer",
+                                                                                    "minimum": 1000000000000,
+                                                                                    "maximum": 4102444800000,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "error": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 500,
+                                                                                    "nullable": true
+                                                                                },
+                                                                                "agentId": {
+                                                                                    "type": "string",
+                                                                                    "nullable": true,
+                                                                                    "x-$comment": "The scheduled agent created for this competitor or this job, once it is set up."
+                                                                                }
+                                                                            },
+                                                                            "additionalProperties": false,
+                                                                            "nullable": true
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false,
+                                                                    "nullable": true,
+                                                                    "x-$comment": "The agents that are not tied to a competitor, by job. The `id` key is the container's own, set by deepUpsert on creation."
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true,
+                                                            "x-$comment": "Started by pb2-back when the user picks on the last onboarding-full-page step the scheduled agents to leave running; the onboarding-full-page agent then writes each one's outcome and its own."
+                                                        },
+                                                        "userProfile": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                },
+                                                                "fullName": {
+                                                                    "type": "string",
+                                                                    "maxLength": 200,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "headline": {
+                                                                    "type": "string",
+                                                                    "maxLength": 500,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "location": {
+                                                                    "type": "string",
+                                                                    "maxLength": 200,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "linkedInUrl": {
+                                                                    "type": "string",
+                                                                    "maxLength": 500,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "confidence": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "high",
+                                                                        "medium",
+                                                                        "low"
+                                                                    ],
+                                                                    "nullable": true
+                                                                },
+                                                                "evidenceUrl": {
+                                                                    "type": "string",
+                                                                    "maxLength": 1000,
+                                                                    "nullable": true,
+                                                                    "x-sensitive": true
+                                                                },
+                                                                "source": {
+                                                                    "type": "string",
+                                                                    "enum": [
+                                                                        "linkedin"
+                                                                    ],
+                                                                    "nullable": true,
+                                                                    "x-$comment": "Absent when the web research found the profile."
+                                                                }
+                                                            },
+                                                            "additionalProperties": false,
+                                                            "nullable": true
+                                                        },
+                                                        "icps": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "market": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        },
+                                                                        "maxItems": 10,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "size": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 50
+                                                                        },
+                                                                        "maxItems": 10,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "why": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 10,
+                                                            "nullable": true
+                                                        },
+                                                        "personas": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "countries": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 100
+                                                                        },
+                                                                        "maxItems": 20,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "jobs": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "string",
+                                                                            "maxLength": 200
+                                                                        },
+                                                                        "maxItems": 10,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "jobTitleKeyword": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 10,
+                                                            "nullable": true
+                                                        },
+                                                        "leads": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "linkedinProfileUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "firstName": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "lastName": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "linkedinJobTitle": {
+                                                                        "type": "string",
+                                                                        "maxLength": 300,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "companyName": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "companyWebsite": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "whyFit": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "sourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "linkedinStatus": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "current",
+                                                                            "moved"
+                                                                        ],
+                                                                        "nullable": true,
+                                                                        "x-$comment": "Set by the LinkedIn pass: current when LinkedIn shows the lead at the company it was found at, moved when elsewhere."
+                                                                    },
+                                                                    "linkedinProfileImageUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true,
+                                                                        "x-$comment": "Set by the LinkedIn pass: the photo LinkedIn shows on the lead's profile.",
+                                                                        "x-sensitive": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false,
+                                                                "x-$comment": "Named like the lead storage properties, so a kept lead is saved through /org-storage/leads/save-many as is; sourceUrl is the page naming the person and stays on the onboarding full page."
+                                                            },
+                                                            "maxItems": 20,
+                                                            "nullable": true
+                                                        },
+                                                        "team": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "fullName": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "title": {
+                                                                        "type": "string",
+                                                                        "maxLength": 300,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "sourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "linkedinProfileImageUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true,
+                                                                        "x-$comment": "Set by the LinkedIn pass: the photo LinkedIn shows on the teammate's search result.",
+                                                                        "x-sensitive": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 10,
+                                                            "nullable": true
+                                                        },
+                                                        "competitors": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "domain": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "why": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "sourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "move": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "moveDate": {
+                                                                        "type": "string",
+                                                                        "maxLength": 10,
+                                                                        "pattern": "^\\d{4}-\\d{2}(-\\d{2})?$",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "moveSourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "offering": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "wins": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "point": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 300
+                                                                                },
+                                                                                "sourceUrl": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 1000
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "point",
+                                                                                "sourceUrl"
+                                                                            ],
+                                                                            "additionalProperties": false,
+                                                                            "x-$comment": "One thing a competitor does better (wins) or worse (losses) than the user's company, with the page stating it."
+                                                                        },
+                                                                        "maxItems": 3,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "losses": {
+                                                                        "type": "array",
+                                                                        "items": {
+                                                                            "type": "object",
+                                                                            "properties": {
+                                                                                "point": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 300
+                                                                                },
+                                                                                "sourceUrl": {
+                                                                                    "type": "string",
+                                                                                    "maxLength": 1000
+                                                                                }
+                                                                            },
+                                                                            "required": [
+                                                                                "point",
+                                                                                "sourceUrl"
+                                                                            ],
+                                                                            "additionalProperties": false,
+                                                                            "x-$comment": "One thing a competitor does better (wins) or worse (losses) than the user's company, with the page stating it."
+                                                                        },
+                                                                        "maxItems": 3,
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 12,
+                                                            "nullable": true
+                                                        },
+                                                        "marketNews": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "headline": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "whyItMatters": {
+                                                                        "type": "string",
+                                                                        "maxLength": 500,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "date": {
+                                                                        "type": "string",
+                                                                        "maxLength": 10,
+                                                                        "pattern": "^\\d{4}-\\d{2}(-\\d{2})?$",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "sourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 6,
+                                                            "nullable": true
+                                                        },
+                                                        "voices": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "fullName": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "who": {
+                                                                        "type": "string",
+                                                                        "maxLength": 300,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    },
+                                                                    "topic": {
+                                                                        "type": "string",
+                                                                        "maxLength": 200,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "channel": {
+                                                                        "type": "string",
+                                                                        "maxLength": 50,
+                                                                        "nullable": true
+                                                                    },
+                                                                    "sourceUrl": {
+                                                                        "type": "string",
+                                                                        "maxLength": 1000,
+                                                                        "nullable": true,
+                                                                        "x-sensitive": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "maxItems": 6,
+                                                            "nullable": true
+                                                        },
+                                                        "grades": {
+                                                            "type": "object",
+                                                            "maxProperties": 151,
+                                                            "properties": {
+                                                                "id": {
+                                                                    "type": "string",
+                                                                    "nullable": true
+                                                                }
+                                                            },
+                                                            "additionalProperties": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string",
+                                                                        "nullable": true
+                                                                    },
+                                                                    "reaction": {
+                                                                        "type": "string",
+                                                                        "enum": [
+                                                                            "up",
+                                                                            "down",
+                                                                            "none"
+                                                                        ],
+                                                                        "nullable": true,
+                                                                        "x-$comment": "none is a grade taken back: the merge keeps a stored value over a null."
+                                                                    },
+                                                                    "reason": {
+                                                                        "type": "string",
+                                                                        "maxLength": 100,
+                                                                        "nullable": true
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            },
+                                                            "nullable": true,
+                                                            "x-$comment": "Keyed by the id of the graded icp, persona, person or lead, so a second reaction overwrites the first. The `id` key is the container's own, set by deepUpsert on creation, hence 151 for 150 grades.",
+                                                            "x-propertyNames": {
+                                                                "type": "string",
+                                                                "maxLength": 100
+                                                            }
+                                                        },
+                                                        "hiredAt": {
+                                                            "type": "integer",
+                                                            "minimum": 1000000000000,
+                                                            "maximum": 4102444800000,
+                                                            "nullable": true
+                                                        },
+                                                        "skippedAt": {
+                                                            "type": "integer",
+                                                            "minimum": 1000000000000,
+                                                            "maximum": 4102444800000,
+                                                            "nullable": true
+                                                        }
+                                                    },
+                                                    "additionalProperties": false,
+                                                    "nullable": true,
+                                                    "x-$comment": "Written step by step by the onboarding-full-page agent through save-bonus-data: objects are created once and updated in place, arrays are written once and then only updated by id or appended to by the LinkedIn pass, and no null placeholders, since deepUpsert rejects a type change."
                                                 }
                                             },
                                             "additionalProperties": false,
